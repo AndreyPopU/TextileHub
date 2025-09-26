@@ -9,6 +9,7 @@ public class QuestionManager : MonoBehaviour
     public TextMeshProUGUI questionText;
     public TextMeshProUGUI timerText;
     public GameObject[] answers;
+    public int playersAnswered;
 
     public GameObject sendQuestionButton;
 

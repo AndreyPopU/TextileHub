@@ -137,6 +137,8 @@ public class WebSocketClient : MonoBehaviour
     public string localPlayerId;
     public string playerName;
 
+    private Coroutine runningCoroutine;
+
     // Some messsages don't run on Unity's main thread, so when we detect them they have to go through Update()
     private QuestionMessage pendingQuestion;
     private bool hasPendingQuestion = false;
@@ -156,6 +158,7 @@ public class WebSocketClient : MonoBehaviour
         if (hasPendingQuestion)
         {
             QuestionManager.instance.DisplayQuestion(pendingQuestion);
+            QuestionManager.instance.playersAnswered = 0;
             hasPendingQuestion = false;
         }
 
@@ -167,16 +170,25 @@ public class WebSocketClient : MonoBehaviour
 
         if (hasPendingPlayerList)
         {
-            print("here");
             GameManager.instance.UpdatePlayerList(players);
             hasPendingPlayerList = false;
         }
 
         if (hasPendingAnswer)
         {
-            // If all players have answered - Display score
+            QuestionManager.instance.playersAnswered++;
 
-            // Else display waiting screen
+            // If all players have answered - Display score
+            if (QuestionManager.instance.playersAnswered == players.Count)
+            {
+                Debug.Log($"All players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
+
+                if (runningCoroutine != null) StopCoroutine(runningCoroutine);
+            }
+            else // Else display waiting screen
+            {
+                Debug.Log($"Not all players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
+            }
 
             hasPendingAnswer = false;
         }
@@ -245,7 +257,6 @@ public class WebSocketClient : MonoBehaviour
 
                     pendingAnswer = ansMsg;
                     hasPendingAnswer = true;
-                    StopCoroutine("QuestionTimer");
                     break;
                 case "timer":
                     var timerMsg = JsonUtility.FromJson<GameMessage>(e.Data);
@@ -306,9 +317,10 @@ public class WebSocketClient : MonoBehaviour
             correctAnswer = "4",
         };
 
+        QuestionManager.instance.playersAnswered = 0;
         ws.Send(JsonUtility.ToJson(question));
         Debug.Log("Question sent to phones.");
-        StartCoroutine(QuestionTimer(16f));
+        runningCoroutine = StartCoroutine(QuestionTimer(16f));
     }
 
     // -------------------------
