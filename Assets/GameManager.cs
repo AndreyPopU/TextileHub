@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public TextMeshProUGUI playerListText;
+    public TextMeshProUGUI nameFieldText;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
 
         foreach (KeyValuePair<string, string> pair in players)
         {
-            playerList += pair.Key + "\n"; // Change this to name instead of ID when players can input their name
+            playerList += pair.Value + "\n"; 
         }
 
         playerListText.text = playerList;

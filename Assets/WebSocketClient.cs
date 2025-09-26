@@ -137,7 +137,6 @@ public class WebSocketClient : MonoBehaviour
     public string localPlayerId;
     public string playerName;
 
-
     // Some messsages don't run on Unity's main thread, so when we detect them they have to go through Update()
     private QuestionMessage pendingQuestion;
     private bool hasPendingQuestion = false;
@@ -212,6 +211,7 @@ public class WebSocketClient : MonoBehaviour
             Debug.Log("Connected to server");
 
             // Send join message right after connecting
+            playerName = GameManager.instance.nameFieldText.text;
             SendJoinMessage(playerName);
         };
 
