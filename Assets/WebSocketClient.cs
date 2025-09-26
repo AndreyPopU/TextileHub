@@ -76,14 +76,15 @@ public class LobbyBehavior : WebSocketBehavior
                 Debug.Log($"Player joined: {msg.name} ({msg.playerId})");
             }
 
-            // Broadcast updated player list to everyone
-            var listMsg = new
+            var listMsg = new PlayerListMessage
             {
-                type = "playerList",
+                type = "playerlist",
                 players = connectedPlayers
             };
 
-            Sessions.Broadcast(JsonUtility.ToJson(listMsg));
+            // Use Newtonsoft for serialization (JsonUtility can’t do dictionaries)
+            string json = JsonConvert.SerializeObject(listMsg);
+            Sessions.Broadcast(json);
         }
         else
         {
@@ -110,13 +111,14 @@ public class LobbyBehavior : WebSocketBehavior
             Debug.Log($"Player left: {connectedPlayers[keyToRemove]}");
             connectedPlayers.Remove(keyToRemove);
 
-            // Broadcast updated player list
-            var listMsg = new
+            var listMsg = new PlayerListMessage
             {
-                type = "playerList",
+                type = "playerlist",
                 players = connectedPlayers
             };
-            Sessions.Broadcast(JsonUtility.ToJson(listMsg));
+
+            string json = JsonConvert.SerializeObject(listMsg);
+            Sessions.Broadcast(json);
         }
 
         base.OnClose(e);
@@ -146,10 +148,9 @@ public class WebSocketClient : MonoBehaviour
     private AnswerMessage pendingAnswer;
     private bool hasPendingAnswer = false;
 
-    private void Awake()
-    {
-        instance = this;    
-    }
+    private bool hasPendingPlayerList = false;
+
+    private void Awake() => instance = this;    
 
     void Update()
     {
@@ -163,6 +164,13 @@ public class WebSocketClient : MonoBehaviour
         {
             QuestionManager.instance.timerText.text = pendingMessage.text;
             hasPendingMessage = false;
+        }
+
+        if (hasPendingPlayerList)
+        {
+            print("here");
+            GameManager.instance.UpdatePlayerList(players);
+            hasPendingPlayerList = false;
         }
 
         if (hasPendingAnswer)
@@ -248,13 +256,14 @@ public class WebSocketClient : MonoBehaviour
                 case "timeUp":
                     QuestionManager.instance.timerText.text = "Time Up!";
                     break;
-                case "playerList":
+                case "playerlist":
+                    print("Received player list message");
                     var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
                     players = listData.players; // overwrite local dictionary
                     Debug.Log($"Updated player list, total: {players.Count}");
 
-
-                    break;
+                    hasPendingPlayerList = true;
+                break;
             }
         };
 
