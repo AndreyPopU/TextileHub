@@ -199,15 +199,33 @@ public class WebSocketClient : MonoBehaviour
     // -------------------------
     public void HostServer()
     {
+        // Start web socket server
         wss = new WebSocketServer(3000); // listens on all interfaces
         wss.AddWebSocketService<LobbyBehavior>("/lobby");
         wss.Start();
-        Debug.Log("Server started on port 3000");
+
+        // Start LAN discovery host
+        LanDiscoveryHost hostDiscovery = gameObject.AddComponent<LanDiscoveryHost>();
+        hostDiscovery.roomCode = GenerateRoomCode(); // pass code into discovery script
+
+        Debug.Log("Server started on port 3000, Room code is " + hostDiscovery.roomCode);
 
         // -------------------------
         // CONNECT AS A CLIENT
         // -------------------------
         Connect();
+    }
+
+    public static string GenerateRoomCode(int length = 4)
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        System.Random rand = new System.Random();
+        char[] code = new char[length];
+
+        for (int i = 0; i < length; i++)
+            code[i] = chars[rand.Next(chars.Length)];
+
+        return new string(code);
     }
 
     // -------------------------
@@ -279,6 +297,29 @@ public class WebSocketClient : MonoBehaviour
         };
 
         ws.Connect();
+    }
+
+    public void JoinServer(string roomCode)
+    {
+        LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
+        clientDiscovery.roomCode = roomCode;
+
+        clientDiscovery.OnHostFound += (ipAddress) =>
+        {
+            Debug.Log("Host found at: " + ipAddress);
+
+            ws = new WebSocket($"ws://{ipAddress}:3000/lobby");
+
+            ws.OnOpen += (sender, e) =>
+            {
+                Debug.Log("Connected to server");
+
+                playerName = GameManager.instance.nameFieldText.text;
+                SendJoinMessage(playerName);
+            };
+
+            ws.ConnectAsync();
+        };
     }
 
     // -------------------------

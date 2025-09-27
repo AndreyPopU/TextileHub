@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI playerListText;
     public TextMeshProUGUI nameFieldText;
+    public TextMeshProUGUI roomCodeText;
 
     private void Awake()
     {
