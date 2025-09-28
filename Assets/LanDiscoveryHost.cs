@@ -3,6 +3,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Text.RegularExpressions;
+using UnityEngine.Windows;
+using static UnityEngine.EventSystems.StandaloneInputModule;
+using System;
+using System.Linq;
 
 public class LanDiscoveryHost : MonoBehaviour
 {
@@ -21,6 +26,15 @@ public class LanDiscoveryHost : MonoBehaviour
         listenThread.Start();
     }
 
+    void DebugString(string label, string s)
+    {
+        Debug.Log($"{label}: '{s}' (Length {s.Length})");
+        for (int i = 0; i < s.Length; i++)
+        {
+            Debug.Log($"{label}[{i}] = '{s[i]}' (Unicode: {(int)s[i]})");
+        }
+    }
+
     private void ListenLoop()
     {
         IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
@@ -37,16 +51,26 @@ public class LanDiscoveryHost : MonoBehaviour
                 {
                     string requestedCode = message.Substring("DISCOVER:".Length);
 
-                    if (requestedCode == roomCode)
+                    string cleanRequest = Regex.Replace(requestedCode, @"[\s\u200B-\u200D\uFEFF]", ""); ;
+
+                    DebugString("Requested Code", cleanRequest);
+                    DebugString("Room Code", roomCode);
+
+                    if (cleanRequest == roomCode)
                     {
+                        print("Request matches room code - joining new player");
+
                         // Reply with our IP address
                         string ip = GetLocalIPAddress();
                         byte[] response = Encoding.UTF8.GetBytes("HOST:" + ip);
+                        print(response);
                         udpServer.Send(response, response.Length, remoteEP);
                     }
                 }
             }
-            catch { }
+            catch {
+                Debug.LogError(" nqma takuv kod "); //neka si bude tuk :)
+            }
         }
     }
 
@@ -61,6 +85,13 @@ public class LanDiscoveryHost : MonoBehaviour
     }
 
     void OnDestroy()
+    {
+        running = false;
+        udpServer?.Close();
+        listenThread?.Abort();
+    }
+
+    private void OnApplicationQuit()
     {
         running = false;
         udpServer?.Close();

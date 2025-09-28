@@ -9,10 +9,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerListText;
     public TextMeshProUGUI nameFieldText;
     public TextMeshProUGUI roomCodeText;
+    public TextMeshProUGUI codeInputField;
 
     private void Awake()
     {
         instance = this;
+
+        string a = "AD31";
+        string b = "AD31";
+        if (a == b) print("The strings are correct");
     }
 
     public void UpdatePlayerList(Dictionary<string, string> players)

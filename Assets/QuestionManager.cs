@@ -10,6 +10,7 @@ public class QuestionManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject[] answers;
     public int playersAnswered;
+    public int currentQuestionIndex;
 
     public GameObject sendQuestionButton;
 
@@ -58,5 +59,47 @@ public class QuestionManager : MonoBehaviour
         // Hide question
         questionDisplay.SetActive(false);
         sendQuestionButton.SetActive(true);
+    }
+
+    public QuestionMessage AskNextQuestion()
+    {
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex == 1)
+        {
+            QuestionMessage question1 = new QuestionMessage
+            {
+                type = "question",
+                text = "What is 2 + 2?",
+                options = new string[] { "2", "3", "4", "5" },
+                correctAnswer = "4",
+            };
+
+            return question1;
+        }
+        else if (currentQuestionIndex == 1)
+        {
+            QuestionMessage question2 = new QuestionMessage
+            {
+                type = "question",
+                text = "What is the capital of Bulgaria?",
+                options = new string[] { "Varna", "Sofia", "Burgas", "Vraca" },
+                correctAnswer = "Sofia",
+            };
+
+            return question2;
+        }
+        else
+        {
+            QuestionMessage question3 = new QuestionMessage
+            {
+                type = "question",
+                text = "What is the highest mountain in the world?",
+                options = new string[] { "2", "3", "4", "5" },
+                correctAnswer = "4",
+            };
+
+            return question3;
+        }
     }
 }

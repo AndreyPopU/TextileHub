@@ -155,6 +155,9 @@ public class WebSocketClient : MonoBehaviour
 
     void Update()
     {
+        // turn all of this to one message and move the switch statement here
+
+
         if (hasPendingQuestion)
         {
             QuestionManager.instance.DisplayQuestion(pendingQuestion);
@@ -210,9 +213,7 @@ public class WebSocketClient : MonoBehaviour
 
         Debug.Log("Server started on port 3000, Room code is " + hostDiscovery.roomCode);
 
-        // -------------------------
-        // CONNECT AS A CLIENT
-        // -------------------------
+        GameManager.instance.roomCodeText.text = hostDiscovery.roomCode;
         Connect();
     }
 
@@ -299,10 +300,10 @@ public class WebSocketClient : MonoBehaviour
         ws.Connect();
     }
 
-    public void JoinServer(string roomCode)
+    public void JoinServer()
     {
         LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
-        clientDiscovery.roomCode = roomCode;
+        clientDiscovery.roomCode = GameManager.instance.codeInputField.text;
 
         clientDiscovery.OnHostFound += (ipAddress) =>
         {
@@ -316,6 +317,52 @@ public class WebSocketClient : MonoBehaviour
 
                 playerName = GameManager.instance.nameFieldText.text;
                 SendJoinMessage(playerName);
+            };
+
+            ws.OnMessage += (sender, e) =>
+            {
+                Debug.Log("Message from server: " + e.Data);
+
+                var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+
+                switch (baseMsg.type.Trim().ToLower())
+                {
+                    case "playerJoined":
+                        var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+                        players[joinMsg.playerId] = joinMsg.name;
+                        break;
+                    case "playerLeft":
+                        var leftMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+                        players.Remove(leftMsg.playerId);
+                        break;
+                    case "question":
+                        var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
+                        pendingQuestion = qMsg;
+                        hasPendingQuestion = true;
+                        Debug.Log($"Buffered question: {pendingQuestion}");
+                        break;
+                    case "answer":
+                        var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
+                        Debug.Log($"Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
+                        pendingAnswer = ansMsg;
+                        hasPendingAnswer = true;
+                        break;
+                    case "timer":
+                        var timerMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+                        pendingMessage = timerMsg;
+                        hasPendingMessage = true;
+                        break;
+                    case "timeUp":
+                        QuestionManager.instance.timerText.text = "Time Up!";
+                        break;
+                    case "playerlist":
+                        print("Received player list message");
+                        var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
+                        players = listData.players; // overwrite local dictionary
+                        Debug.Log($"Updated player list, total: {players.Count}");
+                        hasPendingPlayerList = true;
+                        break;
+                }
             };
 
             ws.ConnectAsync();
@@ -350,16 +397,8 @@ public class WebSocketClient : MonoBehaviour
             return;
         }
 
-        QuestionMessage question = new QuestionMessage
-        {
-            type = "question",
-            text = "What is 2 + 2?",
-            options = new string[] { "2", "3", "4", "5" },
-            correctAnswer = "4",
-        };
-
         QuestionManager.instance.playersAnswered = 0;
-        ws.Send(JsonUtility.ToJson(question));
+        ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
         Debug.Log("Question sent to phones.");
         runningCoroutine = StartCoroutine(QuestionTimer(16f));
     }

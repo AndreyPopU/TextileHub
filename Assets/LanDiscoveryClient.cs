@@ -69,4 +69,11 @@ public class LanDiscoveryClient : MonoBehaviour
         udpClient?.Close();
         listenThread?.Abort();
     }
+
+    private void OnApplicationQuit()
+    {
+        running = false;
+        udpClient?.Close();
+        listenThread?.Abort();
+    }
 }
