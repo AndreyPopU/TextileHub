@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -13,15 +12,34 @@ public class QuestionManager : MonoBehaviour
     public GameObject[] answers;
     public int playersAnswered;
     public int currentQuestionIndex;
+    public GameObject startGameButton;
 
+    [Header("Result Screen")]
     public GameObject resultScreen;
     public TextMeshProUGUI resultText;
-    public Slider timerSlider;
-    public GameObject startGameButton;
+    public TextMeshProUGUI waitingText;
+    private float waitingDelay = 1;
 
     private QuestionMessage currentQuestion;
 
     private void Awake() => instance = this;
+
+    public void Update()
+    {
+        if (resultScreen.activeInHierarchy)
+        {
+            if (waitingDelay > 0)
+            {
+                waitingDelay -= Time.deltaTime;
+            }
+            else
+            {
+                if (waitingText.text.Length > 2) waitingText.text = string.Empty;
+                else waitingText.text += "•";
+                waitingDelay = 1;
+            }
+        }
+    }
 
     public void DisplayQuestion(QuestionMessage msg)
     {
@@ -43,21 +61,18 @@ public class QuestionManager : MonoBehaviour
         WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
         resultText.text = "Here are the results: \n";
-        timerSlider.gameObject.SetActive(true);
 
         float time = 3;
 
         while (time > 0)
         {
             time -= Time.deltaTime;
-            timerSlider.value = time;
 
             yield return waitForFixedUpdate;
         }
 
         resultText.text = "Waiting for all players to answer";
         EnableResultScreen(false);
-        timerSlider.gameObject.SetActive(false);
     }
 
     /// <summary>
