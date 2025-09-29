@@ -4,10 +4,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Text.RegularExpressions;
-using UnityEngine.Windows;
-using static UnityEngine.EventSystems.StandaloneInputModule;
-using System;
-using System.Linq;
 
 public class LanDiscoveryHost : MonoBehaviour
 {
@@ -52,9 +48,6 @@ public class LanDiscoveryHost : MonoBehaviour
                     string requestedCode = message.Substring("DISCOVER:".Length);
 
                     string cleanRequest = Regex.Replace(requestedCode, @"[\s\u200B-\u200D\uFEFF]", ""); ;
-
-                    DebugString("Requested Code", cleanRequest);
-                    DebugString("Room Code", roomCode);
 
                     if (cleanRequest == roomCode)
                     {

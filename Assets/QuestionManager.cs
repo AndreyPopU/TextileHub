@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -12,14 +14,14 @@ public class QuestionManager : MonoBehaviour
     public int playersAnswered;
     public int currentQuestionIndex;
 
-    public GameObject sendQuestionButton;
+    public GameObject resultScreen;
+    public TextMeshProUGUI resultText;
+    public Slider timerSlider;
+    public GameObject startGameButton;
 
     private QuestionMessage currentQuestion;
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    private void Awake() => instance = this;
 
     public void DisplayQuestion(QuestionMessage msg)
     {
@@ -31,10 +33,31 @@ public class QuestionManager : MonoBehaviour
         {
             answers[i].SetActive(true);
             answers[i].GetComponentInChildren<TextMeshProUGUI>().text = msg.options[i];
+        }
+    }
 
-            // Detect if option is correct
+    public void DisplayResults() => StartCoroutine(DisplayResultsCO());
+
+    private IEnumerator DisplayResultsCO() // Currently this works on clients only
+    {
+        WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
+        resultText.text = "Here are the results: \n";
+        timerSlider.gameObject.SetActive(true);
+
+        float time = 3;
+
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            timerSlider.value = time;
+
+            yield return waitForFixedUpdate;
         }
 
+        resultText.text = "Waiting for all players to answer";
+        EnableResultScreen(false);
+        timerSlider.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -58,7 +81,7 @@ public class QuestionManager : MonoBehaviour
 
         // Hide question
         questionDisplay.SetActive(false);
-        sendQuestionButton.SetActive(true);
+        EnableResultScreen(true);
     }
 
     public QuestionMessage AskNextQuestion()
@@ -77,7 +100,7 @@ public class QuestionManager : MonoBehaviour
 
             return question1;
         }
-        else if (currentQuestionIndex == 1)
+        else if (currentQuestionIndex == 2)
         {
             QuestionMessage question2 = new QuestionMessage
             {
@@ -94,12 +117,14 @@ public class QuestionManager : MonoBehaviour
             QuestionMessage question3 = new QuestionMessage
             {
                 type = "question",
-                text = "What is the highest mountain in the world?",
-                options = new string[] { "2", "3", "4", "5" },
-                correctAnswer = "4",
+                text = "How many continents are there?",
+                options = new string[] { "1", "8", "6", "7" },
+                correctAnswer = "7",
             };
 
             return question3;
         }
     }
+
+    public void EnableResultScreen(bool enable) => resultScreen.SetActive(enable);
 }

@@ -4,6 +4,7 @@ using WebSocketSharp.Server;   // needed for server
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
+using static UnityEngine.Rendering.CoreUtils;
 
 //
 // Packages
@@ -44,9 +45,17 @@ public class QuestionMessage
 [System.Serializable]
 public class PlayerJoinMessage
 {
-    public string type;     // e.g., "playerJoined"
-    public string playerId; // assigned by the server
-    public string name;     // chosen by the player
+    public string type;
+    public string playerId;
+    public string name;
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public string playerId;
+    public string name;
+    public int score = 0;
 }
 
 [System.Serializable]
@@ -134,6 +143,7 @@ public class WebSocketClient : MonoBehaviour
     WebSocketServer wss; // server instance
 
     public Dictionary<string, string> players = new Dictionary<string, string>();
+    public Dictionary<string, bool> playerAnswers = new Dictionary<string, bool>(); // Stores received player answers and whether they are correct
     public string localPlayerId;
     public string playerName;
 
@@ -151,13 +161,11 @@ public class WebSocketClient : MonoBehaviour
 
     private bool hasPendingPlayerList = false;
 
-    private void Awake() => instance = this;    
+    private void Awake() => instance = this;
 
     void Update()
     {
         // turn all of this to one message and move the switch statement here
-
-
         if (hasPendingQuestion)
         {
             QuestionManager.instance.DisplayQuestion(pendingQuestion);
@@ -181,17 +189,22 @@ public class WebSocketClient : MonoBehaviour
         {
             QuestionManager.instance.playersAnswered++;
 
+            // Store answers with player ID's
+            //playerAnswers.Add(pendingAnswer.playerId, pendingAnswer.correct);
+
             // If all players have answered - Display score
             if (QuestionManager.instance.playersAnswered == players.Count)
             {
                 Debug.Log($"All players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
 
                 if (runningCoroutine != null) StopCoroutine(runningCoroutine);
+
+                // This function shows the results, score and waits 3 seconds, then asks the next question
+                StartCoroutine(ResultsCountdown(3));
+
+                // Send score message to players
             }
-            else // Else display waiting screen
-            {
-                Debug.Log($"Not all players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
-            }
+            else Debug.Log($"Not all players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
 
             hasPendingAnswer = false;
         }
@@ -214,7 +227,7 @@ public class WebSocketClient : MonoBehaviour
         Debug.Log("Server started on port 3000, Room code is " + hostDiscovery.roomCode);
 
         GameManager.instance.roomCodeText.text = hostDiscovery.roomCode;
-        Connect();
+        JoinServer(hostDiscovery.roomCode);
     }
 
     public static string GenerateRoomCode(int length = 4)
@@ -230,80 +243,12 @@ public class WebSocketClient : MonoBehaviour
     }
 
     // -------------------------
-    // CONNECT AS A CLIENT
+    // JOIN SERVER AS A CLIENT
     // -------------------------
-    public void Connect()
-    {
-        // IMPORTANT: if hosting locally, use your LAN IP here, e.g., ws://192.168.2.3:3000/lobby
-        ws = new WebSocket("ws://192.168.2.3:3000/lobby");
-
-        ws.OnOpen += (sender, e) =>
-        {
-            Debug.Log("Connected to server");
-
-            // Send join message right after connecting
-            playerName = GameManager.instance.nameFieldText.text;
-            SendJoinMessage(playerName);
-        };
-
-        ws.OnMessage += (sender, e) =>
-        {
-            Debug.Log("Message from server: " + e.Data);
-
-            var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
-
-            switch (baseMsg.type.Trim().ToLower())
-            {
-                case "playerJoined":
-                    var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
-                    players[joinMsg.playerId] = joinMsg.name;
-                    break;
-                case "playerLeft":
-                    var leftMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
-                    players.Remove(leftMsg.playerId);
-                    break;
-                case "question":
-                    var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
-
-                    pendingQuestion = qMsg;
-                    hasPendingQuestion = true;
-
-                    Debug.Log($"Buffered question: {pendingQuestion}");
-                    break;
-                case "answer":
-                    var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
-                    Debug.Log($"Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
-
-                    pendingAnswer = ansMsg;
-                    hasPendingAnswer = true;
-                    break;
-                case "timer":
-                    var timerMsg = JsonUtility.FromJson<GameMessage>(e.Data);
-
-                    pendingMessage = timerMsg;
-                    hasPendingMessage = true;
-                    break;
-                case "timeUp":
-                    QuestionManager.instance.timerText.text = "Time Up!";
-                    break;
-                case "playerlist":
-                    print("Received player list message");
-                    var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
-                    players = listData.players; // overwrite local dictionary
-                    Debug.Log($"Updated player list, total: {players.Count}");
-
-                    hasPendingPlayerList = true;
-                break;
-            }
-        };
-
-        ws.Connect();
-    }
-
-    public void JoinServer()
+    public void JoinServer(string roomCode)
     {
         LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
-        clientDiscovery.roomCode = GameManager.instance.codeInputField.text;
+        clientDiscovery.roomCode = roomCode;
 
         clientDiscovery.OnHostFound += (ipAddress) =>
         {
@@ -325,48 +270,91 @@ public class WebSocketClient : MonoBehaviour
 
                 var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
 
-                switch (baseMsg.type.Trim().ToLower())
-                {
-                    case "playerJoined":
-                        var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
-                        players[joinMsg.playerId] = joinMsg.name;
-                        break;
-                    case "playerLeft":
-                        var leftMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
-                        players.Remove(leftMsg.playerId);
-                        break;
-                    case "question":
-                        var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
-                        pendingQuestion = qMsg;
-                        hasPendingQuestion = true;
-                        Debug.Log($"Buffered question: {pendingQuestion}");
-                        break;
-                    case "answer":
-                        var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
-                        Debug.Log($"Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
-                        pendingAnswer = ansMsg;
-                        hasPendingAnswer = true;
-                        break;
-                    case "timer":
-                        var timerMsg = JsonUtility.FromJson<GameMessage>(e.Data);
-                        pendingMessage = timerMsg;
-                        hasPendingMessage = true;
-                        break;
-                    case "timeUp":
-                        QuestionManager.instance.timerText.text = "Time Up!";
-                        break;
-                    case "playerlist":
-                        print("Received player list message");
-                        var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
-                        players = listData.players; // overwrite local dictionary
-                        Debug.Log($"Updated player list, total: {players.Count}");
-                        hasPendingPlayerList = true;
-                        break;
-                }
+                HandleMessage(e, baseMsg);
             };
 
             ws.ConnectAsync();
         };
+    }
+
+    public void JoinServer()
+    {
+        LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
+        clientDiscovery.roomCode = GameManager.instance.codeInputField.text ;
+
+        clientDiscovery.OnHostFound += (ipAddress) =>
+        {
+            Debug.Log("Host found at: " + ipAddress);
+
+            ws = new WebSocket($"ws://{ipAddress}:3000/lobby");
+
+            ws.OnOpen += (sender, e) =>
+            {
+                Debug.Log("Connected to server");
+
+                playerName = GameManager.instance.nameFieldText.text;
+                SendJoinMessage(playerName);
+            };
+
+            ws.OnMessage += (sender, e) =>
+            {
+                Debug.Log("Message from server: " + e.Data);
+
+                var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+
+                HandleMessage(e, baseMsg);
+            };
+
+            ws.ConnectAsync();
+        };
+    }
+
+    public void HandleMessage(MessageEventArgs e, GameMessage baseMsg)
+    {
+        switch (baseMsg.type.Trim().ToLower())
+        {
+            case "playerJoined":
+                var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+                players[joinMsg.playerId] = joinMsg.name;
+                break;
+            case "playerLeft":
+                var leftMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+                players.Remove(leftMsg.playerId);
+                break;
+            case "question":
+                var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
+                pendingQuestion = qMsg;
+                hasPendingQuestion = true;
+                Debug.Log($"Buffered question: {pendingQuestion}");
+                break;
+            case "answer":
+                var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
+                Debug.Log($"Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
+                pendingAnswer = ansMsg;
+                hasPendingAnswer = true;
+                break;
+            case "timer":
+                var timerMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+                pendingMessage = timerMsg;
+                hasPendingMessage = true;
+                break;
+            case "timeUp":
+                QuestionManager.instance.timerText.text = "Time Up!";
+                break;
+            case "playerlist":
+                print("Received player list message");
+                var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
+                players = listData.players; // overwrite local dictionary
+                Debug.Log($"Updated player list, total: {players.Count}");
+                hasPendingPlayerList = true;
+                break;
+            case "countdownstart":
+                QuestionManager.instance.DisplayResults();
+                break;
+            case "countdownend":
+                ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
+                break;
+        }
     }
 
     // -------------------------
@@ -416,6 +404,31 @@ public class WebSocketClient : MonoBehaviour
         else Debug.LogWarning("Tried to send but WebSocket not connected!");
     }
 
+    IEnumerator ResultsCountdown(float duration)
+    {
+        // Tell clients to start countdown
+        var startMsg = new GameMessage
+        {
+            type = "countdownStart",
+            text = duration.ToString() // send 3 for example
+        };
+
+        QuestionManager.instance.DisplayResults();
+        wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(startMsg));
+
+        yield return new WaitForSeconds(duration);
+
+        // After countdown is done, send time up
+        var endMsg = new GameMessage
+        {
+            type = "countdownEnd",
+            text = ""
+        };
+
+        ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
+        wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(endMsg));
+    }
+
     IEnumerator QuestionTimer(float duration)
     {
         float timeLeft = duration;
@@ -444,6 +457,7 @@ public class WebSocketClient : MonoBehaviour
         };
 
         wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(endMsg));
+        runningCoroutine = null;
     }
 
     void OnApplicationQuit()
