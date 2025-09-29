@@ -65,76 +65,96 @@ public class GameMessage
     public string text;
 }
 
-//
-// WebSocket host behaviour
-//
+// Serializable scoreboard container for client
+[System.Serializable]
+public class ScoreboardMessage
+{
+    public string type;
+    public Dictionary<string, int> scores;
+    public Dictionary<string, string> names;
+}
+
+// -------------------------------------------
+// SERVER SIDE (LobbyBehavior)
+// -------------------------------------------
 public class LobbyBehavior : WebSocketBehavior
 {
-    // Static so all instances share the same list
     private static Dictionary<string, string> connectedPlayers = new Dictionary<string, string>();
+    private static Dictionary<string, int> playerScores = new Dictionary<string, int>();
+    private static HashSet<string> playersAnswered = new HashSet<string>();
 
-    protected override void OnMessage(WebSocketSharp.MessageEventArgs e)
+    protected override void OnMessage(MessageEventArgs e)
     {
-        var msg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+        var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
 
-        if (msg.type == "playerJoined")
+        if (baseMsg.type == "playerJoined")
         {
-            if (!connectedPlayers.ContainsKey(msg.playerId))
+            var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
+
+            if (!connectedPlayers.ContainsKey(joinMsg.playerId))
             {
-                connectedPlayers.Add(msg.playerId, msg.name);
-                Debug.Log($"Player joined: {msg.name})");
+                connectedPlayers.Add(joinMsg.playerId, joinMsg.name);
+                playerScores[joinMsg.playerId] = 0;
+                Debug.Log($"Player joined: {joinMsg.name}");
             }
 
-            var listMsg = new PlayerListMessage
-            {
-                type = "playerlist",
-                players = connectedPlayers
-            };
+            BroadcastPlayerList();
+        }
+        else if (baseMsg.type == "answer")
+        {
+            var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
 
-            // Use Newtonsoft for serialization (JsonUtility can’t do dictionaries)
-            string json = JsonConvert.SerializeObject(listMsg);
-            Sessions.Broadcast(json);
+            if (!playersAnswered.Contains(ansMsg.playerId))
+            {
+                playersAnswered.Add(ansMsg.playerId);
+
+                if (ansMsg.correct)
+                    playerScores[ansMsg.playerId] += 10; // award points
+
+                // All players answered
+                if (playersAnswered.Count == connectedPlayers.Count)
+                {
+                    BroadcastScoreboard();
+                    playersAnswered.Clear();
+                }
+            }
         }
         else
         {
-            // rebroadcast other messages as normal
-            Sessions.Broadcast(e.Data);
+            Sessions.Broadcast(e.Data); // rebroadcast other messages
         }
     }
 
-    protected override void OnClose(CloseEventArgs e)
+    private void BroadcastPlayerList()
     {
-        // Find and remove disconnected player
-        string keyToRemove = null;
-        foreach (var kv in connectedPlayers)
+        var listMsg = new PlayerListMessage
         {
-            if (kv.Key == ID) // or map SessionID ↔ playerId if you prefer
-            {
-                keyToRemove = kv.Key;
-                break;
-            }
-        }
+            type = "playerlist",
+            players = connectedPlayers
+        };
 
-        if (keyToRemove != null)
+        string json = JsonConvert.SerializeObject(listMsg);
+        Sessions.Broadcast(json);
+    }
+
+    private void BroadcastScoreboard()
+    {
+        var scoreMsg = new
         {
-            Debug.Log($"Player left: {connectedPlayers[keyToRemove]}");
-            connectedPlayers.Remove(keyToRemove);
+            type = "scoreboard",
+            scores = playerScores,
+            names = connectedPlayers
+        };
 
-            var listMsg = new PlayerListMessage
-            {
-                type = "playerlist",
-                players = connectedPlayers
-            };
-
-            string json = JsonConvert.SerializeObject(listMsg);
-            Sessions.Broadcast(json);
-        }
-
-        base.OnClose(e);
+        string json = JsonConvert.SerializeObject(scoreMsg);
+        Sessions.Broadcast(json);
+        Debug.Log("Scoreboard sent to clients");
     }
 }
 
-
+// -------------------------------------------
+// CLIENT SIDE (WebSocketClient)
+// -------------------------------------------
 public class WebSocketClient : MonoBehaviour
 {
     public static WebSocketClient instance;
@@ -158,6 +178,9 @@ public class WebSocketClient : MonoBehaviour
 
     private AnswerMessage pendingAnswer;
     private bool hasPendingAnswer = false;
+
+    private ScoreboardMessage pendingScoreboard;
+    private bool hasPendingScoreboard = false;
 
     private bool hasPendingPlayerList = false;
 
@@ -185,6 +208,13 @@ public class WebSocketClient : MonoBehaviour
             hasPendingPlayerList = false;
         }
 
+        // Handle scoreboard
+        if (hasPendingScoreboard)
+        {
+            DisplayScoreboard(pendingScoreboard);
+            hasPendingScoreboard = false;
+        }
+
         if (hasPendingAnswer)
         {
             QuestionManager.instance.playersAnswered++;
@@ -197,10 +227,7 @@ public class WebSocketClient : MonoBehaviour
             {
                 Debug.Log($"All players have answered: {QuestionManager.instance.playersAnswered}/{players.Count}");
 
-                if (runningCoroutine != null) StopCoroutine(runningCoroutine);
-
                 // This function shows the results, score and waits 3 seconds, then asks the next question
-                StartCoroutine(ResultsCountdown(3));
 
                 // Send score message to players
             }
@@ -352,7 +379,29 @@ public class WebSocketClient : MonoBehaviour
             case "countdownend":
                 ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
                 break;
+            case "scoreboard":
+                pendingScoreboard = JsonConvert.DeserializeObject<ScoreboardMessage>(e.Data);
+                hasPendingScoreboard = true;
+                break;
         }
+    }
+
+    private void DisplayScoreboard(ScoreboardMessage msg)
+    {
+        string text = "Scores:\n";
+        foreach (var kv in msg.scores)
+        {
+            string playerName = msg.names[kv.Key];
+            int score = kv.Value;
+            text += $"{playerName}: {score}\n";
+        }
+
+        // Assign to your single Text element in UI
+        QuestionManager.instance.resultText.text = text;
+        QuestionManager.instance.EnableResultScreen(true);
+
+        if (runningCoroutine != null) StopCoroutine(runningCoroutine);
+        StartCoroutine(ResultsCountdown(3));
     }
 
     // -------------------------
@@ -422,7 +471,7 @@ public class WebSocketClient : MonoBehaviour
             text = ""
         };
 
-        ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
+        SendQuestion();
         wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(endMsg));
     }
 

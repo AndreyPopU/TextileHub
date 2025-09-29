@@ -60,8 +60,6 @@ public class QuestionManager : MonoBehaviour
     {
         WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
-        resultText.text = "Here are the results: \n";
-
         float time = 3;
 
         while (time > 0)
