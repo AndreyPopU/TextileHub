@@ -56,7 +56,6 @@ public class LanDiscoveryHost : MonoBehaviour
                         // Reply with our IP address
                         string ip = GetLocalIPAddress();
                         byte[] response = Encoding.UTF8.GetBytes("HOST:" + ip);
-                        print(response);
                         udpServer.Send(response, response.Length, remoteEP);
                     }
                 }

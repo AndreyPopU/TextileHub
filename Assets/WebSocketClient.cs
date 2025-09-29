@@ -82,7 +82,7 @@ public class LobbyBehavior : WebSocketBehavior
             if (!connectedPlayers.ContainsKey(msg.playerId))
             {
                 connectedPlayers.Add(msg.playerId, msg.name);
-                Debug.Log($"Player joined: {msg.name} ({msg.playerId})");
+                Debug.Log($"Player joined: {msg.name})");
             }
 
             var listMsg = new PlayerListMessage
@@ -325,7 +325,6 @@ public class WebSocketClient : MonoBehaviour
                 var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
                 pendingQuestion = qMsg;
                 hasPendingQuestion = true;
-                Debug.Log($"Buffered question: {pendingQuestion}");
                 break;
             case "answer":
                 var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
@@ -342,10 +341,9 @@ public class WebSocketClient : MonoBehaviour
                 QuestionManager.instance.timerText.text = "Time Up!";
                 break;
             case "playerlist":
-                print("Received player list message");
                 var listData = JsonConvert.DeserializeObject<PlayerListMessage>(e.Data);
-                players = listData.players; // overwrite local dictionary
-                Debug.Log($"Updated player list, total: {players.Count}");
+                players = listData.players;
+                Debug.Log($"Player list updated to {listData.players.Count} players");
                 hasPendingPlayerList = true;
                 break;
             case "countdownstart":
@@ -387,7 +385,6 @@ public class WebSocketClient : MonoBehaviour
 
         QuestionManager.instance.playersAnswered = 0;
         ws.Send(JsonUtility.ToJson(QuestionManager.instance.AskNextQuestion()));
-        Debug.Log("Question sent to phones.");
         runningCoroutine = StartCoroutine(QuestionTimer(16f));
     }
 

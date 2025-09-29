@@ -55,7 +55,6 @@ public class LanDiscoveryClient : MonoBehaviour
                     Debug.Log("Discovered host at " + hostIp);
 
                     OnHostFound?.Invoke(hostIp);
-
                     running = false; // stop after first host
                 }
             }
