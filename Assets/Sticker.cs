@@ -13,23 +13,13 @@ public class Sticker : MonoBehaviour
         coreCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void Update()
-    {
-        if (dragging) transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) - offset;
-    }
+    private void Update() { if (dragging) transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) - offset; } // Follow mouse
 
-    private void OnMouseDown()
-    {
-        dragging = true;
-    }
+    private void OnMouseDown() => dragging = true;
 
-    private void OnMouseUp()
-    {
-        dragging = false;
-        CheckCollision();
-    }
+    private void OnMouseUp() { dragging = false; CheckCollision(); }
 
-    public void CheckCollision()
+    public void CheckCollision() // Check all overlaping colliders that are on the clothing layer, if any collider is hit, attach the sticker to that clothing piece
     {
         Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 1.5f, 0f);
 
@@ -40,14 +30,12 @@ public class Sticker : MonoBehaviour
                 if (hit[i] == coreCollider) continue;
 
                 transform.SetParent(hit[i].transform);
-                break;
+                return;
             }
         }
-        else transform.SetParent(null);
+        
+        transform.SetParent(null);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, Vector3.one * 1.5f);
-    }
+    private void OnDrawGizmos() => Gizmos.DrawWireCube(transform.position, Vector3.one * 1.5f);
 }

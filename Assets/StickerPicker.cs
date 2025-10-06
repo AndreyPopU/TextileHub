@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -8,7 +7,7 @@ public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private Sticker sticker;
 
-    public void OnBeginDrag(PointerEventData data)
+    public void OnBeginDrag(PointerEventData data) // Spawn an actual sticker and start dragging it
     {
         sticker = Instantiate(ClothingManager.instance.stickerPrefabs[index], Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity).GetComponent<Sticker>();
         sticker.dragging = true;
@@ -19,10 +18,10 @@ public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     }
 
-    public void OnEndDrag(PointerEventData data)
+    public void OnEndDrag(PointerEventData data) // Release spawned sticker
     {
         sticker.dragging = false;
-        sticker.CheckCollision();
+        sticker.CheckCollision(); // Check if it collides with a clothing piece - if it does, attach it
         sticker = null;
     }
 }

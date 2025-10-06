@@ -11,6 +11,7 @@ public class ClothingManager : MonoBehaviour
     public ClothingPiece currentPiece;
     public GameObject[] stickerPrefabs;
 
+    // Store current clothing options
     [HideInInspector] public ColorPicker currentColor;
     [HideInInspector] public OverlayPicker currentOverlay;
     [HideInInspector] public MaterialPicker currentMaterial;
@@ -19,15 +20,12 @@ public class ClothingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) FinishClothing();
+        if (Input.GetKeyDown(KeyCode.F)) FinishClothing(); // Debug for completing an entire clothing
 
         if (!cursorDebug) return;
 
         // Raycast from mouse position
-        PointerEventData pointerData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition
-        };
+        PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
 
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
