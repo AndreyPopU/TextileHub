@@ -7,11 +7,13 @@ public class ClothingManager : MonoBehaviour
     public static ClothingManager instance;
 
     public bool cursorDebug;
+    public bool primaryColor = true; // If the player is coloring the primary or secondary color
     public ClothingPiece currentPiece;
     public GameObject[] stickerPrefabs;
 
-    [HideInInspector]
-    public ColorPicker currentColor;
+    [HideInInspector] public ColorPicker currentColor;
+    [HideInInspector] public OverlayPicker currentOverlay;
+    [HideInInspector] public MaterialPicker currentMaterial;
 
     private void Awake() => instance = this;
 
@@ -30,14 +32,8 @@ public class ClothingManager : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
 
-        if (results.Count > 0)
-        {
-            Debug.Log("UI Object under mouse: " + results[0].gameObject.name);
-        }
-        else
-        {
-            Debug.Log("No UI object under mouse.");
-        }
+        if (results.Count > 0) Debug.Log("UI Object under mouse: " + results[0].gameObject.name);
+        else Debug.Log("No UI object under mouse.");
     }
 
     public void FinishClothing()
@@ -53,8 +49,26 @@ public class ClothingManager : MonoBehaviour
     public void SetColor(Color color)
     {
         if (currentColor != null) currentColor.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline
-        if (currentPiece != null) currentPiece.GetComponent<SpriteRenderer>().color = color;
+        if (currentPiece != null)
+        {
+            if (primaryColor) currentPiece.material.color = color;
+            else currentPiece.overlay.color = color;
+        }
     }
+
+    public void SetOverlay(Sprite sprite)
+    {
+        if (currentOverlay != null) currentOverlay.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline
+        if (currentPiece != null) currentPiece.overlay.sprite = sprite;
+    }
+
+    public void SetMaterial(Sprite sprite)
+    {
+        if (currentMaterial != null) currentMaterial.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline
+        if (currentPiece != null) currentPiece.material.sprite = sprite;
+    }
+
+    public void ChangePrimaryColor() => primaryColor = !primaryColor;
 
     public void OpenMenu(GameObject menu) => menu.SetActive(!menu.activeInHierarchy);
 }

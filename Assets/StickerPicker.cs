@@ -14,7 +14,7 @@ public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         sticker.dragging = true;
     }
 
-    public void OnDrag(PointerEventData data)
+    public void OnDrag(PointerEventData data) // Neccessary for drag to work at all
     {
 
     }
@@ -22,6 +22,7 @@ public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData data)
     {
         sticker.dragging = false;
+        sticker.CheckCollision();
         sticker = null;
     }
 }
