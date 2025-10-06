@@ -4,7 +4,6 @@ using WebSocketSharp.Server;   // needed for server
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
-using static UnityEngine.Rendering.CoreUtils;
 
 //
 // Packages

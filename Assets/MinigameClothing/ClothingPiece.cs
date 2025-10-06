@@ -15,12 +15,15 @@ public class ClothingPiece : MonoBehaviour
     private void Start()
     {
         coreCollider = GetComponent<BoxCollider2D>();
-        material = GetComponent<SpriteRenderer>();
         outline = transform.GetChild(0).gameObject;
         overlay = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        material = transform.GetChild(2).GetComponent<SpriteRenderer>();
 
         // Adjust outline scale based on the core collider
         outline.transform.localScale = new Vector3(coreCollider.bounds.extents.x + .1f, coreCollider.bounds.extents.y + .1f, 1);
+
+        // Align mask with sprite
+        GetComponent<SpriteMask>().sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     private void Update() { if (dragging) transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset; } // Drag
@@ -57,5 +60,6 @@ public class ClothingPiece : MonoBehaviour
         transform.SetParent(null);
     }
 
+    // Draw collisions
     private void OnDrawGizmos() { if (coreCollider != null) Gizmos.DrawWireCube(transform.position, new Vector3(coreCollider.bounds.extents.x * 2, coreCollider.bounds.extents.y * 2, 1)); }
 }
