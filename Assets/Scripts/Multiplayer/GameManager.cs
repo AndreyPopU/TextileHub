@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI nameFieldText;
     public TextMeshProUGUI roomCodeText;
     public TextMeshProUGUI codeInputField;
+    public GameObject codeWrongText;
+    public GameObject MainMenu;
 
     private void Awake() => instance = this;
 
@@ -23,5 +25,12 @@ public class GameManager : MonoBehaviour
         }
 
         playerListText.text = playerList;
+    }
+
+
+    public void CodeInvalid()
+    {
+        MainMenu.SetActive(true);
+        codeWrongText.SetActive(true);
     }
 }

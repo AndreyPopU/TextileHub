@@ -4,6 +4,8 @@ using WebSocketSharp.Server;   // needed for server
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
+using TMPro;
+using System.Threading;
 
 //
 // Packages
@@ -271,13 +273,21 @@ public class WebSocketClient : MonoBehaviour
     // -------------------------
     // JOIN SERVER AS A CLIENT
     // -------------------------
+    public void JoinServer(TextMeshProUGUI roomCodeText) => JoinServer(roomCodeText.text);
+
+    private bool hostFoundFlag = false; 
+
     public void JoinServer(string roomCode)
     {
         LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
         clientDiscovery.roomCode = roomCode;
+        print("Connecting with " + roomCode);
+
+        hostFoundFlag = false;
 
         clientDiscovery.OnHostFound += (ipAddress) =>
         {
+            hostFoundFlag = true;
             Debug.Log("Host found at: " + ipAddress);
 
             ws = new WebSocket($"ws://{ipAddress}:3000/lobby");
@@ -285,7 +295,6 @@ public class WebSocketClient : MonoBehaviour
             ws.OnOpen += (sender, e) =>
             {
                 Debug.Log("Connected to server");
-
                 playerName = GameManager.instance.nameFieldText.text;
                 SendJoinMessage(playerName);
             };
@@ -293,46 +302,35 @@ public class WebSocketClient : MonoBehaviour
             ws.OnMessage += (sender, e) =>
             {
                 Debug.Log("Message from server: " + e.Data);
-
                 var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
-
                 HandleMessage(e, baseMsg);
             };
 
             ws.ConnectAsync();
         };
+
+        // Start a coroutine to handle timeout
+        StartCoroutine(WaitForHostDiscovery(5));
     }
 
-    public void JoinServer()
+    private IEnumerator WaitForHostDiscovery(float timeout)
     {
-        LanDiscoveryClient clientDiscovery = gameObject.AddComponent<LanDiscoveryClient>();
-        clientDiscovery.roomCode = GameManager.instance.codeInputField.text ;
+        float timer = 0f;
 
-        clientDiscovery.OnHostFound += (ipAddress) =>
+        while (timer < timeout)
         {
-            Debug.Log("Host found at: " + ipAddress);
-
-            ws = new WebSocket($"ws://{ipAddress}:3000/lobby");
-
-            ws.OnOpen += (sender, e) =>
+            if (hostFoundFlag)
             {
-                Debug.Log("Connected to server");
+                print("HOST HAS BEEN FOUND IN THE DISCOVERY COROUTINE");
+                yield break; // host found, stop waiting
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
-                playerName = GameManager.instance.nameFieldText.text;
-                SendJoinMessage(playerName);
-            };
-
-            ws.OnMessage += (sender, e) =>
-            {
-                Debug.Log("Message from server: " + e.Data);
-
-                var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
-
-                HandleMessage(e, baseMsg);
-            };
-
-            ws.ConnectAsync();
-        };
+        // Timeout reached and no host found
+        Debug.LogWarning("Host not found! Room code might be invalid.");
+        GameManager.instance.CodeInvalid();
     }
 
     public void HandleMessage(MessageEventArgs e, GameMessage baseMsg)
