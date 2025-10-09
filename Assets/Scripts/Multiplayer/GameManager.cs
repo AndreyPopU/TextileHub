@@ -6,27 +6,26 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public TextMeshProUGUI playerListText;
     public TextMeshProUGUI nameFieldText;
     public TextMeshProUGUI roomCodeText;
     public TextMeshProUGUI codeInputField;
     public GameObject codeWrongText;
+
+    public TextMeshProUGUI[] playerSeatNames;
+
+    [Header("Menus")]
     public GameObject MainMenu;
+    public GameObject loadingScreen;
 
     private void Awake() => instance = this;
 
     public void UpdatePlayerList(Dictionary<string, string> players)
     {
-        string playerList = "";
+        int index = 0;
 
         foreach (KeyValuePair<string, string> pair in players)
-        {
-            playerList += pair.Value + "\n"; 
-        }
-
-        playerListText.text = playerList;
+            playerSeatNames[index++].text = pair.Value;
     }
-
 
     public void CodeInvalid()
     {

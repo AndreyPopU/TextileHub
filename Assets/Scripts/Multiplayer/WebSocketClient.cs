@@ -283,6 +283,7 @@ public class WebSocketClient : MonoBehaviour
         clientDiscovery.roomCode = roomCode;
         print("Connecting with " + roomCode);
 
+        GameManager.instance.loadingScreen.SetActive(true);
         hostFoundFlag = false;
 
         clientDiscovery.OnHostFound += (ipAddress) =>
@@ -296,6 +297,9 @@ public class WebSocketClient : MonoBehaviour
             {
                 Debug.Log("Connected to server");
                 playerName = GameManager.instance.nameFieldText.text;
+
+                if (playerName.Length <= 1) playerName = "Goldberg";
+
                 SendJoinMessage(playerName);
             };
 
@@ -322,6 +326,8 @@ public class WebSocketClient : MonoBehaviour
             if (hostFoundFlag)
             {
                 print("HOST HAS BEEN FOUND IN THE DISCOVERY COROUTINE");
+                yield return new WaitForSecondsRealtime(1);
+                GameManager.instance.loadingScreen.SetActive(false);
                 yield break; // host found, stop waiting
             }
             timer += Time.deltaTime;
@@ -330,6 +336,7 @@ public class WebSocketClient : MonoBehaviour
 
         // Timeout reached and no host found
         Debug.LogWarning("Host not found! Room code might be invalid.");
+        GameManager.instance.loadingScreen.SetActive(false);
         GameManager.instance.CodeInvalid();
     }
 
