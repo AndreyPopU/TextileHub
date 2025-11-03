@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ClothingManager : MonoBehaviour
 {
@@ -8,13 +10,15 @@ public class ClothingManager : MonoBehaviour
 
     public bool cursorDebug;
     public bool primaryColor = true; // If the player is coloring the primary or secondary color
+
+    public ClothingDesign clothing;
+
+    [Header("Pieces")]
     public ClothingPiece currentPiece;
     public GameObject[] stickerPrefabs;
 
     // Store current clothing options
-    [HideInInspector] public ColorPicker currentColor;
-    [HideInInspector] public OverlayPicker currentOverlay;
-    [HideInInspector] public MaterialPicker currentMaterial;
+    [HideInInspector] public GameObject currentColorPrimary, currentcolorSecondary, currentOverlay, currentMaterial;
 
     private void Awake() => instance = this;
 
@@ -40,56 +44,79 @@ public class ClothingManager : MonoBehaviour
         for (int i = 0; i < stickers.Length; i++)
             stickers[i].GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
 
-        // Get all clothing pieces
-        ClothingPiece[] clothingPieces = FindObjectsByType<ClothingPiece>(FindObjectsSortMode.None);
+        //// Get all clothing pieces and connect them to the main body
+        //ClothingPiece[] clothingPieces = FindObjectsByType<ClothingPiece>(FindObjectsSortMode.None);
 
-        for (int i = 0; i < clothingPieces.Length; i++)
-        {
-            // Center main piece
-            if (clothingPieces[i].mainPiece)
-            {
-                clothingPieces[i].transform.SetParent(transform);
-                clothingPieces[i].transform.localPosition = Vector2.zero;
-            }
-            else
-            {
-                // If clothing piece has no parent (isn't attached to the main piece) - Destroy it
-                if (clothingPieces[i].transform.parent == null)
-                {
-                    Destroy(clothingPieces[i].gameObject);
-                    continue;
-                }
-            }
+        //for (int i = 0; i < clothingPieces.Length; i++)
+        //{
+        //    // Center main piece
+        //    if (clothingPieces[i].mainPiece)
+        //    {
+        //        clothingPieces[i].transform.SetParent(transform);
+        //        clothingPieces[i].transform.localPosition = Vector2.zero;
+        //    }
+        //    else
+        //    {
+        //        // If clothing piece has no parent (isn't attached to the main piece) - Destroy it
+        //        if (clothingPieces[i].transform.parent == null)
+        //        {
+        //            Destroy(clothingPieces[i].gameObject);
+        //            continue;
+        //        }
+        //    }
 
-            // Remove all clothing piece logic
-            Destroy(clothingPieces[i]);
-        }
+        //    // Remove all clothing piece logic
+        //    Destroy(clothingPieces[i]);
+        //}
     }
 
-    public void SetColor(Color color)
+
+    #region Designing Clothes
+
+    public void SetPrimaryColor(Image image)
     {
-        if (currentColor != null) currentColor.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
-        if (currentPiece != null) 
-        {
-            // Set either primary or secondary color of current piece
-            if (primaryColor) currentPiece.material.color = color;
-            else currentPiece.overlay.color = color;
-        }
+        if (currentColorPrimary != null) currentColorPrimary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
+        clothing.collar.color = image.color;
+        clothing.bottom.color = image.color;
+        clothing.sleeves.color = image.color;
+        currentColorPrimary = image.gameObject;
+        currentColorPrimary.transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    public void SetOverlay(Sprite sprite)
+    public void SetSecondaryColor(Image image)
     {
-        if (currentOverlay != null) currentOverlay.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected Overlay
-        if (currentPiece != null) currentPiece.overlay.sprite = sprite;
+        if (currentcolorSecondary != null) currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
+        clothing.overlay.color = image.color;
+        currentcolorSecondary = image.gameObject;
+        currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    public void SetMaterial(Sprite sprite)
+    public void SetOverlay(Image image)
     {
+        //if (currentOverlay != null) currentOverlay.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected Overlay
+        clothing.overlay.sprite = image.sprite;
+        currentOverlay = image.transform.parent.gameObject;
+        //currentOverlay.transform.GetChild(0).gameObject.SetActive(true);
+
+    }
+
+    public void SetMaterial(Image image)
+    {
+        return;
+
         if (currentMaterial != null) currentMaterial.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected Material
-        if (currentPiece != null) currentPiece.material.sprite = sprite;
+        clothing.material.sprite = image.sprite;
+        currentMaterial = image.gameObject;
+        currentMaterial.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void ChangePrimaryColor() => primaryColor = !primaryColor; // Cycle between primary and secondary color
 
-    public void OpenMenu(GameObject menu) => menu.SetActive(!menu.activeInHierarchy); // Activate a certain UI menu
+    public void SetCollar(Sprite sprite) => clothing.collar.sprite = sprite;
+
+    public void SetBottom(Sprite sprite) => clothing.bottom.sprite = sprite;
+
+    public void SetSleeves(Sprite sprite) => clothing.sleeves.sprite = sprite;
+
+    #endregion
 }
