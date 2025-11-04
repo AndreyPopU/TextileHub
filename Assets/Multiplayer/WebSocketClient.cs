@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using WebSocketSharp;
-using WebSocketSharp.Server;   // needed for server
+using WebSocketSharp.Server;
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json;
 using TMPro;
-using System.Threading;
 
-//
+// ---------
 // Packages
-//
+// ---------
+#region Packages
+
 [System.Serializable]
 public class PlayerMessage
 {
@@ -75,8 +76,10 @@ public class ScoreboardMessage
     public Dictionary<string, string> names;
 }
 
+#endregion
+
 // -------------------------------------------
-// SERVER SIDE (LobbyBehavior)
+// SERVER SIDE
 // -------------------------------------------
 public class LobbyBehavior : WebSocketBehavior
 {

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MaterialFabric : MonoBehaviour
 {
@@ -11,12 +10,8 @@ public class MaterialFabric : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         outline = transform.GetChild(0).gameObject;
     }
 
-    private void Update()
-    {
-        visible = spriteRenderer.isVisible;
-    }
+    private void Update() => visible = spriteRenderer.isVisible;
 }

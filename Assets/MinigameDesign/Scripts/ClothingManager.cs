@@ -18,7 +18,7 @@ public class ClothingManager : MonoBehaviour
     public GameObject[] stickerPrefabs;
 
     // Store current clothing options
-    [HideInInspector] public GameObject currentColorPrimary, currentcolorSecondary, currentOverlay, currentMaterial;
+    [HideInInspector] public GameObject currentColorPrimary, currentcolorSecondary;
 
     private void Awake() => instance = this;
 
@@ -43,31 +43,6 @@ public class ClothingManager : MonoBehaviour
 
         for (int i = 0; i < stickers.Length; i++)
             stickers[i].GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-
-        //// Get all clothing pieces and connect them to the main body
-        //ClothingPiece[] clothingPieces = FindObjectsByType<ClothingPiece>(FindObjectsSortMode.None);
-
-        //for (int i = 0; i < clothingPieces.Length; i++)
-        //{
-        //    // Center main piece
-        //    if (clothingPieces[i].mainPiece)
-        //    {
-        //        clothingPieces[i].transform.SetParent(transform);
-        //        clothingPieces[i].transform.localPosition = Vector2.zero;
-        //    }
-        //    else
-        //    {
-        //        // If clothing piece has no parent (isn't attached to the main piece) - Destroy it
-        //        if (clothingPieces[i].transform.parent == null)
-        //        {
-        //            Destroy(clothingPieces[i].gameObject);
-        //            continue;
-        //        }
-        //    }
-
-        //    // Remove all clothing piece logic
-        //    Destroy(clothingPieces[i]);
-        //}
     }
 
 
@@ -91,26 +66,11 @@ public class ClothingManager : MonoBehaviour
         currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    public void SetOverlay(Image image)
-    {
-        //if (currentOverlay != null) currentOverlay.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected Overlay
-        clothing.overlay.sprite = image.sprite;
-        currentOverlay = image.transform.parent.gameObject;
-        //currentOverlay.transform.GetChild(0).gameObject.SetActive(true);
-
-    }
-
-    public void SetMaterial(Image image)
-    {
-        return;
-
-        if (currentMaterial != null) currentMaterial.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected Material
-        clothing.material.sprite = image.sprite;
-        currentMaterial = image.gameObject;
-        currentMaterial.transform.GetChild(0).gameObject.SetActive(true);
-    }
-
     public void ChangePrimaryColor() => primaryColor = !primaryColor; // Cycle between primary and secondary color
+
+    public void SetOverlay(Image image) => clothing.overlay.sprite = image.sprite;
+
+    public void SetMaterial(Image image) => clothing.material.sprite = image.sprite;
 
     public void SetCollar(Sprite sprite) => clothing.collar.sprite = sprite;
 

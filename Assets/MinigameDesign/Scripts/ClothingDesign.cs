@@ -12,5 +12,6 @@ public class ClothingDesign : MonoBehaviour
         bottom = transform.GetChild(1).GetComponent<Image>();
         sleeves = transform.GetChild(2).GetComponent<Image>();
         overlay = transform.GetChild(3).GetComponent<Image>();
+        material = transform.GetChild(4).GetComponent<Image>();
     }
 }

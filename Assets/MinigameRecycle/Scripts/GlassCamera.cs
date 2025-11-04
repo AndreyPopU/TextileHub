@@ -4,14 +4,7 @@ public class GlassCamera : MonoBehaviour
 {
     public Transform glass;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    void Update() // Move the camera along with the Magnifying glass
     {
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, glass.position);
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane));

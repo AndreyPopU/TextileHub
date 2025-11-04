@@ -13,10 +13,7 @@ public class StickerPicker : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         sticker.dragging = true;
     }
 
-    public void OnDrag(PointerEventData data) // Neccessary for drag to work at all
-    {
-
-    }
+    public void OnDrag(PointerEventData data) { } // Neccessary for drag to work at all
 
     public void OnEndDrag(PointerEventData data) // Release spawned sticker
     {

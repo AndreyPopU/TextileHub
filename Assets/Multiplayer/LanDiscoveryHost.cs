@@ -14,15 +14,17 @@ public class LanDiscoveryHost : MonoBehaviour
 
     void Start()
     {
+        // Start the server on port 47777
         udpServer = new UdpClient(47777);
         running = true;
 
+        // Create a background thread that listens for messages with the room code
         listenThread = new Thread(ListenLoop);
         listenThread.IsBackground = true;
         listenThread.Start();
     }
 
-    void DebugString(string label, string s)
+    void DebugString(string label, string s) // Debug Function for filtering the room code
     {
         Debug.Log($"{label}: '{s}' (Length {s.Length})");
         for (int i = 0; i < s.Length; i++)
@@ -31,7 +33,7 @@ public class LanDiscoveryHost : MonoBehaviour
         }
     }
 
-    private void ListenLoop()
+    private void ListenLoop() // Running thread that checks for room code messages
     {
         IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
 
@@ -45,10 +47,11 @@ public class LanDiscoveryHost : MonoBehaviour
                 // Expected format: "DISCOVER:<roomCode>"
                 if (message.StartsWith("DISCOVER:"))
                 {
+                    // Strip down any unnecessary stuff
                     string requestedCode = message.Substring("DISCOVER:".Length);
-
                     string cleanRequest = Regex.Replace(requestedCode, @"[\s\u200B-\u200D\uFEFF]", ""); ;
 
+                    // If the requested room code is the same as the hosted - provide the IPAddress to the connecting client
                     if (cleanRequest == roomCode)
                     {
                         print("Request matches room code - joining new player");
@@ -60,8 +63,9 @@ public class LanDiscoveryHost : MonoBehaviour
                     }
                 }
             }
-            catch {
-                Debug.LogError(" nqma takuv kod "); //neka si bude tuk :)
+            catch 
+            {
+                Debug.LogError("nqma takuv kod"); //neka si bude tuk :)
             }
         }
     }

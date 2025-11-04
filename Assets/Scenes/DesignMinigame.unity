@@ -3863,8 +3863,6 @@ MonoBehaviour:
   - {fileID: 8397279009775982164, guid: 07d35bb98d159d142b0ec1239642f213, type: 3}
   currentColorPrimary: {fileID: 0}
   currentcolorSecondary: {fileID: 0}
-  currentOverlay: {fileID: 0}
-  currentMaterial: {fileID: 0}
 --- !u!4 &478353407
 Transform:
   m_ObjectHideFlags: 0
@@ -6064,7 +6062,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

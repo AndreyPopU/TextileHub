@@ -16,6 +16,7 @@ public class LanDiscoveryClient : MonoBehaviour
 
     void Start()
     {
+        // Start a client
         udpClient = new UdpClient();
         udpClient.EnableBroadcast = true;
         running = true;
@@ -45,6 +46,7 @@ public class LanDiscoveryClient : MonoBehaviour
         {
             try
             {
+                // Listen for messages
                 byte[] data = udpClient.Receive(ref remoteEP);
                 string message = Encoding.UTF8.GetString(data);
 

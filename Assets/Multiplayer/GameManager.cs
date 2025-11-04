@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Lobby")]
     public TextMeshProUGUI nameFieldText;
     public TextMeshProUGUI roomCodeText;
     public TextMeshProUGUI codeInputField;

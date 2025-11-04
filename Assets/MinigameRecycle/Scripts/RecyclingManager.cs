@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecyclingManager : MonoBehaviour
 {
@@ -6,36 +7,25 @@ public class RecyclingManager : MonoBehaviour
     public bool glass;
     public MaterialFabric currentFabric;
 
+    public Button[] interactableButtons;
+
     private Camera mainCamera;
 
-    void Start()
-    {
-        mainCamera = Camera.main;    
-    }
+    void Start() => mainCamera = Camera.main;    
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            print("Recycled");
-            if (currentFabric != null) Destroy(currentFabric.gameObject);
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            print("Destroyed");
-            if (currentFabric != null) Destroy(currentFabric.gameObject);
-        }
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             glass = !glass;
             magnifyingGlass.blocksRaycasts = glass;
 
-            if (currentFabric != null)
+            if (currentFabric != null) // Disable buttons and outline
             {
                 currentFabric.outline.SetActive(false);
                 currentFabric = null;
+                for (int i = 0; i < interactableButtons.Length; i++)
+                    interactableButtons[i].interactable = false;
             }
         }
 
@@ -50,25 +40,39 @@ public class RecyclingManager : MonoBehaviour
             // Raycast at the mouse position
             RaycastHit2D hit = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
 
-            if (hit.collider != null)
+            if (hit.collider != null) // If raycast hits something
             {
-                Debug.Log("Hit 2D object: " + hit.collider.name);
-
-                if (hit.collider.transform.TryGetComponent(out MaterialFabric fabric))
+                if (hit.collider.transform.TryGetComponent(out MaterialFabric fabric)) // Something that is fabric
                 {
-                    if (fabric.visible)
+                    if (fabric.visible) // If fabric is under magnifying glass
                     {
-                        Debug.Log("Fabric is visible");
-                        if (currentFabric != null)
+                        if (currentFabric != null) // Disable the previous fabric if there is one 
                         {
                             currentFabric.outline.SetActive(false);
                             currentFabric = null;
                         }
                         currentFabric = fabric;
+
                         fabric.outline.SetActive(true);
+
+                        // Enable interactable buttons
+                        for (int i = 0; i < interactableButtons.Length; i++)
+                            interactableButtons[i].interactable = true;
                     }
                 }
             }
         }
+    }
+
+    public void DestroyFabric()
+    {
+        if (currentFabric != null) Destroy(currentFabric.gameObject);
+        print("Destroyed");
+    }
+
+    public void RecycleFabric()
+    {
+        if (currentFabric != null) Destroy(currentFabric.gameObject);
+        print("Recycled");
     }
 }
