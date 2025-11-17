@@ -16,18 +16,7 @@ public class RecyclingManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
-        {
-            glass = !glass;
-            magnifyingGlass.blocksRaycasts = glass;
-
-            if (currentFabric != null) // Disable buttons and outline
-            {
-                currentFabric.outline.SetActive(false);
-                currentFabric = null;
-                for (int i = 0; i < interactableButtons.Length; i++)
-                    interactableButtons[i].interactable = false;
-            }
-        }
+            SwitchMode();
 
         if (glass) return;
 
@@ -61,6 +50,20 @@ public class RecyclingManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void SwitchMode()
+    {
+        glass = !glass;
+        magnifyingGlass.blocksRaycasts = glass;
+
+        if (currentFabric != null) // Disable buttons and outline
+        {
+            currentFabric.outline.SetActive(false);
+            currentFabric = null;
+            for (int i = 0; i < interactableButtons.Length; i++)
+                interactableButtons[i].interactable = false;
         }
     }
 

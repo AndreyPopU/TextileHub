@@ -24,15 +24,6 @@ public class LanDiscoveryHost : MonoBehaviour
         listenThread.Start();
     }
 
-    void DebugString(string label, string s) // Debug Function for filtering the room code
-    {
-        Debug.Log($"{label}: '{s}' (Length {s.Length})");
-        for (int i = 0; i < s.Length; i++)
-        {
-            Debug.Log($"{label}[{i}] = '{s[i]}' (Unicode: {(int)s[i]})");
-        }
-    }
-
     private void ListenLoop() // Running thread that checks for room code messages
     {
         IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
@@ -63,10 +54,7 @@ public class LanDiscoveryHost : MonoBehaviour
                     }
                 }
             }
-            catch 
-            {
-                Debug.LogError("nqma takuv kod"); //neka si bude tuk :)
-            }
+            catch { Debug.LogError("nqma takuv kod"); } //neka si bude tuk :)
         }
     }
 
@@ -92,5 +80,14 @@ public class LanDiscoveryHost : MonoBehaviour
         running = false;
         udpServer?.Close();
         listenThread?.Abort();
+    }
+
+    void DebugString(string label, string s) // Debug Function for filtering the room code
+    {
+        Debug.Log($"{label}: '{s}' (Length {s.Length})");
+        for (int i = 0; i < s.Length; i++)
+        {
+            Debug.Log($"{label}[{i}] = '{s[i]}' (Unicode: {(int)s[i]})");
+        }
     }
 }

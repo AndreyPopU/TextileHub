@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
         foreach (KeyValuePair<string, string> pair in players)
             playerSeatNames[index++].text = pair.Value;
-    }
+    }   
 
     public void CodeInvalid()
     {

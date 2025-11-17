@@ -65,7 +65,6 @@ public class QuestionManager : MonoBehaviour
         while (time > 0)
         {
             time -= Time.deltaTime;
-
             yield return waitForFixedUpdate;
         }
 
@@ -73,9 +72,7 @@ public class QuestionManager : MonoBehaviour
         EnableResultScreen(false);
     }
 
-    /// <summary>
-    /// Called when a player selects an answer button
-    /// </summary>
+    // Called when a player selects an answer button
     public void SendAnswer(TextMeshProUGUI text)
     {
         if (WebSocketClient.instance != null)
