@@ -8,9 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/Minigame1.unity
-    guid: e5fc755912e9c924c8d7275bb7bb719f
+  - enabled: 1
+    path: Assets/Scenes/DesignGame.unity
+    guid: ac2a8b55913caaa449d6be55b5e93aad
+  - enabled: 1
+    path: Assets/Scenes/MinigameTesting.unity
+    guid: d717bbfed79936d41871e439ada32dc3
+  - enabled: 1
+    path: Assets/Scenes/VotingGame.unity
+    guid: 3a35d5bed1f82f6448f895f72c64796a
+  - enabled: 1
+    path: Assets/Scenes/RecycleMinigame.unity
+    guid: f642ed43227ac1c4daa49d58b31f5f05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
