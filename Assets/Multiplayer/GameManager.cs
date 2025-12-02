@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,15 @@ public class GameManager : MonoBehaviour
     public GameObject MainMenu;
     public GameObject loadingScreen;
 
-    private void Awake() => instance = this;
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public void UpdatePlayerList(Dictionary<string, string> players)
     {
@@ -32,5 +41,20 @@ public class GameManager : MonoBehaviour
     {
         MainMenu.SetActive(true);
         codeWrongText.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        if (WebSocketClient.instance != null)
+        {
+            var gameStartMessage = new GameStartMessage
+            {
+                type = "gameStart",
+                sceneIndex = 2,
+            };
+
+            string json = JsonUtility.ToJson(gameStartMessage);
+            WebSocketClient.instance.SendMessageToServer(json);
+        }
     }
 }

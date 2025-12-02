@@ -23,6 +23,31 @@ public class AsyncLoad : MonoBehaviour
         group = GetComponentInChildren<CanvasGroup>();
     }
 
+    public void LoadScene(int index) => StartCoroutine(LoadSceneAsync(index));
+
+    private IEnumerator LoadSceneAsync(int index)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        YieldInstruction waitForFixedUpdate = new WaitForFixedUpdate();
+
+        operation.allowSceneActivation = false;
+
+        while (group.alpha < 1)
+        {
+            group.alpha += .1f;
+            yield return waitForFixedUpdate;
+        }
+
+        operation.allowSceneActivation = true;
+        yield return new WaitForSeconds(1);
+
+        while (group.alpha > 0)
+        {
+            group.alpha -= .1f;
+            yield return waitForFixedUpdate;
+        }
+    }
+
     public void LoadNextScene() => StartCoroutine(LoadSceneAsync());
   
     private IEnumerator LoadSceneAsync()

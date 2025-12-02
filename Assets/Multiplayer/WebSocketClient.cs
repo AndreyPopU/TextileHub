@@ -45,6 +45,27 @@ public class QuestionMessage
 }
 
 [System.Serializable]
+public class GameStartMessage
+{
+    public string type;
+    public int sceneIndex;
+}
+
+[System.Serializable]
+public class VotingMessage
+{
+    public string type;
+    public int[] votingResults;
+}
+
+[System.Serializable]
+public class DesignMessage
+{
+    public string type;
+    public int[] designResults;
+}
+
+[System.Serializable]
 public class PlayerJoinMessage
 {
     public string type;
@@ -186,9 +207,20 @@ public class WebSocketClient : MonoBehaviour
     private ScoreboardMessage pendingScoreboard;
     private bool hasPendingScoreboard = false;
 
+    private GameStartMessage gameStartMessage;
+    private bool hasPendingGameStart = false;
+
     private bool hasPendingPlayerList = false;
 
-    private void Awake() => instance = this;
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Update()
     {
@@ -198,6 +230,13 @@ public class WebSocketClient : MonoBehaviour
             QuestionManager.instance.DisplayQuestion(pendingQuestion);
             QuestionManager.instance.playersAnswered = 0;
             hasPendingQuestion = false;
+        }
+
+        if (hasPendingGameStart)
+        {
+            AsyncLoad.instance.LoadScene(gameStartMessage.sceneIndex);
+            print("Should be loading scene with scene index " + gameStartMessage.sceneIndex);
+            hasPendingGameStart = false;
         }
 
         if (hasPendingMessage)
@@ -258,7 +297,7 @@ public class WebSocketClient : MonoBehaviour
         Debug.Log("Server started on port 3000, Room code is " + hostDiscovery.roomCode);
 
         GameManager.instance.roomCodeText.text = hostDiscovery.roomCode;
-        JoinServer(hostDiscovery.roomCode);
+        //JoinServer(hostDiscovery.roomCode);
     }
 
     public static string GenerateRoomCode(int length = 4)
@@ -310,6 +349,7 @@ public class WebSocketClient : MonoBehaviour
             {
                 Debug.Log("Message from server: " + e.Data);
                 var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+                print(baseMsg.type);
                 HandleMessage(e, baseMsg);
             };
 
@@ -347,11 +387,11 @@ public class WebSocketClient : MonoBehaviour
     {
         switch (baseMsg.type.Trim().ToLower())
         {
-            case "playerJoined":
+            case "playerjoined":
                 var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
                 players[joinMsg.playerId] = joinMsg.name;
                 break;
-            case "playerLeft":
+            case "playerleft":
                 var leftMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
                 players.Remove(leftMsg.playerId);
                 break;
@@ -359,6 +399,27 @@ public class WebSocketClient : MonoBehaviour
                 var qMsg = JsonConvert.DeserializeObject<QuestionMessage>(e.Data);
                 pendingQuestion = qMsg;
                 hasPendingQuestion = true;
+                break;
+            case "gamestart":
+                var gameStartMsg = JsonConvert.DeserializeObject<GameStartMessage>(e.Data);
+                Debug.Log($"Received game start message");
+                gameStartMessage = gameStartMsg;
+                hasPendingGameStart = true;
+                break;
+            case "voting":
+                var votingMsg = JsonConvert.DeserializeObject<VotingMessage>(e.Data);
+                Debug.Log($"Received voting message: {votingMsg.votingResults[0]}, {votingMsg.votingResults[1]}, {votingMsg.votingResults[2]}");
+                break;
+            case "design":
+                var designMsg = JsonConvert.DeserializeObject<DesignMessage>(e.Data);
+                // Replicate received shirt
+                Debug.Log($"Received design message");
+
+                for (int i = 0; i < designMsg.designResults.Length; i++)
+                {
+                    Debug.Log($"Design message properties: {designMsg.designResults[i]}");
+                }
+
                 break;
             case "answer":
                 var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
