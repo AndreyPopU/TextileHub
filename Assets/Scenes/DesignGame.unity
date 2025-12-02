@@ -439,10 +439,10 @@ RectTransform:
   - {fileID: 1468332535}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4790026
 MonoBehaviour:
@@ -886,12 +886,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetBottom
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: dc10b307486eb5a4c95b26a6a472455a, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1066,10 +1066,10 @@ RectTransform:
   - {fileID: 2100018675}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75702692
 MonoBehaviour:
@@ -1199,10 +1199,10 @@ RectTransform:
   - {fileID: 1694799632}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85155403
 MonoBehaviour:
@@ -1632,10 +1632,10 @@ RectTransform:
   - {fileID: 1305850837}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162752144
 MonoBehaviour:
@@ -1903,10 +1903,10 @@ RectTransform:
   - {fileID: 1698385782}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203770057
 MonoBehaviour:
@@ -2222,10 +2222,10 @@ RectTransform:
   - {fileID: 919392299}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277468486
 MonoBehaviour:
@@ -3003,10 +3003,10 @@ RectTransform:
   - {fileID: 1689248813}
   m_Father: {fileID: 1512880831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -55}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &362788404
 MonoBehaviour:
@@ -3092,12 +3092,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetOverlay
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 1689248814}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3136,10 +3136,10 @@ RectTransform:
   - {fileID: 2123925821}
   m_Father: {fileID: 1512880831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 220, y: -55}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &383686371
 MonoBehaviour:
@@ -3225,12 +3225,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetOverlay
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 2123925822}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 16
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3591,10 +3591,10 @@ RectTransform:
   - {fileID: 132401762}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452457744
 MonoBehaviour:
@@ -3813,12 +3813,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 452790984}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 22
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3861,6 +3861,33 @@ MonoBehaviour:
   - {fileID: 8397279009775982164, guid: 1db28c0a084507d42943214a97cd1712, type: 3}
   - {fileID: 8397279009775982164, guid: d3ba34ea60cddc14a996a10fe861f48d, type: 3}
   - {fileID: 8397279009775982164, guid: 07d35bb98d159d142b0ec1239642f213, type: 3}
+  properties:
+  - {fileID: 21300000, guid: b3da60fbc71211746bad8a25655bd43e, type: 3}
+  - {fileID: 21300000, guid: ea4bffc10a604b346abc7f4360f229cf, type: 3}
+  - {fileID: 21300000, guid: 782dc030d793ecb489e437c59b86bed0, type: 3}
+  - {fileID: 21300000, guid: f4d659eadb19e4a4aa3d5823ea3e21cf, type: 3}
+  - {fileID: 21300000, guid: c1a65763e5878aa40aa49311c788e641, type: 3}
+  - {fileID: 21300000, guid: e0f0ff6bbf052fe438ebcbddb7b81d64, type: 3}
+  - {fileID: 21300000, guid: 927921fd2602ca64fbb0518c4afa7b46, type: 3}
+  - {fileID: 21300000, guid: 027284f9fdb1de2489034dee7d56a46a, type: 3}
+  - {fileID: 21300000, guid: 40ca870c165e2714f84fda2703c3c847, type: 3}
+  - {fileID: 21300000, guid: 796afdab5ed49d7448d660d70947bdf3, type: 3}
+  - {fileID: 21300000, guid: 9f9c8aa1be9071943902d1fc22c43886, type: 3}
+  - {fileID: 21300000, guid: f7b675caf44ec084aaf631c20e319dd6, type: 3}
+  - {fileID: 21300000, guid: dc10b307486eb5a4c95b26a6a472455a, type: 3}
+  - {fileID: 21300000, guid: fae6bc69752379b40affa76a29a1dc59, type: 3}
+  - {fileID: 21300000, guid: fae6bc69752379b40affa76a29a1dc59, type: 3}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: ba72db6a68f0ffd48bf81a0e3f5a4f4d, type: 3}
+  - {fileID: 21300000, guid: df87ad8b121715e4bb3d25965ec2d1b3, type: 3}
+  - {fileID: 21300000, guid: edce9f62cd4cf5846915de3a48f02a84, type: 3}
+  - {fileID: 21300000, guid: edce9f62cd4cf5846915de3a48f02a84, type: 3}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 41fc644b44d85fd48860760e4671fe23, type: 3}
+  - {fileID: 21300000, guid: 33535d849a19cff42ba09ff50988f5f3, type: 3}
+  - {fileID: 21300000, guid: 64ca1a151a8340742989aee283013b09, type: 3}
+  - {fileID: 21300000, guid: 683b7cf1192a49a45a72bdc26e3aef03, type: 3}
+  selectedProperties: 
   currentColorPrimary: {fileID: 0}
   currentcolorSecondary: {fileID: 0}
 --- !u!4 &478353407
@@ -4038,12 +4065,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetCollar
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: c1a65763e5878aa40aa49311c788e641, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4319,12 +4346,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetBottom
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: fae6bc69752379b40affa76a29a1dc59, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4589,10 +4616,10 @@ RectTransform:
   - {fileID: 1264264611}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662746960
 MonoBehaviour:
@@ -4947,12 +4974,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetSleeves
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 027284f9fdb1de2489034dee7d56a46a, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6428,12 +6455,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 856166003}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 21
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6454,7 +6481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &865135622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6688,12 +6715,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetSleeves
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: e0f0ff6bbf052fe438ebcbddb7b81d64, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6807,10 +6834,10 @@ RectTransform:
   - {fileID: 706280501}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &895880746
 MonoBehaviour:
@@ -7211,10 +7238,10 @@ RectTransform:
   - {fileID: 187775013}
   m_Father: {fileID: 1512880831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 85, y: -55}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950489824
 MonoBehaviour:
@@ -7300,12 +7327,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetOverlay
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 46983890}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7433,10 +7460,10 @@ RectTransform:
   - {fileID: 2090295148}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975262389
 MonoBehaviour:
@@ -7655,11 +7682,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetCollar
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: b3da60fbc71211746bad8a25655bd43e, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8074,12 +8101,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 1051952400}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8554,12 +8581,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetCollar
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 782dc030d793ecb489e437c59b86bed0, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9005,12 +9032,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetCollar
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: f4d659eadb19e4a4aa3d5823ea3e21cf, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9659,12 +9686,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetMaterial
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 1308746378}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 23
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9778,10 +9805,10 @@ RectTransform:
   - {fileID: 409676637}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355980304
 MonoBehaviour:
@@ -9986,10 +10013,10 @@ RectTransform:
   - {fileID: 149773570}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375734756
 MonoBehaviour:
@@ -10119,10 +10146,10 @@ RectTransform:
   - {fileID: 3002740}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1377867153
 MonoBehaviour:
@@ -10252,10 +10279,10 @@ RectTransform:
   - {fileID: 1463148704}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1386722081
 MonoBehaviour:
@@ -10588,10 +10615,10 @@ RectTransform:
   - {fileID: 1809893793}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447139704
 MonoBehaviour:
@@ -10810,12 +10837,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetBottom
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: f7b675caf44ec084aaf631c20e319dd6, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11061,7 +11088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1490966984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11197,10 +11224,10 @@ RectTransform:
   - {fileID: 5556723}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518627497
 MonoBehaviour:
@@ -11419,10 +11446,10 @@ RectTransform:
   - {fileID: 332110740}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536619565
 MonoBehaviour:
@@ -11589,6 +11616,7 @@ RectTransform:
   - {fileID: 843378549}
   - {fileID: 950622902}
   - {fileID: 1625069366}
+  - {fileID: 1871504168}
   m_Father: {fileID: 831997065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -11730,10 +11758,10 @@ RectTransform:
   - {fileID: 1802505016}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567087308
 MonoBehaviour:
@@ -12102,7 +12130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1625069366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12135,14 +12163,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba72db6a68f0ffd48bf81a0e3f5a4f4d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12194,10 +12222,10 @@ RectTransform:
   - {fileID: 1889705875}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647775776
 MonoBehaviour:
@@ -12327,10 +12355,10 @@ RectTransform:
   - {fileID: 918680834}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1649053040
 MonoBehaviour:
@@ -12624,12 +12652,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetCollar
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: ea4bffc10a604b346abc7f4360f229cf, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12832,12 +12860,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetSleeves
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 796afdab5ed49d7448d660d70947bdf3, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 14
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13162,10 +13190,10 @@ RectTransform:
   - {fileID: 1002755778}
   m_Father: {fileID: 1512880831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 355, y: -55}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1703780136
 MonoBehaviour:
@@ -13251,12 +13279,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetOverlay
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 1002755779}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 17
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13384,12 +13412,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetSleeves
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 40ca870c165e2714f84fda2703c3c847, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 13
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13517,12 +13545,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetBottom
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 9f9c8aa1be9071943902d1fc22c43886, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13710,10 +13738,10 @@ RectTransform:
   - {fileID: 149399415}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758471419
 MonoBehaviour:
@@ -14073,10 +14101,10 @@ RectTransform:
   - {fileID: 1245740817}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.5, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1810211498
 MonoBehaviour:
@@ -14206,10 +14234,10 @@ RectTransform:
   - {fileID: 850051571}
   m_Father: {fileID: 867122781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.5, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817645336
 MonoBehaviour:
@@ -14475,10 +14503,10 @@ RectTransform:
   - {fileID: 2087107609}
   m_Father: {fileID: 344834600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.5, y: -310}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838456875
 MonoBehaviour:
@@ -14709,6 +14737,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857429939}
+  m_CullTransparentMesh: 1
+--- !u!1 &1871504167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871504168}
+  - component: {fileID: 1871504170}
+  - component: {fileID: 1871504169}
+  m_Layer: 5
+  m_Name: Material
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1871504168
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871504167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1556441018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 300, y: 0}
+  m_SizeDelta: {x: 600, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1871504169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871504167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1871504170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871504167}
   m_CullTransparentMesh: 1
 --- !u!1 &1889705874
 GameObject:
@@ -15057,12 +15160,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
-        m_MethodName: SetSleeves
-        m_Mode: 2
+        m_MethodName: SetProperty
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 927921fd2602ca64fbb0518c4afa7b46, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15483,114 +15586,6 @@ MonoBehaviour:
       - m_Target: {fileID: 478353406}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: FinishClothing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 914586529}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1490966983}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1596319920}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 790824076}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1066542764}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 330164709}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2061244434}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1155197123}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1411330756}
-        m_TargetAssemblyTypeName: AsyncLoad, Assembly-CSharp
-        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
