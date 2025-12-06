@@ -11,6 +11,7 @@ public class DesignMenus : MonoBehaviour
     bool colour1_menu = false;
     bool colour2_menu = false;
     bool pattern_menu = false;
+    bool menu_state = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -109,5 +110,17 @@ public class DesignMenus : MonoBehaviour
             pattern_menu = false;
         }
     }
+
+    //public void ShowThis()
+    //{
+    //    menu_state = true;
+    //    this.SetActive(menu_state);
+    //}
+
+    //public void HideThis()
+    //{
+    //    menu_state = !menu_state;
+    //    this.SetActive(menu_state);
+    //}
 
 }

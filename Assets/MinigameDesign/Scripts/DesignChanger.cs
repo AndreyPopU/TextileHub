@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using System.Drawing;
+using Unity.VisualScripting;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 public class DesignChanger : MonoBehaviour
 {
@@ -18,17 +21,46 @@ public class DesignChanger : MonoBehaviour
     int sleeves_index;
     int hem_index;
 
+    Image color_image;
+    Color image_color;
+    Color new_color;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+
+
+    public void Colour1(string colour)
+    {
+        if (colour == "red")
+            image_color = new Color32(242,44,44,255);
+        else if (colour == "red1")
+            image_color = new Color32(213, 13, 70, 255);
+        else if (colour == "red2")
+            image_color = new Color32(209, 77, 16, 255);
+        else if (colour == "red3")
+            image_color = new Color32(228, 24, 160, 255);
+        else if (colour == "red4")
+            image_color = new Color32(193, 13, 13, 255);
+
+        Debug.Log(image_color);
+        color_image = obj_colar.GetComponent<Image>();
+        color_image.color = image_color;
+        color_image = obj_sleeves.GetComponent<Image>();
+        color_image.color = image_color;
+        color_image = obj_hem.GetComponent<Image>();
+        color_image.color = image_color;
+
+
     }
 
     //------Collar------

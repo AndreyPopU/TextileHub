@@ -488,7 +488,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetBottom
         m_Mode: 2
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -2115,6 +2115,138 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190544977}
   m_CullTransparentMesh: 1
+--- !u!1 &198391198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198391199}
+  - component: {fileID: 198391202}
+  - component: {fileID: 198391201}
+  - component: {fileID: 198391200}
+  m_Layer: 0
+  m_Name: Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &198391199
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198391198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330320685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000022411}
+  m_SizeDelta: {x: 377.3, y: 458.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &198391200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198391198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 198391201}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1545973815}
+        m_TargetAssemblyTypeName: DesignChanger, Assembly-CSharp
+        m_MethodName: Colour1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: red1
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &198391201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198391198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8352941, g: 0.050980393, b: 0.27450982, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &198391202
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198391198}
+  m_CullTransparentMesh: 1
 --- !u!1 &203770055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,7 +2330,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -2686,7 +2818,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -2784,7 +2916,7 @@ GameObject:
   - component: {fileID: 286360729}
   - component: {fileID: 286360732}
   - component: {fileID: 286360731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2802,7 +2934,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 16.799152}
   m_LocalScale: {x: 0.74999994, y: 0.74999994, z: 0.74999994}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 926337599}
   m_Father: {fileID: 1340288176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3252,7 +3385,7 @@ GameObject:
   - component: {fileID: 330320685}
   - component: {fileID: 330320687}
   - component: {fileID: 330320686}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3267,16 +3400,19 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330320684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 16.799152}
-  m_LocalScale: {x: 0.42182994, y: 0.74999994, z: 0.74999994}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.24860325, y: 0.09502089, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1340288176}
+  m_Children:
+  - {fileID: 1728529866}
+  - {fileID: 198391199}
+  - {fileID: 712480859}
+  m_Father: {fileID: 926337599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 295.20453, y: -729.9345}
-  m_SizeDelta: {x: 1709.9819, y: 2563.5396}
+  m_AnchoredPosition: {x: 291.40985, y: -11.7799835}
+  m_SizeDelta: {x: 1557.26, y: 617.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330320686
 MonoBehaviour:
@@ -3730,7 +3866,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetOverlay
         m_Mode: 2
@@ -3863,7 +3999,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetOverlay
         m_Mode: 2
@@ -4280,7 +4416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -4451,7 +4587,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetMaterial
         m_Mode: 2
@@ -4463,61 +4599,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &478353405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 478353407}
-  - component: {fileID: 478353406}
-  m_Layer: 0
-  m_Name: ClothingManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &478353406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478353405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff944b234a4672041b4cb8b16bf75674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorDebug: 0
-  primaryColor: 1
-  clothing: {fileID: 0}
-  currentPiece: {fileID: 0}
-  stickerPrefabs:
-  - {fileID: 8397279009775982164, guid: ca68518afb0bd79429d59c29a6a0e10e, type: 3}
-  - {fileID: 8397279009775982164, guid: 1db28c0a084507d42943214a97cd1712, type: 3}
-  - {fileID: 8397279009775982164, guid: d3ba34ea60cddc14a996a10fe861f48d, type: 3}
-  - {fileID: 8397279009775982164, guid: 07d35bb98d159d142b0ec1239642f213, type: 3}
-  currentColorPrimary: {fileID: 0}
-  currentcolorSecondary: {fileID: 0}
---- !u!4 &478353407
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478353405}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.08, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485729874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4676,7 +4757,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetCollar
         m_Mode: 2
@@ -4957,7 +5038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetBottom
         m_Mode: 2
@@ -5579,7 +5660,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -6024,7 +6105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSleeves
         m_Mode: 2
@@ -6297,6 +6378,138 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709632479}
+  m_CullTransparentMesh: 1
+--- !u!1 &712480858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712480859}
+  - component: {fileID: 712480862}
+  - component: {fileID: 712480861}
+  - component: {fileID: 712480860}
+  m_Layer: 0
+  m_Name: Button (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &712480859
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712480858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330320685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 516, y: 0.000022411}
+  m_SizeDelta: {x: 377.3, y: 458.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &712480860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712480858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 712480861}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1545973815}
+        m_TargetAssemblyTypeName: DesignChanger, Assembly-CSharp
+        m_MethodName: Colour1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: red2
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &712480861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712480858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.81960785, g: 0.3019608, b: 0.0627451, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &712480862
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712480858}
   m_CullTransparentMesh: 1
 --- !u!1 &713087044
 GameObject:
@@ -7368,8 +7581,8 @@ Canvas:
   m_GameObject: {fileID: 831997061}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 330585545}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -7740,7 +7953,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetMaterial
         m_Mode: 2
@@ -8000,7 +8213,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSleeves
         m_Mode: 2
@@ -8170,7 +8383,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -8414,6 +8627,127 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919392298}
+  m_CullTransparentMesh: 1
+--- !u!1 &926337598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926337599}
+  - component: {fileID: 926337602}
+  - component: {fileID: 926337601}
+  - component: {fileID: 926337600}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &926337599
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926337598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2624, y: 10.524, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330320685}
+  m_Father: {fileID: 286360729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0.000061035156, y: 1296}
+  m_SizeDelta: {x: -286, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &926337600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926337598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 926337601}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &926337601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926337598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &926337602
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926337598}
   m_CullTransparentMesh: 1
 --- !u!1 &933053668
 GameObject:
@@ -8876,7 +9210,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetOverlay
         m_Mode: 2
@@ -9060,7 +9394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -9351,7 +9685,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetCollar
         m_Mode: 2
@@ -9906,7 +10240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetMaterial
         m_Mode: 2
@@ -10518,7 +10852,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetCollar
         m_Mode: 2
@@ -10805,7 +11139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -252.7211, y: 0}
+  m_AnchoredPosition: {x: -252.72107, y: 0}
   m_SizeDelta: {x: 445.44214, y: 560.2198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184746922
@@ -11159,7 +11493,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetCollar
         m_Mode: 2
@@ -11945,7 +12279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetMaterial
         m_Mode: 2
@@ -12061,7 +12395,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330320685}
   - {fileID: 286360729}
   - {fileID: 2017123423}
   m_Father: {fileID: 38079490}
@@ -12149,7 +12482,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -12357,7 +12690,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -12490,7 +12823,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -12623,7 +12956,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -13137,7 +13470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -13308,7 +13641,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetBottom
         m_Mode: 2
@@ -13884,7 +14217,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -14106,7 +14439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -14678,7 +15011,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -15176,7 +15509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -15309,7 +15642,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -15555,7 +15888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetCollar
         m_Mode: 2
@@ -15763,7 +16096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSleeves
         m_Mode: 2
@@ -16389,7 +16722,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetOverlay
         m_Mode: 2
@@ -16401,6 +16734,138 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1728529865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728529866}
+  - component: {fileID: 1728529869}
+  - component: {fileID: 1728529868}
+  - component: {fileID: 1728529867}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1728529866
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728529865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330320685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -516, y: 0.000022411}
+  m_SizeDelta: {x: 377.3, y: 458.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1728529867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728529865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1728529868}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1545973815}
+        m_TargetAssemblyTypeName: DesignChanger, Assembly-CSharp
+        m_MethodName: Colour1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: red
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1728529868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728529865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9490196, g: 0.17254902, b: 0.17254902, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1728529869
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728529865}
+  m_CullTransparentMesh: 1
 --- !u!1 &1734721812
 GameObject:
   m_ObjectHideFlags: 0
@@ -16522,7 +16987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSleeves
         m_Mode: 2
@@ -16655,7 +17120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetBottom
         m_Mode: 2
@@ -16899,7 +17364,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -17394,7 +17859,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -17647,7 +18112,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSecondaryColor
         m_Mode: 2
@@ -17916,7 +18381,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetPrimaryColor
         m_Mode: 2
@@ -18001,7 +18466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 252.7211, y: 0}
+  m_AnchoredPosition: {x: 252.72107, y: 0}
   m_SizeDelta: {x: 445.44214, y: 560.2198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848115851
@@ -18579,7 +19044,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478353406}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ClothingManager, Assembly-CSharp
         m_MethodName: SetSleeves
         m_Mode: 2
@@ -18768,7 +19233,7 @@ GameObject:
   - component: {fileID: 2017123426}
   - component: {fileID: 2017123425}
   - component: {fileID: 2017123424}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Top_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19553,7 +20018,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 478353407}
   - {fileID: 831997065}
   - {fileID: 405313137}
   - {fileID: 410087041}
