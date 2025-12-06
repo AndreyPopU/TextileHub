@@ -5,6 +5,7 @@ public class DesignMenus : MonoBehaviour
 {
 
     [SerializeField] GameObject[] design_menus;
+    [SerializeField] GameObject[] sub_menus;
 
     bool in_menu = false;
     bool fabric_menu = false;
@@ -17,6 +18,7 @@ public class DesignMenus : MonoBehaviour
     void Start()
     {
         Hide();
+        Hide_sub();
     }
 
     // Update is called once per frame
@@ -32,7 +34,14 @@ public class DesignMenus : MonoBehaviour
             menu.SetActive(false);
             in_menu = false;
         }
+    }
 
+    void Hide_sub()
+    {
+        foreach (GameObject menu in sub_menus)
+        {
+            menu.SetActive(false);
+        }
     }
 
     public void MenuFabric()
@@ -111,16 +120,15 @@ public class DesignMenus : MonoBehaviour
         }
     }
 
-    //public void ShowThis()
-    //{
-    //    menu_state = true;
-    //    this.SetActive(menu_state);
-    //}
-
-    //public void HideThis()
-    //{
-    //    menu_state = !menu_state;
-    //    this.SetActive(menu_state);
-    //}
+    public void ShowChild(GameObject child)
+    {
+        foreach (GameObject menu in sub_menus)
+        {
+            if (menu.activeSelf)
+                Hide_sub();
+                continue;
+        }
+        child.SetActive(!child.activeSelf);
+    }
 
 }
