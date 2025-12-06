@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -23,7 +19,6 @@ public class DesignChanger : MonoBehaviour
 
     Image color_image;
     Color image_color;
-    Color new_color;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,7 +54,6 @@ public class DesignChanger : MonoBehaviour
         color_image.color = image_color;
         color_image = obj_hem.GetComponent<Image>();
         color_image.color = image_color;
-
 
     }
 

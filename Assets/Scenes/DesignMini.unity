@@ -12124,6 +12124,12 @@ MonoBehaviour:
   - {fileID: 1340288175}
   - {fileID: 1393132546}
   - {fileID: 1389311513}
+  sub_menus:
+  - {fileID: 330320684}
+  - {fileID: 2039854106}
+  - {fileID: 1771726150}
+  - {fileID: 887009761}
+  - {fileID: 1854770261}
 --- !u!1 &1184746920
 GameObject:
   m_ObjectHideFlags: 0

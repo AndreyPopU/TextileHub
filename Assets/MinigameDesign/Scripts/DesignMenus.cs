@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class DesignMenus : MonoBehaviour
@@ -12,7 +11,6 @@ public class DesignMenus : MonoBehaviour
     bool colour1_menu = false;
     bool colour2_menu = false;
     bool pattern_menu = false;
-    bool menu_state = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
