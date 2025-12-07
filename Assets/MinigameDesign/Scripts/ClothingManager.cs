@@ -49,9 +49,10 @@ public class ClothingManager : MonoBehaviour
     {
         if (WebSocketClient.instance != null)
         {
-            var designMessage = new DesignMessage
+            var designMessage = new FinalDesignMessage
             {
-                type = "design",
+                type = "finaldesign",
+                playerId = FindFirstObjectByType<WebSocketClient>().localPlayerId,
                 designResults = selectedProperties,
             };
 

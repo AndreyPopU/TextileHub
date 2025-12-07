@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -43,18 +42,5 @@ public class GameManager : MonoBehaviour
         codeWrongText.SetActive(true);
     }
 
-    public void StartGame()
-    {
-        if (WebSocketClient.instance != null)
-        {
-            var gameStartMessage = new GameStartMessage
-            {
-                type = "gameStart",
-                sceneIndex = 2,
-            };
-
-            string json = JsonUtility.ToJson(gameStartMessage);
-            WebSocketClient.instance.SendMessageToServer(json);
-        }
-    }
+    public void StartGame() => HostNetwork.instance.StartGame();
 }

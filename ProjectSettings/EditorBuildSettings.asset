@@ -14,12 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DesignGame.unity
     guid: ac2a8b55913caaa449d6be55b5e93aad
-  - enabled: 0
-    path: Assets/Scenes/MinigameTesting.unity
-    guid: d717bbfed79936d41871e439ada32dc3
+  - enabled: 1
+    path: Assets/Scenes/VotingTV.unity
+    guid: fd1f4379d93e68d4dac3ecaad4af5274
   - enabled: 1
     path: Assets/Scenes/VotingGame.unity
     guid: 3a35d5bed1f82f6448f895f72c64796a
+  - enabled: 0
+    path: Assets/Scenes/MinigameTesting.unity
+    guid: d717bbfed79936d41871e439ada32dc3
   - enabled: 0
     path: Assets/Scenes/RecycleMinigame.unity
     guid: f642ed43227ac1c4daa49d58b31f5f05
