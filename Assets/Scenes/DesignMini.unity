@@ -8656,7 +8656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc10b307486eb5a4c95b26a6a472455a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a2e9176641a3e744a5e4d6ebcab78c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10300,7 +10300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0f0ff6bbf052fe438ebcbddb7b81d64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b173224219ab2c244ae32ca2568af5fc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15747,7 +15747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3da60fbc71211746bad8a25655bd43e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c610f334720aa144bbc06d611b406109, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16094,21 +16094,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colars:
-  - {fileID: 21300000, guid: b3da60fbc71211746bad8a25655bd43e, type: 3}
-  - {fileID: 21300000, guid: ea4bffc10a604b346abc7f4360f229cf, type: 3}
-  - {fileID: 21300000, guid: 782dc030d793ecb489e437c59b86bed0, type: 3}
-  - {fileID: 21300000, guid: f4d659eadb19e4a4aa3d5823ea3e21cf, type: 3}
-  - {fileID: 21300000, guid: c1a65763e5878aa40aa49311c788e641, type: 3}
+  - {fileID: 21300000, guid: c610f334720aa144bbc06d611b406109, type: 3}
+  - {fileID: 21300000, guid: dadeb5d10d3ef1542a53c57f7aacf4be, type: 3}
+  - {fileID: 21300000, guid: a29b0280d4fddb64aaa0205363b36743, type: 3}
+  - {fileID: 21300000, guid: edc22fb7423c2b34280ac219e5e7c9a1, type: 3}
+  - {fileID: 21300000, guid: 4fc0fdf5d0b236c44997db46ba73d5f6, type: 3}
   sleeves:
-  - {fileID: 21300000, guid: e0f0ff6bbf052fe438ebcbddb7b81d64, type: 3}
-  - {fileID: 21300000, guid: 927921fd2602ca64fbb0518c4afa7b46, type: 3}
-  - {fileID: 21300000, guid: 027284f9fdb1de2489034dee7d56a46a, type: 3}
-  - {fileID: 21300000, guid: 40ca870c165e2714f84fda2703c3c847, type: 3}
-  - {fileID: 21300000, guid: 796afdab5ed49d7448d660d70947bdf3, type: 3}
+  - {fileID: 21300000, guid: b173224219ab2c244ae32ca2568af5fc, type: 3}
+  - {fileID: 21300000, guid: 539d4b6a23287f3498c9af4ee1861c1d, type: 3}
+  - {fileID: 21300000, guid: 5bab3197c4ba2e147a222bdcc5fb4493, type: 3}
+  - {fileID: 21300000, guid: 6f1f1f270c2e2f24e80d548e3de6efee, type: 3}
+  - {fileID: 21300000, guid: 75d97308b76d5e3409f543ebd3f9ffb4, type: 3}
   hems:
   - {fileID: 21300000, guid: 9f9c8aa1be9071943902d1fc22c43886, type: 3}
   - {fileID: 21300000, guid: f7b675caf44ec084aaf631c20e319dd6, type: 3}
-  - {fileID: 21300000, guid: dc10b307486eb5a4c95b26a6a472455a, type: 3}
+  - {fileID: 21300000, guid: 2a2e9176641a3e744a5e4d6ebcab78c2, type: 3}
   - {fileID: 21300000, guid: fae6bc69752379b40affa76a29a1dc59, type: 3}
   obj_colar: {fileID: 1531885619}
   obj_sleeves: {fileID: 950622901}
@@ -16179,8 +16179,8 @@ RectTransform:
   m_LocalScale: {x: 3.1362002, y: 3.1362002, z: 3.1362002}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1531885620}
   - {fileID: 843378549}
+  - {fileID: 1531885620}
   - {fileID: 950622902}
   - {fileID: 1625069366}
   m_Father: {fileID: 1545973814}
