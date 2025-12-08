@@ -8,10 +8,16 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] Sprite[] colars;
     [SerializeField] Sprite[] sleeves;
     [SerializeField] Sprite[] hems;
+    [SerializeField] Sprite[] l_colars;
+    [SerializeField] Sprite[] l_sleeves;
+    [SerializeField] Sprite[] l_hems;
 
     [SerializeField] GameObject obj_colar;
     [SerializeField] GameObject obj_sleeves;
     [SerializeField] GameObject obj_hem;
+    [SerializeField] GameObject l_obj_colar;
+    [SerializeField] GameObject l_obj_sleeves;
+    [SerializeField] GameObject l_obj_hem;
 
     int colar_index;
     int sleeves_index;
@@ -19,20 +25,6 @@ public class DesignChanger : MonoBehaviour
 
     Image color_image;
     Color image_color;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
     public void Colour1(string colour)
     {
@@ -57,6 +49,11 @@ public class DesignChanger : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        
+    }
+
     //------Collar------
 
     public void OnButtonCollarLeft()
@@ -64,6 +61,7 @@ public class DesignChanger : MonoBehaviour
         colar_index = colar_index - 1;
         Change_Colar();
         obj_colar.GetComponent<Image>().sprite = colars[colar_index];
+        l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
         Debug.Log(colar_index);
     }
 
@@ -72,6 +70,7 @@ public class DesignChanger : MonoBehaviour
         colar_index = colar_index + 1;
         Change_Colar();
         obj_colar.GetComponent<Image>().sprite = colars[colar_index];
+        l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
         Debug.Log(colar_index);
     }
 
@@ -91,6 +90,7 @@ public class DesignChanger : MonoBehaviour
         sleeves_index = sleeves_index - 1;
         Change_Sleeves();
         obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
+        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
         Debug.Log(sleeves_index);
     }
 
@@ -99,6 +99,7 @@ public class DesignChanger : MonoBehaviour
         sleeves_index = sleeves_index + 1;
         Change_Sleeves();
         obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
+        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
         Debug.Log(sleeves_index);
     }
 
@@ -118,6 +119,7 @@ public class DesignChanger : MonoBehaviour
         hem_index = hem_index - 1;
         Change_Hem();
         obj_hem.GetComponent<Image>().sprite = hems[hem_index];
+        l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
         Debug.Log(hem_index);
     }
 
@@ -126,6 +128,7 @@ public class DesignChanger : MonoBehaviour
         hem_index = hem_index + 1;
         Change_Hem();
         obj_hem.GetComponent<Image>().sprite = hems[hem_index];
+        l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
         Debug.Log(hem_index);
     }
 
