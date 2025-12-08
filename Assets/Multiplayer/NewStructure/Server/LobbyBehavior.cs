@@ -77,6 +77,19 @@ public class LobbyBehavior : WebSocketBehavior
                 DesignManagerServer.instance.SetReady(designMsg);
             }
         }
+        else if (baseMsg.type == "voting")
+        {
+            var votingMsg = JsonUtility.FromJson<VotingMessage>(e.Data);
+
+            for (int i = 0; i < votingMsg.votingResults.Length; i++)
+                Debug.Log($"[Server] Recieved design results: {votingMsg.votingResults[i]}");
+
+            if (VotingManagerServer.instance != null)
+            {
+                Debug.Log($"VotingManagerServer is not null, setting results of it to the results received");
+                VotingManagerServer.instance.AddToResults(votingMsg);
+            }
+        }
         else
         {
             // rebroadcast other messages as normal

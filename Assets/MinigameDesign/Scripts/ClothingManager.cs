@@ -8,6 +8,7 @@ public class ClothingManager : MonoBehaviour
 {
     public static ClothingManager instance;
 
+    public bool finishedDesign;
     public bool cursorDebug;
     public bool primaryColor = true; // If the player is coloring the primary or secondary color
 
@@ -47,6 +48,8 @@ public class ClothingManager : MonoBehaviour
 
     public void FinishClothing()
     {
+        if (finishedDesign) return;
+
         if (WebSocketClient.instance != null)
         {
             var designMessage = new FinalDesignMessage
@@ -61,6 +64,8 @@ public class ClothingManager : MonoBehaviour
             string json = JsonUtility.ToJson(designMessage);
             WebSocketClient.instance.SendMessageToServer(json);
         }
+
+        finishedDesign = true;
     }
 
     #region Designing Clothes

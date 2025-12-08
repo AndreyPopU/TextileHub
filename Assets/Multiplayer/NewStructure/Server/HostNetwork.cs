@@ -1,8 +1,6 @@
 using UnityEngine;
 using WebSocketSharp.Server;
 using System.Collections;
-using Newtonsoft.Json;
-using static UnityEngine.Rendering.CoreUtils;
 
 public class HostNetwork : MonoBehaviour
 {

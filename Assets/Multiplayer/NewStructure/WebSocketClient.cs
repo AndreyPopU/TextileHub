@@ -221,22 +221,22 @@ public class WebSocketClient : MonoBehaviour
                 var gameStartMsg = JsonConvert.DeserializeObject<GameStartMessage>(e.Data);
                 gameStartMessage = gameStartMsg;
                 hasPendingGameStart = true;
-                print("Received game start message");
+                print("[Client] Received game start message");
                 break;
 
             case "voting":
                 var votingMsg = JsonConvert.DeserializeObject<VotingMessage>(e.Data);
-                Debug.Log($"Received voting message: {string.Join(",", votingMsg.votingResults)}");
+                Debug.Log($"[Client] Received voting message: {string.Join(",", votingMsg.votingResults)}");
                 break;
 
             case "design":
                 var designMsg = JsonConvert.DeserializeObject<FinalDesignMessage>(e.Data);
-                Debug.Log("Received design message");
+                Debug.Log("[Client] Received design message");
                 break;
 
             case "answer":
                 var ansMsg = JsonUtility.FromJson<AnswerMessage>(e.Data);
-                Debug.Log($"Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
+                Debug.Log($"[Client] Answer: {ansMsg.playerId} → {ansMsg.answer}. Correct: {ansMsg.correct}");
                 pendingAnswer = ansMsg;
                 hasPendingAnswer = true;
                 break;
@@ -315,7 +315,7 @@ public class WebSocketClient : MonoBehaviour
     }
 
     // -------------------------
-    // SEND ANSWER / CUSTOM MESSAGE
+    // SEND CUSTOM MESSAGE
     // -------------------------
     public void SendMessageToServer(string json)
     {

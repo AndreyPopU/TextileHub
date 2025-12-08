@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManagerServer : MonoBehaviour
+public class VotingRoundManagerServer : MonoBehaviour
 {
     public bool started;
     public float timeLeft = 60;
@@ -21,16 +21,18 @@ public class TimerManagerServer : MonoBehaviour
         {
             timeLeft = 0;
 
-            // Send message once
+            // Send message once - Cancel voting
             if (!timerOver)
             {
                 HostNetwork.instance.BroadcastTimerOver();
+                VotingManagerServer.instance.resultsPanel.SetActive(true);
+                VotingManagerServer.instance.pitchingPanel.SetActive(false);
                 timerOver = true;
             }
             return;
         }
 
-            timeLeft -= Time.deltaTime;
+        timeLeft -= Time.deltaTime;
         timerSlider.value = timeLeft;
     }
 }

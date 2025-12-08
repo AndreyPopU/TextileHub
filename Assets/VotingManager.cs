@@ -4,6 +4,7 @@ public class VotingManager : MonoBehaviour
 {
     public static VotingManager instance;
 
+    public bool finishedVoting;
     public int[] votes;
 
     private void Awake() => instance = this;
@@ -15,6 +16,8 @@ public class VotingManager : MonoBehaviour
 
     public void SendVotes()
     {
+        if (finishedVoting) return;
+
         if (WebSocketClient.instance != null)
         {
             var voteMessage = new VotingMessage
@@ -26,6 +29,8 @@ public class VotingManager : MonoBehaviour
             string json = JsonUtility.ToJson(voteMessage);
             WebSocketClient.instance.SendMessageToServer(json);
         }
+
+        finishedVoting = true;
     }
 
     public void SetVoteTheme(int value) => votes[0] = value;

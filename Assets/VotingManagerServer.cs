@@ -1,15 +1,67 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VotingManagerServer : MonoBehaviour
 {
+    public static VotingManagerServer instance;
+
     public int currentIndex;
     public ShirtResults[] shirts;
     public ClothingManager displayShirt;
 
+    public int[] results;
+
+    [Header("Menus")]
+    public GameObject getReadyPanel;
+    public GameObject pitchingPanel;
+    public GameObject resultsPanel;
+
+    [Header("Timer")]
+    public VotingRoundManagerServer votingRoundManagerServer;
+    public bool started = true;
+    public float timeLeft = 10;
+    public Slider timerSlider;
+
+    private VotingMessage pendingVotingMsg;
+    private bool hasPendingVotingMessage = false;
+
+    private void Awake() => instance = this;
+
     void Start()
     {
         // Find all ShirtDesigns from last scene
+        results = new int[3];
         shirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
+        timerSlider.maxValue = timeLeft;
+    }
+
+    void Update()
+    {
+        if (hasPendingVotingMessage)
+        {
+            for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
+                results[i] += pendingVotingMsg.votingResults[i];
+
+            print("Added results");
+
+            hasPendingVotingMessage = false;
+        }
+
+        if (!started) return;
+
+        if (timeLeft <= 0)
+        {
+            timeLeft = 0;
+            started = false;
+            getReadyPanel.SetActive(false);
+            pitchingPanel.SetActive(true);
+            votingRoundManagerServer.started = true;
+
+            return;
+        }
+
+        timeLeft -= Time.deltaTime;
+        timerSlider.value = timeLeft;
     }
 
     public void DisplayShirt()
@@ -28,6 +80,12 @@ public class VotingManagerServer : MonoBehaviour
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
 
         currentIndex++;
+    }
+
+    public void AddToResults(VotingMessage votingMsg)
+    {
+        hasPendingVotingMessage = true;
+        pendingVotingMsg = votingMsg;
     }
 
     public void ServerNextMinigame() => FindFirstObjectByType<AsyncLoad>().LoadScene(3);
