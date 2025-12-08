@@ -26,11 +26,11 @@ public class DesignManagerServer : MonoBehaviour
 
         List<string> playerIDs = LobbyBehavior.GetAllPlayerIds();
 
-
         for (int i = 0; i < playerCount; i++)
         {
             GameObject newShirt = Instantiate(serverShirtPrefab);
             newShirt.transform.SetParent(gridLayout);
+            newShirt.GetComponent<ShirtDesign>().playerName = LobbyBehavior.GetPlayerName(playerIDs[i]);
             playerShirts[playerIDs[i]] = newShirt.GetComponent<ShirtDesign>();
         }
     }
@@ -39,12 +39,13 @@ public class DesignManagerServer : MonoBehaviour
     {
         if (hasPendingReadyMsg)
         {
-            playerShirts[pendingDesignMsg.playerId].SetResults(pendingDesignMsg.designResults);
+            playerShirts[pendingDesignMsg.playerId].SetResults(pendingDesignMsg.designResults, pendingDesignMsg.primaryHex, pendingDesignMsg.secondaryHex);
             finishedPlayers++;
-            Debug.Log($"Color set to {playerShirts[pendingDesignMsg.playerId].GetComponent<Image>().color}");
 
             if (finishedPlayers == playerCount)
                 nextLevelButton.SetActive(true);
+
+            hasPendingReadyMsg = false;
         }
     }
 

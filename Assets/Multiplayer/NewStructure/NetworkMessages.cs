@@ -54,6 +54,8 @@ public class FinalDesignMessage
     public string type;
     public string playerId;
     public int[] designResults;
+    public string primaryHex;
+    public string secondaryHex;
 }
 
 [Serializable]

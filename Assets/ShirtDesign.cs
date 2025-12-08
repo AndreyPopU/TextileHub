@@ -1,21 +1,26 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShirtDesign : MonoBehaviour
 {
-    public int[] results;
+    public string playerName;
     public Image image;
+    public TextMeshProUGUI playerNameText;
+    public GameObject checkMark;
 
-    private void Awake() => DontDestroyOnLoad(gameObject);
+    private void Start() => playerNameText.text = playerName;
 
-    public void SetResults(int[] results)
+    public void SetResults(int[] results, string primaryHex, string secondaryHex)
     {
-        this.results = results;
-        image.color = Color.red;
-    }
-
-    public void DestroyVisuals() // When time runs out disable everything, need this only because of results[]
-    {
-
+        // Create an empty object that stores the results
+        GameObject shirtResults = new GameObject("ShirtResults");
+        shirtResults.AddComponent<ShirtResults>();
+        ShirtResults shirtScript = shirtResults.GetComponent<ShirtResults>();
+        shirtScript.results = results;
+        shirtScript.primaryHex = primaryHex;
+        shirtScript.secondaryHex = secondaryHex;
+        image.color = new Color(1, 0.7f, .3f, 1);
+        checkMark.SetActive(true);
     }
 }

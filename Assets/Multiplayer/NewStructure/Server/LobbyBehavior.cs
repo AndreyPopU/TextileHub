@@ -3,10 +3,10 @@ using WebSocketSharp;
 using WebSocketSharp.Server;
 using UnityEngine;
 using Newtonsoft.Json;
-using Unity.VisualScripting.FullSerializer;
 
 public class LobbyBehavior : WebSocketBehavior
 {
+
     private static Dictionary<string, string> connectedPlayers = new Dictionary<string, string>(); // Key - PlayerId; Value - name;
     private static Dictionary<string, int> playerScores = new Dictionary<string, int>();
     private static HashSet<string> playersAnswered = new HashSet<string>();
@@ -68,6 +68,9 @@ public class LobbyBehavior : WebSocketBehavior
             for (int i = 0; i < designMsg.designResults.Length; i++)
                 Debug.Log($"[Server] Recieved design results: {designMsg.designResults[i]}");
 
+            Debug.Log($"[Server] Received design results: {designMsg.primaryHex}");
+            Debug.Log($"[Server] Received design results: {designMsg.secondaryHex}");
+
             if (DesignManagerServer.instance != null)
             {
                 Debug.Log($"DesignManagerServer is not null, setting {designMsg.playerId} to ready");
@@ -115,5 +118,10 @@ public class LobbyBehavior : WebSocketBehavior
     public static List<string> GetAllPlayerIds()
     {
         return new List<string>(connectedPlayers.Keys);
+    }
+
+    public static string GetPlayerName(string playerId)
+    {
+        return connectedPlayers[playerId];
     }
 }

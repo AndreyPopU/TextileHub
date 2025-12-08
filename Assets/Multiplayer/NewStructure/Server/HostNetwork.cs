@@ -1,6 +1,8 @@
 using UnityEngine;
 using WebSocketSharp.Server;
 using System.Collections;
+using Newtonsoft.Json;
+using static UnityEngine.Rendering.CoreUtils;
 
 public class HostNetwork : MonoBehaviour
 {
@@ -166,8 +168,37 @@ public class HostNetwork : MonoBehaviour
         runningCoroutine = null;
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationQuit() => StopServer();
+
+    public void StopServer()
     {
-        wss?.Stop();
+        if (wss == null) return;
+
+        var shutdownMsg = new GameMessage
+        {
+            type = "servershutdown",
+            text = "Server closed by host"
+        };
+
+        wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(shutdownMsg));
+
+        // 2) Actually stop the server (this closes all client sockets)
+        wss.Stop();
+        wss = null;
+
+        Debug.Log("[Host] Server stopped, clients should disconnect.");
+    }
+
+    public void BroadcastTimerOver()
+    {
+        if (wss == null) return;
+
+        var timerOverMsg = new GameMessage
+        {
+            type = "timerover",
+        };
+
+        wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(timerOverMsg));
+        Debug.Log("[Server] Timer Over sent to clients");
     }
 }

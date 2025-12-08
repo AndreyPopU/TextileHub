@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Menus")]
     public GameObject MainMenu;
     public GameObject loadingScreen;
+    public GameObject disconnectedScreen;
 
     private void Awake()
     {

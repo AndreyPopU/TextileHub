@@ -1,8 +1,7 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class ClothingManager : MonoBehaviour
@@ -20,6 +19,7 @@ public class ClothingManager : MonoBehaviour
 
     public Sprite[] properties; // 0-5: collar; 5-10: sleeves; 10-15: bottom; 15-20: overlay; 20-25: material; 25: color; 26: secondary color;
     public int[] selectedProperties;
+    public string primaryHex, secondaryHex;
 
     // Store current clothing options
     [HideInInspector] public GameObject currentColorPrimary, currentcolorSecondary;
@@ -28,7 +28,7 @@ public class ClothingManager : MonoBehaviour
 
     private void Start()
     {
-        selectedProperties = new int[7];
+        selectedProperties = new int[5];
     }
 
     private void Update()
@@ -54,6 +54,8 @@ public class ClothingManager : MonoBehaviour
                 type = "finaldesign",
                 playerId = FindFirstObjectByType<WebSocketClient>().localPlayerId,
                 designResults = selectedProperties,
+                primaryHex = primaryHex,
+                secondaryHex = secondaryHex,
             };
 
             string json = JsonUtility.ToJson(designMessage);
@@ -90,14 +92,24 @@ public class ClothingManager : MonoBehaviour
             clothing.material.sprite = properties[property];
             selectedProperties[4] = property;
         }
-        else if (property == 25)
-        {
-            // Send HEX code
-        }
-        else if (property == 26)
-        {
+    }
 
-        }
+    public void ResultSetPrimaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        print(newHex);
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        print("result color is " + resultColor);
+        clothing.collar.color = resultColor;
+        clothing.bottom.color = resultColor;
+        clothing.sleeves.color = resultColor;
+    }
+
+    public void ResultSetSecondaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        clothing.overlay.color = resultColor;
     }
 
     public void SetPrimaryColor(Image image)
@@ -108,6 +120,7 @@ public class ClothingManager : MonoBehaviour
         clothing.sleeves.color = image.color;
         currentColorPrimary = image.gameObject;
         currentColorPrimary.transform.GetChild(0).gameObject.SetActive(true);
+        primaryHex = image.color.ToHexString();
     }
 
     public void SetSecondaryColor(Image image)
@@ -116,6 +129,7 @@ public class ClothingManager : MonoBehaviour
         clothing.overlay.color = image.color;
         currentcolorSecondary = image.gameObject;
         currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(true);
+        secondaryHex = image.color.ToHexString();
     }
 
     public void ChangePrimaryColor() => primaryColor = !primaryColor; // Cycle between primary and secondary color

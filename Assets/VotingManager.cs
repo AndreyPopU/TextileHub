@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class VotingManager : MonoBehaviour
 {
+    public static VotingManager instance;
+
     public int[] votes;
+
+    private void Awake() => instance = this;
 
     private void Start()
     {

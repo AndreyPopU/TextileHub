@@ -31,7 +31,11 @@ public class WebSocketClient : MonoBehaviour
     private GameStartMessage gameStartMessage;
     private bool hasPendingGameStart = false;
 
+    private bool hasPendingShutdown = false;
+
     private bool hasPendingPlayerList = false;
+
+    private bool hasPendingTimerOver = false;
 
     // For join timeout
     private bool hostFoundFlag = false;
@@ -48,6 +52,29 @@ public class WebSocketClient : MonoBehaviour
 
     void Update()
     {
+        if (hasPendingTimerOver) // Handle timer over
+        {
+            if (ClothingManager.instance != null) // If Design
+            {
+                ClothingManager.instance.FinishClothing();
+            }
+            else if (VotingManager.instance != null) // If Vote
+            {
+                VotingManager.instance.SendVotes();
+            }
+
+            // If recycle
+
+            hasPendingTimerOver = false;
+        }
+
+        if (hasPendingShutdown)
+        {
+            FindFirstObjectByType<AsyncLoad>().LoadScene(0);
+            GameManager.instance.disconnectedScreen.SetActive(true);
+            hasPendingShutdown = false;
+        }
+
         if (hasPendingQuestion)
         {
             QuestionManager.instance.DisplayQuestion(pendingQuestion);
@@ -131,6 +158,11 @@ public class WebSocketClient : MonoBehaviour
                 Debug.Log("Message from server: " + e.Data);
                 var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
                 HandleMessage(e, baseMsg);
+            };
+
+            ws.OnClose += (sender, e) =>
+            {
+                Debug.LogWarning($"[Client] Disconnected from server. Reason: {e.Reason}");
             };
 
             ws.ConnectAsync();
@@ -226,6 +258,9 @@ public class WebSocketClient : MonoBehaviour
                 hasPendingPlayerList = true;
                 break;
 
+            case "timerover":
+                hasPendingTimerOver = true;
+                break;
             case "countdownstart":
                 QuestionManager.instance.DisplayResults();
                 break;
@@ -238,7 +273,10 @@ public class WebSocketClient : MonoBehaviour
                 pendingScoreboard = JsonConvert.DeserializeObject<ScoreboardMessage>(e.Data);
                 hasPendingScoreboard = true;
                 break;
-
+            case "servershutdown":
+                hasPendingShutdown = true;
+                ws.Close();
+                break;
             case "allanswered":
                 // Host uses this; clients can ignore or use for visuals
                 break;

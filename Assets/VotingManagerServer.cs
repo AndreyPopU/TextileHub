@@ -2,15 +2,35 @@ using UnityEngine;
 
 public class VotingManagerServer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int currentIndex;
+    public ShirtResults[] shirts;
+    public ClothingManager displayShirt;
+
     void Start()
     {
-        
+        // Find all ShirtDesigns from last scene
+        shirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayShirt()
     {
-        
+        // If all shirts have been cycled through, move on to the next minigame
+        if (currentIndex >= shirts.Length)
+        {
+
+            return;
+        }
+
+        for (int i = 0; i < shirts[currentIndex].results.Length; i++)
+            displayShirt.SetProperty(shirts[currentIndex].results[i]);
+
+        displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
+        displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
+
+        currentIndex++;
     }
+
+    public void ServerNextMinigame() => FindFirstObjectByType<AsyncLoad>().LoadScene(3);
+
+    public void NextMinigame() => HostNetwork.instance.NextMinigame(4);
 }
