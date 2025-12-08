@@ -12,6 +12,8 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] Sprite[] l_sleeves;
     [SerializeField] Sprite[] l_hems;
 
+    [SerializeField] GameObject[] patterns;
+
     [SerializeField] GameObject obj_colar;
     [SerializeField] GameObject obj_sleeves;
     [SerializeField] GameObject obj_hem;
@@ -49,9 +51,25 @@ public class DesignChanger : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Colour2(string colour)
     {
-        
+        if (colour == "red")
+            image_color = new Color32(242, 44, 44, 255);
+        else if (colour == "red1")
+            image_color = new Color32(213, 13, 70, 255);
+        else if (colour == "red2")
+            image_color = new Color32(209, 77, 16, 255);
+        else if (colour == "red3")
+            image_color = new Color32(228, 24, 160, 255);
+        else if (colour == "red4")
+            image_color = new Color32(193, 13, 13, 255);
+
+        Debug.Log(image_color);
+        foreach (GameObject item in patterns)
+        {
+            color_image = item.GetComponent<Image>();
+            color_image.color = image_color;
+        }
     }
 
     //------Collar------
