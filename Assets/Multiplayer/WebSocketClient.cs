@@ -403,7 +403,7 @@ public class WebSocketClient : MonoBehaviour
             text += $"{playerName}: {score}\n";
         }
 
-        // Assign to your single Text element in UI
+        // Assign to your single text element in UI
         QuestionManager.instance.resultText.text = text;
         QuestionManager.instance.EnableResultScreen(true);
 
