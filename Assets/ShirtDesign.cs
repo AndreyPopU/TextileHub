@@ -20,7 +20,7 @@ public class ShirtDesign : MonoBehaviour
         shirtScript.results = results;
         shirtScript.primaryHex = primaryHex;
         shirtScript.secondaryHex = secondaryHex;
-        image.color = new Color(1, 0.7f, .3f, 1);
+        image.color = new Color(0.92f, 0.36f, .16f, 1);
         checkMark.SetActive(true);
     }
 }

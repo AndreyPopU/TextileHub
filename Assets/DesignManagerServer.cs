@@ -14,6 +14,7 @@ public class DesignManagerServer : MonoBehaviour
     public GameObject serverShirtPrefab;
     public Dictionary<string, ShirtDesign> playerShirts = new Dictionary<string, ShirtDesign>(); // Key - PlayerID; Value - ShirtDesign
     public GameObject nextLevelButton;
+    public GameObject timerSlider;
 
     private void Awake() => instance = this;
 
@@ -43,7 +44,10 @@ public class DesignManagerServer : MonoBehaviour
             finishedPlayers++;
 
             if (finishedPlayers == playerCount)
+            {
                 nextLevelButton.SetActive(true);
+                timerSlider.SetActive(false);
+            }
 
             hasPendingReadyMsg = false;
         }

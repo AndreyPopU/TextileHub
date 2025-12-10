@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1803262312}
   m_HandleRect: {fileID: 0}
@@ -2288,7 +2288,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1998728781}
   m_HandleRect: {fileID: 0}
@@ -3262,7 +3262,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 100524526}
   m_HandleRect: {fileID: 0}
@@ -3715,6 +3715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff944b234a4672041b4cb8b16bf75674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishedDesign: 0
   cursorDebug: 0
   primaryColor: 1
   clothing: {fileID: 236645675}
