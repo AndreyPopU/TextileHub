@@ -37,12 +37,28 @@ public class DesignChanger : MonoBehaviour
         else if (colour == "red2")
             image_color = new Color32(209, 77, 16, 255);
         else if (colour == "yellow")
-            image_color = new Color32(232, 245, 39, 255);
+            image_color = new Color32(232, 200, 39, 255);
+        else if (colour == "yellow1")
+            image_color = new Color32(232, 157, 39, 255);
+        else if (colour == "yellow2")
+            image_color = new Color32(246, 242, 114, 255);
         else if (colour == "green")
-            image_color = new Color32(27, 198, 41, 255);
+            image_color = new Color32(27, 168, 41, 255);
+        else if (colour == "green1")
+            image_color = new Color32(27, 90, 41, 255);
+        else if (colour == "green2")
+            image_color = new Color32(27, 160, 130, 255);
         else if (colour == "blue")
             image_color = new Color32(0, 131, 225, 255);
+        else if (colour == "blue1")
+            image_color = new Color32(0, 50, 225, 255);
+        else if (colour == "blue2")
+            image_color = new Color32(80, 110, 140, 255);
         else if (colour == "purple")
+            image_color = new Color32(170, 0, 225, 255);
+        else if (colour == "purple1")
+            image_color = new Color32(170, 0, 225, 255);
+        else if (colour == "purple2")
             image_color = new Color32(170, 0, 225, 255);
 
         Debug.Log(image_color);
@@ -64,12 +80,28 @@ public class DesignChanger : MonoBehaviour
         else if (colour == "red2")
             image_color = new Color32(209, 77, 16, 255);
         else if (colour == "yellow")
-            image_color = new Color32(232, 245, 39, 255);
+            image_color = new Color32(232, 200, 39, 255);
+        else if (colour == "yellow1")
+            image_color = new Color32(232, 157, 39, 255);
+        else if (colour == "yellow2")
+            image_color = new Color32(246, 242, 114, 255);
         else if (colour == "green")
-            image_color = new Color32(27, 198, 41, 255);
+            image_color = new Color32(27, 168, 41, 255);
+        else if (colour == "green1")
+            image_color = new Color32(27, 90, 41, 255);
+        else if (colour == "green2")
+            image_color = new Color32(27, 160, 130, 255);
         else if (colour == "blue")
             image_color = new Color32(0, 131, 225, 255);
+        else if (colour == "blue1")
+            image_color = new Color32(0, 50, 225, 255);
+        else if (colour == "blue2")
+            image_color = new Color32(80, 110, 140, 255);
         else if (colour == "purple")
+            image_color = new Color32(170, 0, 225, 255);
+        else if (colour == "purple1")
+            image_color = new Color32(170, 0, 225, 255);
+        else if (colour == "purple2")
             image_color = new Color32(170, 0, 225, 255);
 
         Debug.Log(image_color);
