@@ -57,9 +57,9 @@ public class DesignChanger : MonoBehaviour
         else if (colour == "purple")
             image_color = new Color32(170, 0, 225, 255);
         else if (colour == "purple1")
-            image_color = new Color32(170, 0, 225, 255);
+            image_color = new Color32(114, 0, 225, 255);
         else if (colour == "purple2")
-            image_color = new Color32(170, 0, 225, 255);
+            image_color = new Color32(80, 0, 156, 255);
 
         Debug.Log(image_color);
         color_image = obj_colar.GetComponent<Image>();
@@ -100,9 +100,9 @@ public class DesignChanger : MonoBehaviour
         else if (colour == "purple")
             image_color = new Color32(170, 0, 225, 255);
         else if (colour == "purple1")
-            image_color = new Color32(170, 0, 225, 255);
+            image_color = new Color32(114, 0, 225, 255);
         else if (colour == "purple2")
-            image_color = new Color32(170, 0, 225, 255);
+            image_color = new Color32(80, 0, 156, 255);
 
         Debug.Log(image_color);
         foreach (GameObject item in patterns)
