@@ -63,10 +63,14 @@ public class DesignChanger : MonoBehaviour
             image_color = new Color32(213, 13, 70, 255);
         else if (colour == "red2")
             image_color = new Color32(209, 77, 16, 255);
-        else if (colour == "red3")
-            image_color = new Color32(228, 24, 160, 255);
-        else if (colour == "red4")
-            image_color = new Color32(193, 13, 13, 255);
+        else if (colour == "yellow")
+            image_color = new Color32(232, 245, 39, 255);
+        else if (colour == "green")
+            image_color = new Color32(27, 198, 41, 255);
+        else if (colour == "blue")
+            image_color = new Color32(0, 131, 225, 255);
+        else if (colour == "purple")
+            image_color = new Color32(170, 0, 225, 255);
 
         Debug.Log(image_color);
         foreach (GameObject item in patterns)
