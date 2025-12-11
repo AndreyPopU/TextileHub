@@ -1001,12 +1001,12 @@ MonoBehaviour:
   themes:
   - Gala reporter
   - Sports event
-  - Casual wedding/engagement
+  - Casual wedding
   - Book reading club
   - Wine tasting
   - Sleepover party
   - Children's birthday party
-  Text: {fileID: 1768617736}
+  text: {fileID: 1768617736}
 --- !u!4 &1918333961
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,9 +1034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0b2e910c7d1c54b946248016d3d7b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 10
-  timerIsRunning: 0
-  timeText: {fileID: 939915179}
+  time_remaining: 10
+  text: {fileID: 939915179}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
