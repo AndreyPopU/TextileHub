@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 
 public class LobbyBehavior : WebSocketBehavior
 {
-
     private static Dictionary<string, string> connectedPlayers = new Dictionary<string, string>(); // Key - PlayerId; Value - name;
     private static Dictionary<string, int> playerScores = new Dictionary<string, int>();
     private static HashSet<string> playersAnswered = new HashSet<string>();
@@ -14,8 +13,9 @@ public class LobbyBehavior : WebSocketBehavior
     protected override void OnMessage(MessageEventArgs e)
     {
         var baseMsg = JsonUtility.FromJson<GameMessage>(e.Data);
+        Debug.Log($"Receiving message {baseMsg.type}");
 
-        if (baseMsg.type == "playerJoined")
+        if (baseMsg.type == "playerjoined")
         {
             // Receive new player and broadcast it
             var joinMsg = JsonUtility.FromJson<PlayerJoinMessage>(e.Data);
@@ -24,6 +24,11 @@ public class LobbyBehavior : WebSocketBehavior
             {
                 connectedPlayers.Add(joinMsg.playerId, joinMsg.name);
                 playerScores[joinMsg.playerId] = 0;
+                if (GameManager.instance != null)
+                {
+                    GameManager.instance.connectedPlayers = connectedPlayers;
+                    GameManager.instance.hasPendingPlayerList = true;
+                }
                 Debug.Log($"[Server] Player joined: {joinMsg.name}");
             }
 
@@ -82,7 +87,7 @@ public class LobbyBehavior : WebSocketBehavior
             var votingMsg = JsonUtility.FromJson<VotingMessage>(e.Data);
 
             for (int i = 0; i < votingMsg.votingResults.Length; i++)
-                Debug.Log($"[Server] Recieved design results: {votingMsg.votingResults[i]}");
+                Debug.Log($"[Server] Recieved voting results: {votingMsg.votingResults[i]}");
 
             if (VotingManagerServer.instance != null)
             {

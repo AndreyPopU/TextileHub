@@ -306,7 +306,7 @@ public class WebSocketClient : MonoBehaviour
 
         var joinMsg = new PlayerJoinMessage
         {
-            type = "playerJoined",
+            type = "playerjoined",
             playerId = localPlayerId,
             name = playerName
         };

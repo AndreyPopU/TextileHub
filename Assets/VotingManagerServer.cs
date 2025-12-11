@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class VotingManagerServer : MonoBehaviour
     public ShirtResults[] shirts;
     public ClothingManager displayShirt;
 
+    public GameObject nextShirtButton;
+    public TextMeshProUGUI presentingPlayerText;
+    public int playersVoted;
     public int[] results;
 
     [Header("Menus")]
@@ -33,6 +37,8 @@ public class VotingManagerServer : MonoBehaviour
         results = new int[3];
         shirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
         timerSlider.maxValue = timeLeft;
+        pitchingPanel.SetActive(false);
+        presentingPlayerText.text = LobbyBehavior.GetPlayerName(LobbyBehavior.GetAllPlayerIds()[currentIndex]);
     }
 
     void Update()
@@ -42,6 +48,15 @@ public class VotingManagerServer : MonoBehaviour
             for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
                 results[i] += pendingVotingMsg.votingResults[i];
 
+            playersVoted++;
+
+            if (playersVoted < LobbyBehavior.GetConnectedPlayers().Count) // All players have voted
+            {
+                nextShirtButton.SetActive(true);
+                votingRoundManagerServer.started = false;
+                timerSlider.transform.parent.gameObject.SetActive(false);
+                
+            }    
             print("Added results");
 
             hasPendingVotingMessage = false;
@@ -56,6 +71,7 @@ public class VotingManagerServer : MonoBehaviour
             getReadyPanel.SetActive(false);
             pitchingPanel.SetActive(true);
             votingRoundManagerServer.started = true;
+            DisplayShirt();
 
             return;
         }
@@ -67,11 +83,7 @@ public class VotingManagerServer : MonoBehaviour
     public void DisplayShirt()
     {
         // If all shirts have been cycled through, move on to the next minigame
-        if (currentIndex >= shirts.Length)
-        {
-
-            return;
-        }
+        if (currentIndex >= shirts.Length) return;
 
         for (int i = 0; i < shirts[currentIndex].results.Length; i++)
             displayShirt.SetProperty(shirts[currentIndex].results[i]);

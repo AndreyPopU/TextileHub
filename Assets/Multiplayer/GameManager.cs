@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject loadingScreen;
     public GameObject disconnectedScreen;
 
+    public bool hasPendingPlayerList = false;
+    public Dictionary<string, string> connectedPlayers;
+
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
@@ -26,6 +29,15 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (hasPendingPlayerList)
+        {
+            UpdatePlayerList(connectedPlayers);
+            hasPendingPlayerList = false;
         }
     }
 

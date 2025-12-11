@@ -1026,6 +1026,9 @@ MonoBehaviour:
   currentIndex: 0
   shirts: []
   displayShirt: {fileID: 1800263821}
+  nextShirtButton: {fileID: 840942295}
+  presentingPlayerText: {fileID: 942871391}
+  playersVoted: 0
   results: 
   getReadyPanel: {fileID: 1030870406}
   pitchingPanel: {fileID: 995218321}
@@ -1580,7 +1583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &840942296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2013,12 +2016,12 @@ GameObject:
   m_Component:
   - component: {fileID: 995218322}
   m_Layer: 5
-  m_Name: PitchingPanel
+  m_Name: PitchingPanel - HAS TO STAY ACTIVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &995218322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3879,7 +3882,7 @@ RectTransform:
   m_Father: {fileID: 1776515051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.333, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.5, y: 0}
   m_SizeDelta: {x: 4.9999, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
