@@ -36,7 +36,7 @@ public class ClothingPiece : MonoBehaviour
     {
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         dragging = true;
-        ClothingManager.instance.currentPiece = this;
+        //ClothingManager.instance.currentPiece = this;
     }
 
     private void OnMouseUp() { dragging = false; CheckCollision(); } // Stop dragging and check if it connects with the main piece of clothing

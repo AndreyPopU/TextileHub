@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class ConsoleToGUI : MonoBehaviour
 {
-    //#if !UNITY_EDITOR
     static string myLog = "";
     private string output;
-    private string stack;
 
     void OnEnable()
     {
@@ -20,7 +18,6 @@ public class ConsoleToGUI : MonoBehaviour
     public void Log(string logString, string stackTrace, LogType type)
     {
         output = logString;
-        stack = stackTrace;
         myLog += output + " " + myLog;
         if (myLog.Length > 5000)
         {
@@ -28,12 +25,5 @@ public class ConsoleToGUI : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        //if (!Application.isEditor) //Do not display in editor ( or you can use the UNITY_EDITOR macro to also disable the rest)
-        {
-            myLog = GUI.TextArea(new Rect(0, Screen.height / 2, Screen.width, Screen.height / 2), myLog);
-        }
-    }
-    //#endif
+    void OnGUI() => myLog = GUI.TextArea(new Rect(0, Screen.height / 2, Screen.width, Screen.height / 2), myLog);
 }

@@ -14,10 +14,6 @@ public class ClothingManager : MonoBehaviour
 
     public ClothingDesign clothing;
 
-    [Header("Pieces")]
-    public ClothingPiece currentPiece;
-    public GameObject[] stickerPrefabs;
-
     public Sprite[] properties; // 0-5: collar; 5-10: sleeves; 10-15: bottom; 15-20: overlay; 20-25: material; 25: color; 26: secondary color;
     public int[] selectedProperties;
     public string primaryHex, secondaryHex;

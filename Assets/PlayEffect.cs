@@ -7,4 +7,6 @@ public class PlayEffect : MonoBehaviour
     public void Play() => effect.Play();
 
     public void Stop() => effect.Stop();
+
+    public void SoakShirt() => TestTubesManager.instance.SoakShirt();
 }
