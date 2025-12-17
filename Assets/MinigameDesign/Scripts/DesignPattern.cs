@@ -11,10 +11,18 @@ public class DesignPattern : MonoBehaviour
     [SerializeField] GameObject[] pattern_squares;
     [SerializeField] GameObject[] pattern_star;
     [SerializeField] GameObject[] pattern_logo;
+    [SerializeField] MoneyManager moneyManager;
+
+    public string current_pattern;
 
     private void Start()
     {
         Pattern_None(true);
+    }
+
+    void Money(float _cost)
+    {
+        moneyManager.Cost_Pattern(_cost);
     }
 
     public void Pattern_None(bool toggle_value)
@@ -22,8 +30,9 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(0);
+            current_pattern = "None";
         }
-
     }
 
     public void V_Pattern_Stripes(bool toggle_value)
@@ -31,6 +40,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "V Stripes";
 
             foreach (GameObject item in v_pattern_stripes)
             {
@@ -45,6 +56,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "H Stripes";
 
             foreach (GameObject item in h_pattern_stripes)
             {
@@ -58,6 +71,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "D Stripes";
 
             foreach (GameObject item in d_pattern_stripes)
             {
@@ -71,6 +86,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "Dots";
 
             foreach (GameObject item in pattern_dots)
             {
@@ -84,6 +101,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "Squares";
 
             foreach (GameObject item in pattern_squares)
             {
@@ -97,6 +116,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(20);
+            current_pattern = "Star";
 
             foreach (GameObject item in pattern_star)
             {
@@ -110,6 +131,8 @@ public class DesignPattern : MonoBehaviour
         if (toggle_value)
         {
             Hide();
+            Money(40);
+            current_pattern = "Logo";
 
             foreach (GameObject item in pattern_logo)
             {
@@ -125,5 +148,4 @@ public class DesignPattern : MonoBehaviour
             item.SetActive(false);
         }
     }
-
 }

@@ -21,47 +21,124 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] GameObject l_obj_sleeves;
     [SerializeField] GameObject l_obj_hem;
 
-    int colar_index;
-    int sleeves_index;
-    int hem_index;
+    [SerializeField] MoneyManager moneyManager;
+
+    public int colar_index;
+    public int sleeves_index;
+    public int hem_index;
+
+    public string current_colour_1;
+    public string current_colour_2;
 
     Image color_image;
     Color image_color;
 
+    float _cost1;
+    float _cost2;
+
+    private void Start()
+    {
+        Colour1("blue");
+        Colour2("yellow");
+    }
+
+    void Money1(float _cost)
+    {
+        _cost1 = _cost;
+        Money();
+    }
+
+    void Money2(float _cost)
+    {
+        _cost2 = _cost;
+        Money();
+    }
+
+    void Money()
+    {
+        moneyManager.Cost_color(_cost1,_cost2);
+    }
+
     public void Colour1(string colour)
     {
         if (colour == "red")
-            image_color = new Color32(242,44,44,255);
+        {
+            image_color = new Color32(242, 44, 44, 255);
+            Money1(10);
+        }
         else if (colour == "red1")
+        { 
             image_color = new Color32(213, 13, 70, 255);
+            Money1(20);
+        }
         else if (colour == "red2")
+        {
             image_color = new Color32(209, 77, 16, 255);
+            Money1(30);
+        }
         else if (colour == "yellow")
+        { 
             image_color = new Color32(232, 200, 39, 255);
+            Money1(10);
+        }
         else if (colour == "yellow1")
+        { 
             image_color = new Color32(232, 157, 39, 255);
+            Money1(20);
+        }
         else if (colour == "yellow2")
+        { 
             image_color = new Color32(246, 242, 114, 255);
+            Money1(30);
+        }
         else if (colour == "green")
+        { 
             image_color = new Color32(27, 168, 41, 255);
+            Money1(10);
+        }
         else if (colour == "green1")
+        { 
             image_color = new Color32(27, 90, 41, 255);
+            Money1(20);
+        }
         else if (colour == "green2")
+        { 
             image_color = new Color32(27, 160, 130, 255);
+            Money1(30);
+        }
         else if (colour == "blue")
+        { 
             image_color = new Color32(0, 131, 225, 255);
+            Money1(10);
+        }
         else if (colour == "blue1")
+        { 
             image_color = new Color32(0, 50, 225, 255);
+            Money1(20);
+        }
         else if (colour == "blue2")
+        { 
             image_color = new Color32(80, 110, 140, 255);
+            Money1(30);
+        }
         else if (colour == "purple")
+        { 
             image_color = new Color32(170, 0, 225, 255);
+            Money1(10);
+        }
         else if (colour == "purple1")
+        { 
             image_color = new Color32(114, 0, 225, 255);
+            Money1(20);
+        }
         else if (colour == "purple2")
+        { 
             image_color = new Color32(80, 0, 156, 255);
+            Money1(30);
+        }
 
-        Debug.Log(image_color);
+        current_colour_1 = colour;
+
         color_image = obj_colar.GetComponent<Image>();
         color_image.color = image_color;
         color_image = obj_sleeves.GetComponent<Image>();
@@ -74,37 +151,83 @@ public class DesignChanger : MonoBehaviour
     public void Colour2(string colour)
     {
         if (colour == "red")
+        {
             image_color = new Color32(242, 44, 44, 255);
+            Money2(10);
+        }
         else if (colour == "red1")
+        {
             image_color = new Color32(213, 13, 70, 255);
+            Money2(20);
+        }
         else if (colour == "red2")
+        {
             image_color = new Color32(209, 77, 16, 255);
+            Money2(30);
+        }
         else if (colour == "yellow")
+        {
             image_color = new Color32(232, 200, 39, 255);
+            Money2(10);
+        }
         else if (colour == "yellow1")
+        {
             image_color = new Color32(232, 157, 39, 255);
+            Money2(20);
+        }
         else if (colour == "yellow2")
+        {
             image_color = new Color32(246, 242, 114, 255);
+            Money2(30);
+        }
         else if (colour == "green")
+        {
             image_color = new Color32(27, 168, 41, 255);
+            Money2(10);
+        }
         else if (colour == "green1")
+        {
             image_color = new Color32(27, 90, 41, 255);
+            Money2(20);
+        }
         else if (colour == "green2")
+        {
             image_color = new Color32(27, 160, 130, 255);
+            Money2(30);
+        }
         else if (colour == "blue")
+        {
             image_color = new Color32(0, 131, 225, 255);
+            Money2(10);
+        }
         else if (colour == "blue1")
+        {
             image_color = new Color32(0, 50, 225, 255);
+            Money2(20);
+        }
         else if (colour == "blue2")
+        {
             image_color = new Color32(80, 110, 140, 255);
+            Money2(30);
+        }
         else if (colour == "purple")
+        {
             image_color = new Color32(170, 0, 225, 255);
+            Money2(10);
+        }
         else if (colour == "purple1")
+        {
             image_color = new Color32(114, 0, 225, 255);
+            Money2(20);
+        }
         else if (colour == "purple2")
+        {
             image_color = new Color32(80, 0, 156, 255);
+            Money2(30);
+        }
 
-        Debug.Log(image_color);
+        current_colour_2 = colour;
+
         foreach (GameObject item in patterns)
         {
             color_image = item.GetComponent<Image>();
@@ -120,7 +243,6 @@ public class DesignChanger : MonoBehaviour
         Change_Colar();
         obj_colar.GetComponent<Image>().sprite = colars[colar_index];
         l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
-        Debug.Log(colar_index);
     }
 
     public void OnButtonCollarRight()
@@ -129,7 +251,6 @@ public class DesignChanger : MonoBehaviour
         Change_Colar();
         obj_colar.GetComponent<Image>().sprite = colars[colar_index];
         l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
-        Debug.Log(colar_index);
     }
 
     void Change_Colar()
@@ -149,7 +270,6 @@ public class DesignChanger : MonoBehaviour
         Change_Sleeves();
         obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
         l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
-        Debug.Log(sleeves_index);
     }
 
     public void OnButtonSleevesRight()
@@ -158,7 +278,6 @@ public class DesignChanger : MonoBehaviour
         Change_Sleeves();
         obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
         l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
-        Debug.Log(sleeves_index);
     }
 
     void Change_Sleeves()
@@ -178,7 +297,6 @@ public class DesignChanger : MonoBehaviour
         Change_Hem();
         obj_hem.GetComponent<Image>().sprite = hems[hem_index];
         l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
-        Debug.Log(hem_index);
     }
 
     public void OnButtonHemRight()
@@ -187,7 +305,6 @@ public class DesignChanger : MonoBehaviour
         Change_Hem();
         obj_hem.GetComponent<Image>().sprite = hems[hem_index];
         l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
-        Debug.Log(hem_index);
     }
 
     void Change_Hem()
