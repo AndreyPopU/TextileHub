@@ -49,6 +49,13 @@ public class VotingMessage
 }
 
 [Serializable]
+public class MagnifyingMessage
+{
+    public string type;
+    public int response;
+}
+
+[Serializable]
 public class FinalDesignMessage
 {
     public string type;

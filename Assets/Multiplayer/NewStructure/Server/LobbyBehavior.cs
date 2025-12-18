@@ -95,6 +95,12 @@ public class LobbyBehavior : WebSocketBehavior
                 VotingManagerServer.instance.AddToResults(votingMsg);
             }
         }
+        else if (baseMsg.type == "magnify")
+        {
+            var magnifyingMessage = JsonUtility.FromJson<MagnifyingMessage>(e.Data);
+
+            Debug.Log($"[Server] Recieved magnifying response: {magnifyingMessage.response}");
+        }
         else
         {
             // rebroadcast other messages as normal

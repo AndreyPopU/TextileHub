@@ -1,81 +1,95 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RecyclingManager : MonoBehaviour
 {
+    public static RecyclingManager instance;
+
+    public bool finishedGame;
+    public GameObject resultsPanel;
     public CanvasGroup magnifyingGlass;
     public bool glass;
-    public MaterialFabric currentFabric;
-
-    public Button[] interactableButtons;
+    public int imperfectionsFound;
 
     private Camera mainCamera;
 
-    void Start() => mainCamera = Camera.main;    
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-            SwitchMode();
-
-        if (glass) return;
-
-        if (Input.GetMouseButtonDown(0))
+        if (imperfectionsFound == 5)
         {
-            // Convert mouse position to world coordinates
-            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+            if (!resultsPanel.activeInHierarchy) resultsPanel.SetActive(true);
 
-            // Raycast at the mouse position
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
+            return;
+        }
 
-            if (hit.collider != null) // If raycast hits something
+        //if (Input.GetKeyDown(KeyCode.F))
+        //    SwitchMode();
+
+        //if (glass) return;
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    // Convert mouse position to world coordinates
+        //    Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //    Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+
+        //    // Raycast at the mouse position
+        //    RaycastHit2D hit = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
+
+        //    if (hit.collider != null) // If raycast hits something
+        //    {
+        //        if (hit.collider.transform.TryGetComponent(out MaterialFabric fabric)) // Something that is fabric
+        //        {
+        //            if (fabric.visible) // If fabric is under magnifying glass
+        //            {
+
+        //            }
+        //        }
+        //    }
+        //}
+    }
+
+    public void SendGuess(int response)
+    {
+        if (finishedGame) return;
+
+        if (WebSocketClient.instance != null)
+        {
+            var magnifyingMessage = new MagnifyingMessage
             {
-                if (hit.collider.transform.TryGetComponent(out MaterialFabric fabric)) // Something that is fabric
-                {
-                    if (fabric.visible) // If fabric is under magnifying glass
-                    {
-                        if (currentFabric != null) // Disable the previous fabric if there is one 
-                        {
-                            currentFabric.outline.SetActive(false);
-                            currentFabric = null;
-                        }
-                        currentFabric = fabric;
+                type = "magnify",
+                response = response,
+            };
 
-                        fabric.outline.SetActive(true);
-
-                        // Enable interactable buttons
-                        // for (int i = 0; i < interactableButtons.Length; i++)
-                            // interactableButtons[i].interactable = true;
-                    }
-                }
-            }
+            string json = JsonUtility.ToJson(magnifyingMessage);
+            WebSocketClient.instance.SendMessageToServer(json);
         }
+
+        finishedGame = true;
     }
 
-    public void SwitchMode()
-    {
-        glass = !glass;
-        magnifyingGlass.blocksRaycasts = glass;
+    //public void SwitchMode()
+    //{
+    //    glass = !glass;
+    //    magnifyingGlass.blocksRaycasts = glass;
 
-        if (currentFabric != null) // Disable buttons and outline
-        {
-            currentFabric.outline.SetActive(false);
-            currentFabric = null;
-            // for (int i = 0; i < interactableButtons.Length; i++)
-                // interactableButtons[i].interactable = false;
-        }
-    }
-
-    public void DestroyFabric()
-    {
-        if (currentFabric != null) Destroy(currentFabric.gameObject);
-        print("Destroyed");
-    }
-
-    public void RecycleFabric()
-    {
-        if (currentFabric != null) Destroy(currentFabric.gameObject);
-        print("Recycled");
-    }
+    //    if (currentFabric != null) // Disable buttons and outline
+    //    {
+    //        currentFabric.outline.SetActive(false);
+    //        currentFabric = null;
+    //        // for (int i = 0; i < interactableButtons.Length; i++)
+    //            // interactableButtons[i].interactable = false;
+    //    }
+    //}
 }

@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MinigameTesting.unity
     guid: d717bbfed79936d41871e439ada32dc3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MagnifyingGlass.unity
     guid: f642ed43227ac1c4daa49d58b31f5f05
   m_configObjects:
