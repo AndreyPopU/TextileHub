@@ -7,6 +7,10 @@ public class DesignChanger : MonoBehaviour
 {
     public static DesignChanger instance;
 
+    public int[] selectedProperties; // Collar, Sleeves, Bottom, Overlay, Material
+    public string primaryHex, secondaryHex;
+    public bool finishedDesign;
+
     [SerializeField] Sprite[] colars;
     [SerializeField] Sprite[] sleeves;
     [SerializeField] Sprite[] hems;
@@ -47,8 +51,34 @@ public class DesignChanger : MonoBehaviour
 
     private void Start()
     {
-        Colour1("blue");
-        Colour2("yellow");
+        selectedProperties = new int[5];
+    }
+
+    public void FinishClothing()
+    {
+        if (finishedDesign) return;
+
+        if (WebSocketClient.instance != null)
+        {
+            var designMessage = new FinalDesignMessage
+            {
+                type = "finaldesign",
+                playerId = FindFirstObjectByType<WebSocketClient>().localPlayerId,
+                designResults = selectedProperties,
+                primaryHex = primaryHex,
+                secondaryHex = secondaryHex,
+            };
+
+            string json = JsonUtility.ToJson(designMessage);
+            WebSocketClient.instance.SendMessageToServer(json);
+        }
+
+        finishedDesign = true;
+    }
+
+    public void SetMaterial(int index)
+    {
+        GetComponent<DesignFabric>().SetFabric(index);
     }
 
     public void SetCollar(int index)
@@ -67,16 +97,6 @@ public class DesignChanger : MonoBehaviour
     {
         obj_hem.GetComponent<Image>().sprite = hems[index];
         l_obj_hem.GetComponent<Image>().sprite = l_hems[index];
-    }
-
-    public void SetOverlay()
-    {
-
-    }
-
-    public void SetMaterial()
-    {
-
     }
 
     public void ResultSetPrimaryColor(string newHex)

@@ -88,8 +88,9 @@ public class VotingManagerServer : MonoBehaviour
         displayShirt.SetCollar(shirts[currentIndex].results[0]);
         displayShirt.SetSleeves(shirts[currentIndex].results[1]);
         displayShirt.SetHem(shirts[currentIndex].results[2]);
-        displayShirt.SetCollar(shirts[currentIndex].results[2]);
-        //displayShirt.SetMaterial(shirts[currentIndex].results[2]);
+
+        displayShirt.GetComponent<DesignFabric>().SetFabric(shirts[currentIndex].results[3]);
+        displayShirt.SetMaterial(shirts[currentIndex].results[4]);
         
         displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);

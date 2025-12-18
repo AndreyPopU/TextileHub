@@ -16,10 +16,19 @@ public class DesignFabric : MonoBehaviour
     public string current_fabric;
     public int fabricIndex;
 
-    private void Start()
+    public void SetFabric(int index)
     {
-        Fabric_Cotton(true);
+        Hide();
+        switch (index)
+        {
+            case 0: foreach (GameObject item in fabric_cotton) item.SetActive(true); break;
+            case 1: foreach (GameObject item in fabric_polyester) item.SetActive(true); break;
+            case 2: foreach (GameObject item in fabric_silk) item.SetActive(true); break;
+            case 3: foreach (GameObject item in fabric_linen) item.SetActive(true); break;
+            case 4: foreach (GameObject item in fabric_wool) item.SetActive(true); break;
+        }
     }
+
 
     void Money(float _cost)
     {
