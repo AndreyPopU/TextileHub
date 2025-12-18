@@ -12,10 +12,8 @@ public class ClothingManager : MonoBehaviour
     public bool cursorDebug;
     public bool primaryColor = true; // If the player is coloring the primary or secondary color
 
-    public ClothingDesign clothing;
-
     public Sprite[] properties; // 0-5: collar; 5-10: sleeves; 10-15: bottom; 15-20: overlay; 20-25: material; 25: color; 26: secondary color;
-    public int[] selectedProperties;
+    public int[] selectedProperties; // Collar, Sleeves, Bottom, Overlay, Material
     public string primaryHex, secondaryHex;
 
     // Store current clothing options
@@ -64,76 +62,77 @@ public class ClothingManager : MonoBehaviour
         finishedDesign = true;
     }
 
-    #region Designing Clothes
-
-    public void SetProperty(int property) // 0-5: collar; 5-10: sleeves; 10-15: bottom; 15-20: overlay; 20-25: material; 25: color; 26: secondary color;
-    {
-        if (property < 5)
-        {
-            clothing.collar.sprite = properties[property];
-            selectedProperties[0] = property;
-        }
-        else if (property >= 5 && property < 10)
-        {
-            clothing.sleeves.sprite = properties[property];
-            selectedProperties[1] = property;
-        }
-        else if (property >= 10 && property < 15)
-        {
-            clothing.bottom.sprite = properties[property];
-            selectedProperties[2] = property;
-        }
-        else if (property >= 15 && property < 20)
-        {
-            clothing.overlay.sprite = properties[property];
-            selectedProperties[3] = property;
-        }
-        else if (property >= 20 && property < 25)
-        {
-            clothing.material.sprite = properties[property];
-            selectedProperties[4] = property;
-        }
-    }
-
     public void ResultSetPrimaryColor(string newHex)
     {
         newHex = "#" + newHex;
         print(newHex);
         UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
         print("result color is " + resultColor);
-        clothing.collar.color = resultColor;
-        clothing.bottom.color = resultColor;
-        clothing.sleeves.color = resultColor;
+
+        DesignChanger.instance.SetCollarColor(resultColor);
+        DesignChanger.instance.SetSleevesColor(resultColor);
+        DesignChanger.instance.SetHemColor(resultColor);
     }
 
     public void ResultSetSecondaryColor(string newHex)
     {
         newHex = "#" + newHex;
         UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
-        clothing.overlay.color = resultColor;
+        DesignChanger.instance.SetOverlayColor(resultColor);
     }
 
-    public void SetPrimaryColor(Image image)
-    {
-        if (currentColorPrimary != null) currentColorPrimary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
-        clothing.collar.color = image.color;
-        clothing.bottom.color = image.color;
-        clothing.sleeves.color = image.color;
-        currentColorPrimary = image.gameObject;
-        currentColorPrimary.transform.GetChild(0).gameObject.SetActive(true);
-        primaryHex = image.color.ToHexString();
-    }
+    #region Designing Clothes
 
-    public void SetSecondaryColor(Image image)
-    {
-        if (currentcolorSecondary != null) currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
-        clothing.overlay.color = image.color;
-        currentcolorSecondary = image.gameObject;
-        currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(true);
-        secondaryHex = image.color.ToHexString();
-    }
+    //public void SetProperty(int property) // 0-5: collar; 5-10: sleeves; 10-15: bottom; 15-20: overlay; 20-25: material; 25: color; 26: secondary color;
+    //{
+    //    if (property < 5)
+    //    {
+    //        clothing.collar.sprite = properties[property];
+    //        selectedProperties[0] = property; 
+    //    }
+    //    else if (property >= 5 && property < 10)
+    //    {
+    //        clothing.sleeves.sprite = properties[property];
+    //        selectedProperties[1] = property;
+    //    }
+    //    else if (property >= 10 && property < 15)
+    //    {
+    //        clothing.bottom.sprite = properties[property];
+    //        selectedProperties[2] = property;
+    //    }
+    //    else if (property >= 15 && property < 20)
+    //    {
+    //        clothing.overlay.sprite = properties[property];
+    //        selectedProperties[3] = property;
+    //    }
+    //    else if (property >= 20 && property < 25)
+    //    {
+    //        clothing.material.sprite = properties[property];
+    //        selectedProperties[4] = property;
+    //    }
+    //}
 
-    public void ChangePrimaryColor() => primaryColor = !primaryColor; // Cycle between primary and secondary color
+    //public void SetPrimaryColor(Image image)
+    //{
+    //    if (currentColorPrimary != null) currentColorPrimary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
+    //    clothing.collar.color = image.color;
+    //    clothing.bottom.color = image.color;
+    //    clothing.sleeves.color = image.color;
+    //    currentColorPrimary = image.gameObject;
+    //    currentColorPrimary.transform.GetChild(0).gameObject.SetActive(true);
+    //    primaryHex = image.color.ToHexString();
+    //}
+
+    //public void SetSecondaryColor(Image image)
+    //{
+    //    if (currentcolorSecondary != null) currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(false); /// Disable outline of previously selected collor
+    //    clothing.overlay.color = image.color;
+    //    currentcolorSecondary = image.gameObject;
+    //    currentcolorSecondary.transform.GetChild(0).gameObject.SetActive(true);
+    //    secondaryHex = image.color.ToHexString();
+    //}
+
+    //public void ChangePrimaryColor() => primaryColor = !primaryColor; // Cycle between primary and secondary color
 
     #endregion
 }

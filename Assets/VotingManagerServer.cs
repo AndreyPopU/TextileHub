@@ -8,7 +8,7 @@ public class VotingManagerServer : MonoBehaviour
 
     public int currentIndex;
     public ShirtResults[] shirts;
-    public ClothingManager displayShirt;
+    public DesignChanger displayShirt;
 
     public GameObject nextShirtButton;
     public TextMeshProUGUI presentingPlayerText;
@@ -85,9 +85,13 @@ public class VotingManagerServer : MonoBehaviour
         // If all shirts have been cycled through, move on to the next minigame
         if (currentIndex >= shirts.Length) return;
 
-        for (int i = 0; i < shirts[currentIndex].results.Length; i++)
-            displayShirt.SetProperty(shirts[currentIndex].results[i]);
+        displayShirt.SetCollar(shirts[currentIndex].results[0]);
+        displayShirt.SetSleeves(shirts[currentIndex].results[1]);
+        displayShirt.SetHem(shirts[currentIndex].results[2]);
 
+        displayShirt.GetComponent<DesignFabric>().SetFabric(shirts[currentIndex].results[3]);
+        displayShirt.SetMaterial(shirts[currentIndex].results[4]);
+        
         displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
 

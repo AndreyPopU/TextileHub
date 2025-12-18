@@ -8,27 +8,43 @@ public class FinishDesign : MonoBehaviour
     [SerializeField] DesignPattern designPattern;
     [SerializeField] DesignChanger designChanger;
 
-    public void finish_button()
+    public void SendDesign()
     {
         float budget = moneyManager.current_budget;
-        if (budget <= 0)
+        if (budget < 0)
         {
             print("You're out of budget, you cannot send this item out");
         }
         else
         {
-            string fabric = designFabric.current_fabric;
-            string pattern = designPattern.current_pattern;
-            print(budget + ", " + fabric + ", " + pattern);
-
             int colar = designChanger.colar_index;
             int sleeves = designChanger.sleeves_index;
             int hem = designChanger.hem_index;
-            print(colar + ", " + sleeves + ", " + hem);
 
-            string colour1 = designChanger.current_colour_1;
-            string colour2 = designChanger.current_colour_2;
-            print(colour1 + ", " + colour2);
+
+            // Transfer all properties to the manager
+
+            // Collar, Sleeves, Bottom, Overlay, Material
+
+            DesignChanger.instance.selectedProperties[0] = colar;
+            DesignChanger.instance.selectedProperties[1] = sleeves;
+            DesignChanger.instance.selectedProperties[2] = hem;
+            DesignChanger.instance.selectedProperties[3] = designPattern.paternIndex;
+            DesignChanger.instance.selectedProperties[4] = designFabric.fabricIndex;
+
+            // Transfer colors
+            DesignChanger.instance.primaryHex = designChanger.color1Hex;
+            DesignChanger.instance.secondaryHex = designChanger.color2Hex;
+
+            for (int i = 0; i < DesignChanger.instance.selectedProperties.Length; i++)
+            {
+                Debug.Log($"{DesignChanger.instance.selectedProperties[i]}");
+            }
+
+            print(DesignChanger.instance.primaryHex);
+            print(DesignChanger.instance.secondaryHex);
+                   
+            DesignChanger.instance.FinishClothing();
         }
     }
 }

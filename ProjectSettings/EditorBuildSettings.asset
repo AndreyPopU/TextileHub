@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/DesignTV.unity
     guid: c0aef6c032f63894bb1fa8bdf374ecab
   - enabled: 1
-    path: Assets/Scenes/DesignGame.unity
-    guid: ac2a8b55913caaa449d6be55b5e93aad
+    path: Assets/Scenes/DesignMini.unity
+    guid: e4bbb405d94e17c48a112734f9c017b8
   - enabled: 1
     path: Assets/Scenes/VotingTV.unity
     guid: fd1f4379d93e68d4dac3ecaad4af5274
