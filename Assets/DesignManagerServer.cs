@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DesignManagerServer : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class DesignManagerServer : MonoBehaviour
     public GameObject nextLevelButton;
     public GameObject timerSlider;
 
+    [Header("Themes")]
+    public string[] themes;
+    public TextMeshProUGUI themeText;
+
     private void Awake() => instance = this;
 
     private FinalDesignMessage pendingDesignMsg;
@@ -20,6 +25,9 @@ public class DesignManagerServer : MonoBehaviour
 
     void Start()
     {
+        // Select random theme
+        themeText.text = themes[Random.Range(0, themes.Length)];
+
         playerCount = LobbyBehavior.GetConnectedPlayers().Count;
 
         List<string> playerIDs = LobbyBehavior.GetAllPlayerIds();

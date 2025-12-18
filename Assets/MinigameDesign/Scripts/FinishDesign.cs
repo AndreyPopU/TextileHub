@@ -8,10 +8,10 @@ public class FinishDesign : MonoBehaviour
     [SerializeField] DesignPattern designPattern;
     [SerializeField] DesignChanger designChanger;
 
-    public void finish_button()
+    public void SendDesign()
     {
         float budget = moneyManager.current_budget;
-        if (budget <= 0)
+        if (budget < 0)
         {
             print("You're out of budget, you cannot send this item out");
         }
