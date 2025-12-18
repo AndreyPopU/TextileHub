@@ -14,6 +14,7 @@ public class DesignPattern : MonoBehaviour
     [SerializeField] MoneyManager moneyManager;
 
     public string current_pattern;
+    public int paternIndex;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class DesignPattern : MonoBehaviour
 
     void Money(float _cost)
     {
+        if (moneyManager == null) return;
+
         moneyManager.Cost_Pattern(_cost);
     }
 
@@ -32,6 +35,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(0);
             current_pattern = "None";
+            paternIndex = 0;
         }
     }
 
@@ -42,6 +46,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "V Stripes";
+            paternIndex = 1;
 
             foreach (GameObject item in v_pattern_stripes)
             {
@@ -58,6 +63,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "H Stripes";
+            paternIndex = 2;
 
             foreach (GameObject item in h_pattern_stripes)
             {
@@ -73,6 +79,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "D Stripes";
+            paternIndex = 3;
 
             foreach (GameObject item in d_pattern_stripes)
             {
@@ -88,6 +95,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "Dots";
+            paternIndex = 4;
 
             foreach (GameObject item in pattern_dots)
             {
@@ -103,6 +111,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "Squares";
+            paternIndex = 5;
 
             foreach (GameObject item in pattern_squares)
             {
@@ -118,6 +127,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(20);
             current_pattern = "Star";
+            paternIndex = 6;
 
             foreach (GameObject item in pattern_star)
             {
@@ -133,6 +143,7 @@ public class DesignPattern : MonoBehaviour
             Hide();
             Money(40);
             current_pattern = "Logo";
+            paternIndex = 7;
 
             foreach (GameObject item in pattern_logo)
             {

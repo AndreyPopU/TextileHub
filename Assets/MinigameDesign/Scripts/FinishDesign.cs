@@ -29,6 +29,22 @@ public class FinishDesign : MonoBehaviour
             string colour1 = designChanger.current_colour_1;
             string colour2 = designChanger.current_colour_2;
             print(colour1 + ", " + colour2);
+
+            // Transfer all properties to the manager
+
+            // Collar, Sleeves, Bottom, Overlay, Material
+
+            ClothingManager.instance.selectedProperties[0] = colar;
+            ClothingManager.instance.selectedProperties[1] = sleeves;
+            ClothingManager.instance.selectedProperties[2] = hem;
+            ClothingManager.instance.selectedProperties[3] = designPattern.paternIndex;
+            ClothingManager.instance.selectedProperties[4] = designFabric.fabricIndex;
+
+            // Transfer colors
+            ClothingManager.instance.primaryHex = designChanger.color1Hex;
+            ClothingManager.instance.secondaryHex = designChanger.color2Hex;
+
+            ClothingManager.instance.FinishClothing();
         }
     }
 }

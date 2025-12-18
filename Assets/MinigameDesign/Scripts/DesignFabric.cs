@@ -14,6 +14,7 @@ public class DesignFabric : MonoBehaviour
     [SerializeField] MoneyManager moneyManager;
 
     public string current_fabric;
+    public int fabricIndex;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class DesignFabric : MonoBehaviour
 
     void Money(float _cost)
     {
+        if (moneyManager == null) return;
+
         moneyManager.Cost_Fabric(_cost);
     }
 
@@ -32,6 +35,7 @@ public class DesignFabric : MonoBehaviour
             Hide();
             Money(50);
             current_fabric = "Cotton";
+            fabricIndex = 0;
 
             foreach (GameObject item in fabric_cotton)
             {
@@ -47,6 +51,7 @@ public class DesignFabric : MonoBehaviour
             Hide();
             Money(50);
             current_fabric = "Polyester";
+            fabricIndex = 1;
 
             foreach (GameObject item in fabric_polyester)
             {
@@ -62,6 +67,7 @@ public class DesignFabric : MonoBehaviour
             Hide();
             Money(150);
             current_fabric = "Silk";
+            fabricIndex = 2;
 
             foreach (GameObject item in fabric_silk)
             {
@@ -77,6 +83,7 @@ public class DesignFabric : MonoBehaviour
             Hide();
             Money(40);
             current_fabric = "Linen";
+            fabricIndex = 3;
 
             foreach (GameObject item in fabric_linen)
             {
@@ -92,6 +99,7 @@ public class DesignFabric : MonoBehaviour
             Hide();
             Money(75);
             current_fabric = "Wool";
+            fabricIndex = 4;
 
             foreach (GameObject item in fabric_wool)
             {

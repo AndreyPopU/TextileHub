@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
 public class DesignChanger : MonoBehaviour
 {
+    public static DesignChanger instance;
 
     [SerializeField] Sprite[] colars;
     [SerializeField] Sprite[] sleeves;
@@ -30,16 +32,97 @@ public class DesignChanger : MonoBehaviour
     public string current_colour_1;
     public string current_colour_2;
 
+    public string color1Hex, color2Hex;
+
     Image color_image;
     Color image_color;
 
     float _cost1;
     float _cost2;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         Colour1("blue");
         Colour2("yellow");
+    }
+
+    public void SetCollar(int index)
+    {
+        obj_sleeves.GetComponent<Image>().sprite = sleeves[index];
+        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[index];
+    }
+
+    public void SetSleeves(int index)
+    {
+        obj_sleeves.GetComponent<Image>().sprite = sleeves[index];
+        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[index];
+    }
+
+    public void SetHem(int index)
+    {
+        obj_hem.GetComponent<Image>().sprite = hems[index];
+        l_obj_hem.GetComponent<Image>().sprite = l_hems[index];
+    }
+
+    public void SetOverlay()
+    {
+
+    }
+
+    public void SetMaterial()
+    {
+
+    }
+
+    public void ResultSetPrimaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        print(newHex);
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        print("result color is " + resultColor);
+
+        SetCollarColor(resultColor);
+        SetSleevesColor(resultColor);
+        SetHemColor(resultColor);
+    }
+
+    public void ResultSetSecondaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        instance.SetOverlayColor(resultColor);
+    }
+
+    public void SetCollarColor(Color color)
+    {
+        obj_sleeves.GetComponent<Image>().color = color;
+        l_obj_sleeves.GetComponent<Image>().color = color;
+    }
+
+    public void SetSleevesColor(Color color)
+    {
+        obj_sleeves.GetComponent<Image>().color = color;
+        l_obj_sleeves.GetComponent<Image>().color = color;
+    }
+
+    public void SetHemColor(Color color)
+    {
+        obj_hem.GetComponent<Image>().color = color;
+        l_obj_hem.GetComponent<Image>().color = color;
+    }
+
+    public void SetOverlayColor(Color color)
+    {
+        foreach (GameObject item in patterns)
+        {
+            color_image = item.GetComponent<Image>();
+            color_image.color = color;
+        }
     }
 
     void Money1(float _cost)
@@ -56,6 +139,8 @@ public class DesignChanger : MonoBehaviour
 
     void Money()
     {
+        if (moneyManager == null) return;
+
         moneyManager.Cost_color(_cost1,_cost2);
     }
 
@@ -138,6 +223,7 @@ public class DesignChanger : MonoBehaviour
         }
 
         current_colour_1 = colour;
+        color1Hex = image_color.ToHexString();
 
         color_image = obj_colar.GetComponent<Image>();
         color_image.color = image_color;
@@ -227,6 +313,7 @@ public class DesignChanger : MonoBehaviour
         }
 
         current_colour_2 = colour;
+        color2Hex = image_color.ToHexString();
 
         foreach (GameObject item in patterns)
         {
