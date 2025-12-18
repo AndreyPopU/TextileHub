@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class buttonSelect : MonoBehaviour
 {
-    
     public GameObject tab1;
     public GameObject tab2;
     public GameObject tab3;
@@ -17,11 +16,8 @@ public class buttonSelect : MonoBehaviour
             tab2.SetActive(false);
             tab3.SetActive(false);
             tab4.SetActive(false);
-            tab5.SetActive(false);        
-        }
-        else
-        {
-            print("do something else");
+            tab5.SetActive(false);
+
         }
     }
     
@@ -35,10 +31,6 @@ public class buttonSelect : MonoBehaviour
             tab4.SetActive(false);
             tab5.SetActive(false);
         }
-        else
-        {
-            print("do something else");
-        }
     }
     public void Tab_3 (bool toggle_value)
     {
@@ -48,10 +40,7 @@ public class buttonSelect : MonoBehaviour
             tab2.SetActive(false);
             tab3.SetActive(true);
             tab4.SetActive(false);
-            tab5.SetActive(false);        }
-        else
-        {
-            print("do something else");
+            tab5.SetActive(false);       
         }
     }
     public void Tab_4 (bool toggle_value)
@@ -64,10 +53,6 @@ public class buttonSelect : MonoBehaviour
             tab4.SetActive(true);
             tab5.SetActive(false);
         }
-        else
-        {
-            print("do something else");
-        }
     }
     public void Tab_5 (bool toggle_value)
     {
@@ -78,10 +63,6 @@ public class buttonSelect : MonoBehaviour
             tab3.SetActive(false);
             tab4.SetActive(false);
             tab5.SetActive(true);
-        }
-        else
-        {
-            print("do something else");
         }
     }
 }
