@@ -45,8 +45,8 @@ public class RecyclingManager : MonoBehaviour
                         fabric.outline.SetActive(true);
 
                         // Enable interactable buttons
-                        for (int i = 0; i < interactableButtons.Length; i++)
-                            interactableButtons[i].interactable = true;
+                        // for (int i = 0; i < interactableButtons.Length; i++)
+                            // interactableButtons[i].interactable = true;
                     }
                 }
             }
@@ -62,8 +62,8 @@ public class RecyclingManager : MonoBehaviour
         {
             currentFabric.outline.SetActive(false);
             currentFabric = null;
-            for (int i = 0; i < interactableButtons.Length; i++)
-                interactableButtons[i].interactable = false;
+            // for (int i = 0; i < interactableButtons.Length; i++)
+                // interactableButtons[i].interactable = false;
         }
     }
 
