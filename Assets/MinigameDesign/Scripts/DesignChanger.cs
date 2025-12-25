@@ -7,10 +7,7 @@ public class DesignChanger : MonoBehaviour
 {
     public static DesignChanger instance;
 
-    public int[] selectedProperties; // Collar, Sleeves, Bottom, Overlay, Material
-    public string primaryHex, secondaryHex;
-    public bool finishedDesign;
-
+    [Header("Images")]
     [SerializeField] Sprite[] colars;
     [SerializeField] Sprite[] sleeves;
     [SerializeField] Sprite[] hems;
@@ -18,6 +15,7 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] Sprite[] l_sleeves;
     [SerializeField] Sprite[] l_hems;
 
+    [Header("Objects")]
     [SerializeField] GameObject[] patterns;
 
     [SerializeField] GameObject obj_colar;
@@ -29,13 +27,17 @@ public class DesignChanger : MonoBehaviour
 
     [SerializeField] MoneyManager moneyManager;
 
+    [Header("Saving data")]
+    public int[] selectedProperties; // Collar, Sleeves, Bottom, Overlay, Material
+    public string primaryHex, secondaryHex;
+    public bool finishedDesign;
     public int colar_index;
     public int sleeves_index;
     public int hem_index;
 
+    [Header("Colours")]
     public string current_colour_1;
     public string current_colour_2;
-
     public string color1Hex, color2Hex;
 
     Image color_image;
@@ -76,10 +78,10 @@ public class DesignChanger : MonoBehaviour
         finishedDesign = true;
     }
 
-    public void SetMaterial(int index)
-    {
-        GetComponent<DesignFabric>().SetFabric(index);
-    }
+    //public void SetMaterial(int index)
+    //{
+    //    GetComponent<DesignFabric>().SetFabric(index);
+    //}
 
     public void SetCollar(int index)
     {

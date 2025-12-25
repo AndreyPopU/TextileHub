@@ -19,12 +19,6 @@ public class DesignMenus : MonoBehaviour
         Hide_sub();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Hide()
     {
         foreach(GameObject menu in design_menus)
@@ -42,81 +36,81 @@ public class DesignMenus : MonoBehaviour
         }
     }
 
-    public void MenuFabric()
-    {
-        if (in_menu == true)
-        {
-            Hide();
-        }
-        if (fabric_menu == false)
-        {
-            fabric_menu = true;
-            in_menu = true;
-            design_menus[0].SetActive(true);
-        }
-        else if (fabric_menu == true)
-        {
-            Hide();
-            fabric_menu = false;
-        }
-    }
+    //public void MenuFabric()
+    //{
+    //    if (in_menu == true)
+    //    {
+    //        Hide();
+    //    }
+    //    if (fabric_menu == false)
+    //    {
+    //        fabric_menu = true;
+    //        in_menu = true;
+    //        design_menus[0].SetActive(true);
+    //    }
+    //    else if (fabric_menu == true)
+    //    {
+    //        Hide();
+    //        fabric_menu = false;
+    //    }
+    //}
 
-    public void MenuColour1()
-    {
-        if (in_menu == true)
-        {
-            Hide();
-        }
-        if (colour1_menu == false)
-        {
-            colour1_menu = true;
-            in_menu = true;
-            design_menus[1].SetActive(true);
-        }
-        else if (colour1_menu == true)
-        {
-            Hide();
-            colour1_menu = false;
-        }
-    }
+    //public void MenuColour1()
+    //{
+    //    if (in_menu == true)
+    //    {
+    //        Hide();
+    //    }
+    //    if (colour1_menu == false)
+    //    {
+    //        colour1_menu = true;
+    //        in_menu = true;
+    //        design_menus[1].SetActive(true);
+    //    }
+    //    else if (colour1_menu == true)
+    //    {
+    //        Hide();
+    //        colour1_menu = false;
+    //    }
+    //}
 
-    public void MenuColour2()
-    {
-        if (in_menu == true)
-        {
-            Hide();
-        }
-        if (colour2_menu == false)
-        {
-            colour2_menu = true;
-            in_menu = true;
-            design_menus[2].SetActive(true);
-        }
-        else if (colour2_menu == true)
-        {
-            Hide();
-            colour2_menu = false;
-        }
-    }
+    //public void MenuColour2()
+    //{
+    //    if (in_menu == true)
+    //    {
+    //        Hide();
+    //    }
+    //    if (colour2_menu == false)
+    //    {
+    //        colour2_menu = true;
+    //        in_menu = true;
+    //        design_menus[2].SetActive(true);
+    //    }
+    //    else if (colour2_menu == true)
+    //    {
+    //        Hide();
+    //        colour2_menu = false;
+    //    }
+    //}
 
-    public void MenuPattern()
-    {
-        if (in_menu == true)
-        {
-            Hide();
-        }
-        if (pattern_menu == false)
-        {
-            pattern_menu = true;
-            in_menu = true;
-            design_menus[3].SetActive(true);
-        }
-        else if (pattern_menu == true)
-        {
-            Hide();
-            pattern_menu = false;
-        }
-    }
+    //public void MenuPattern()
+    //{
+    //    if (in_menu == true)
+    //    {
+    //        Hide();
+    //    }
+    //    if (pattern_menu == false)
+    //    {
+    //        pattern_menu = true;
+    //        in_menu = true;
+    //        design_menus[3].SetActive(true);
+    //    }
+    //    else if (pattern_menu == true)
+    //    {
+    //        Hide();
+    //        pattern_menu = false;
+    //    }
+    //}
 
     public void ShowChild(GameObject child)
     {

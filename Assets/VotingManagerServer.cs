@@ -89,9 +89,9 @@ public class VotingManagerServer : MonoBehaviour
         displayShirt.SetSleeves(shirts[currentIndex].results[1]);
         displayShirt.SetHem(shirts[currentIndex].results[2]);
 
-        displayShirt.GetComponent<DesignFabric>().SetFabric(shirts[currentIndex].results[3]);
-        displayShirt.SetMaterial(shirts[currentIndex].results[4]);
-        
+        displayShirt.GetComponent<DesignFabric>().SetFabric(shirts[currentIndex].results[3]); 
+        //displayShirt.SetMaterial(shirts[currentIndex].results[4]); The underlying code has been changed by Jeremy so this line no longer works
+
         displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
 

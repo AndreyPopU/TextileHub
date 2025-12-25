@@ -13,6 +13,7 @@ public class DesignPattern : MonoBehaviour
     [SerializeField] GameObject[] pattern_logo;
     [SerializeField] MoneyManager moneyManager;
 
+    [Header("Saving data")]
     public string current_pattern;
     public int paternIndex;
 
