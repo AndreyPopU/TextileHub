@@ -5,9 +5,10 @@ using Color = UnityEngine.Color;
 
 public class DesignChanger : MonoBehaviour
 {
+    #region "Fields and properties"
     public static DesignChanger instance;
 
-    [Header("Images")]
+    [Header("Image Arrays")]
     [SerializeField] Sprite[] colars;
     [SerializeField] Sprite[] sleeves;
     [SerializeField] Sprite[] hems;
@@ -15,19 +16,10 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] Sprite[] l_sleeves;
     [SerializeField] Sprite[] l_hems;
 
-    [Header("Objects")]
+    [Header("Object Arrays")]
     [SerializeField] GameObject[] patterns;
 
-    [SerializeField] GameObject obj_colar;
-    [SerializeField] GameObject obj_sleeves;
-    [SerializeField] GameObject obj_hem;
-    [SerializeField] GameObject l_obj_colar;
-    [SerializeField] GameObject l_obj_sleeves;
-    [SerializeField] GameObject l_obj_hem;
-
-    [SerializeField] MoneyManager moneyManager;
-
-    [Header("Saving data")]
+    [Header("Saving Data")]
     public int[] selectedProperties; // Collar, Sleeves, Bottom, Overlay, Material
     public string primaryHex, secondaryHex;
     public bool finishedDesign;
@@ -35,16 +27,26 @@ public class DesignChanger : MonoBehaviour
     public int sleeves_index;
     public int hem_index;
 
-    [Header("Colours")]
+    [Header("Colour Data")]
     public string current_colour_1;
     public string current_colour_2;
     public string color1Hex, color2Hex;
+
+    [Header("Object References")]
+    [SerializeField] GameObject obj_colar;
+    [SerializeField] GameObject obj_sleeves;
+    [SerializeField] GameObject obj_hem;
+    [SerializeField] GameObject l_obj_colar;
+    [SerializeField] GameObject l_obj_sleeves;
+    [SerializeField] GameObject l_obj_hem;
+    [SerializeField] MoneyManager moneyManager;
 
     Image color_image;
     Color image_color;
 
     float _cost1;
     float _cost2;
+    #endregion
 
     private void Awake()
     {
@@ -101,6 +103,7 @@ public class DesignChanger : MonoBehaviour
         l_obj_hem.GetComponent<Image>().sprite = l_hems[index];
     }
 
+    #region "Colors"
     public void ResultSetPrimaryColor(string newHex)
     {
         newHex = "#" + newHex;
@@ -146,26 +149,7 @@ public class DesignChanger : MonoBehaviour
             color_image.color = color;
         }
     }
-
-    void Money1(float _cost)
-    {
-        _cost1 = _cost;
-        Money();
-    }
-
-    void Money2(float _cost)
-    {
-        _cost2 = _cost;
-        Money();
-    }
-
-    void Money()
-    {
-        if (moneyManager == null) return;
-
-        moneyManager.Cost_color(_cost1,_cost2);
-    }
-
+    
     public void Colour1(string colour)
     {
         if (colour == "red")
@@ -343,32 +327,54 @@ public class DesignChanger : MonoBehaviour
             color_image.color = image_color;
         }
     }
+    #endregion
 
+    #region "Color cost"
+    void Money1(float _cost)
+    {
+        _cost1 = _cost;
+        Money();
+    }
+
+    void Money2(float _cost)
+    {
+        _cost2 = _cost;
+        Money();
+    }
+
+    void Money()
+    {
+        if (moneyManager == null) return;
+
+        moneyManager.Cost_color(_cost1,_cost2);
+    }
+    #endregion
+
+    #region "Clothing Pieces
     //------Collar------
 
     public void OnButtonCollarLeft()
     {
         colar_index = colar_index - 1;
         Change_Colar();
-        obj_colar.GetComponent<Image>().sprite = colars[colar_index];
-        l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
     }
 
     public void OnButtonCollarRight()
     {
         colar_index = colar_index + 1;
         Change_Colar();
-        obj_colar.GetComponent<Image>().sprite = colars[colar_index];
-        l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
     }
 
     void Change_Colar()
     {
         if (colar_index > 4)
             colar_index = 0;
-        
+
         if (colar_index < 0)
             colar_index = 4;
+
+        obj_colar.GetComponent<Image>().sprite = colars[colar_index];
+        l_obj_colar.GetComponent<Image>().sprite = l_colars[colar_index];
     }
 
     //------Sleeves------
@@ -377,16 +383,12 @@ public class DesignChanger : MonoBehaviour
     {
         sleeves_index = sleeves_index - 1;
         Change_Sleeves();
-        obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
-        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
     }
 
     public void OnButtonSleevesRight()
     {
         sleeves_index = sleeves_index + 1;
         Change_Sleeves();
-        obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
-        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
     }
 
     void Change_Sleeves()
@@ -396,6 +398,9 @@ public class DesignChanger : MonoBehaviour
 
         if (sleeves_index < 0)
             sleeves_index = 4;
+
+        obj_sleeves.GetComponent<Image>().sprite = sleeves[sleeves_index];
+        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[sleeves_index];
     }
 
     //------Hem------
@@ -404,16 +409,12 @@ public class DesignChanger : MonoBehaviour
     {
         hem_index = hem_index - 1;
         Change_Hem();
-        obj_hem.GetComponent<Image>().sprite = hems[hem_index];
-        l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
     }
 
     public void OnButtonHemRight()
     {
         hem_index = hem_index + 1;
         Change_Hem();
-        obj_hem.GetComponent<Image>().sprite = hems[hem_index];
-        l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
     }
 
     void Change_Hem()
@@ -423,5 +424,9 @@ public class DesignChanger : MonoBehaviour
 
         if (hem_index < 0)
             hem_index = 3;
+
+        obj_hem.GetComponent<Image>().sprite = hems[hem_index];
+        l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
     }
+    #endregion
 }

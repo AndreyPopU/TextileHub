@@ -4,18 +4,17 @@ using UnityEngine.UI;
 
 public class DesignFabric : MonoBehaviour
 {
-    //[SerializeField] GameObject[] fabrics;
-
+    #region "Fields and properties"
+    [Header("Fabric Object Arrays")]
     [SerializeField] GameObject[] fabric_cotton;
     [SerializeField] GameObject[] fabric_polyester;
     [SerializeField] GameObject[] fabric_silk;
     [SerializeField] GameObject[] fabric_linen;
     [SerializeField] GameObject[] fabric_wool;
-    [SerializeField] MoneyManager moneyManager;
 
-    [Header("Saving data")]
-    public string current_fabric;
-    public int fabricIndex;
+    [Header("Object References")]
+    [SerializeField] MoneyManager moneyManager;
+    #endregion
 
     private void Start()
     {
@@ -42,86 +41,6 @@ public class DesignFabric : MonoBehaviour
 
         moneyManager.Cost_Fabric(_cost);
     }
-
-    //public void Fabric_Cotton(bool toggle_value)
-    //{
-    //    if (toggle_value)
-    //    {
-    //        Hide();
-    //        Money(50);
-    //        current_fabric = "Cotton";
-    //        fabricIndex = 0;
-
-    //        foreach (GameObject item in fabric_cotton)
-    //        {
-    //            item.SetActive(true);
-    //        }
-    //    }
-    //}
-
-    //public void Fabric_Polyester(bool toggle_value)
-    //{
-    //    if (toggle_value)
-    //    {
-    //        Hide();
-    //        Money(50);
-    //        current_fabric = "Polyester";
-    //        fabricIndex = 1;
-
-    //        foreach (GameObject item in fabric_polyester)
-    //        {
-    //            item.SetActive(true);
-    //        }
-    //    }
-    //}
-
-    //public void Fabric_Silk(bool toggle_value)
-    //{
-    //    if (toggle_value)
-    //    {
-    //        Hide();
-    //        Money(150);
-    //        current_fabric = "Silk";
-    //        fabricIndex = 2;
-
-    //        foreach (GameObject item in fabric_silk)
-    //        {
-    //            item.SetActive(true);
-    //        }
-    //    }
-    //}
-
-    //public void Fabric_Linen(bool toggle_value)
-    //{
-    //    if (toggle_value)
-    //    {
-    //        Hide();
-    //        Money(40);
-    //        current_fabric = "Linen";
-    //        fabricIndex = 3;
-
-    //        foreach (GameObject item in fabric_linen)
-    //        {
-    //            item.SetActive(true);
-    //        }
-    //    }
-    //}
-
-    //public void Fabric_Wool(bool toggle_value)
-    //{
-    //    if (toggle_value)
-    //    {
-    //        Hide();
-    //        Money(75);
-    //        current_fabric = "Wool";
-    //        fabricIndex = 4;
-
-    //        foreach (GameObject item in fabric_wool)
-    //        {
-    //            item.SetActive(true);
-    //        }
-    //    }
-    //}
 
     void Hide()
     {
