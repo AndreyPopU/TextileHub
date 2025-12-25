@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using Color = UnityEngine.Color;
 
 public class DesignChanger : MonoBehaviour
 {
-    #region "Fields and properties"
+    #region --Fields and properties--
     public static DesignChanger instance;
 
     [Header("Image Arrays")]
@@ -41,11 +42,16 @@ public class DesignChanger : MonoBehaviour
     [SerializeField] GameObject l_obj_hem;
     [SerializeField] MoneyManager moneyManager;
 
+    [Header("Private")]
     Image color_image;
     Color image_color;
 
     float _cost1;
     float _cost2;
+
+    int cost_dye_azo = 10;
+    int cost_dye_reactive = 20;
+    int cost_dye_co2 = 30;
     #endregion
 
     private void Awake()
@@ -80,10 +86,10 @@ public class DesignChanger : MonoBehaviour
         finishedDesign = true;
     }
 
-    //public void SetMaterial(int index)
-    //{
-    //    GetComponent<DesignFabric>().SetFabric(index);
-    //}
+    public void SetMaterial(int index)
+    {
+        GetComponent<DesignFabric>().SetFabric(index);
+    }
 
     public void SetCollar(int index)
     {
@@ -103,254 +109,7 @@ public class DesignChanger : MonoBehaviour
         l_obj_hem.GetComponent<Image>().sprite = l_hems[index];
     }
 
-    #region "Colors"
-    public void ResultSetPrimaryColor(string newHex)
-    {
-        newHex = "#" + newHex;
-        print(newHex);
-        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
-        print("result color is " + resultColor);
-
-        SetCollarColor(resultColor);
-        SetSleevesColor(resultColor);
-        SetHemColor(resultColor);
-    }
-
-    public void ResultSetSecondaryColor(string newHex)
-    {
-        newHex = "#" + newHex;
-        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
-        instance.SetOverlayColor(resultColor);
-    }
-
-    public void SetCollarColor(Color color)
-    {
-        obj_sleeves.GetComponent<Image>().color = color;
-        l_obj_sleeves.GetComponent<Image>().color = color;
-    }
-
-    public void SetSleevesColor(Color color)
-    {
-        obj_sleeves.GetComponent<Image>().color = color;
-        l_obj_sleeves.GetComponent<Image>().color = color;
-    }
-
-    public void SetHemColor(Color color)
-    {
-        obj_hem.GetComponent<Image>().color = color;
-        l_obj_hem.GetComponent<Image>().color = color;
-    }
-
-    public void SetOverlayColor(Color color)
-    {
-        foreach (GameObject item in patterns)
-        {
-            color_image = item.GetComponent<Image>();
-            color_image.color = color;
-        }
-    }
-    
-    public void Colour1(string colour)
-    {
-        if (colour == "red")
-        {
-            image_color = new Color32(242, 44, 44, 255);
-            Money1(10);
-        }
-        else if (colour == "red1")
-        { 
-            image_color = new Color32(213, 13, 70, 255);
-            Money1(20);
-        }
-        else if (colour == "red2")
-        {
-            image_color = new Color32(209, 77, 16, 255);
-            Money1(30);
-        }
-        else if (colour == "yellow")
-        { 
-            image_color = new Color32(232, 200, 39, 255);
-            Money1(10);
-        }
-        else if (colour == "yellow1")
-        { 
-            image_color = new Color32(232, 157, 39, 255);
-            Money1(20);
-        }
-        else if (colour == "yellow2")
-        { 
-            image_color = new Color32(246, 242, 114, 255);
-            Money1(30);
-        }
-        else if (colour == "green")
-        { 
-            image_color = new Color32(27, 168, 41, 255);
-            Money1(10);
-        }
-        else if (colour == "green1")
-        { 
-            image_color = new Color32(27, 90, 41, 255);
-            Money1(20);
-        }
-        else if (colour == "green2")
-        { 
-            image_color = new Color32(27, 160, 130, 255);
-            Money1(30);
-        }
-        else if (colour == "blue")
-        { 
-            image_color = new Color32(0, 131, 225, 255);
-            Money1(10);
-        }
-        else if (colour == "blue1")
-        { 
-            image_color = new Color32(0, 50, 225, 255);
-            Money1(20);
-        }
-        else if (colour == "blue2")
-        { 
-            image_color = new Color32(80, 110, 140, 255);
-            Money1(30);
-        }
-        else if (colour == "purple")
-        { 
-            image_color = new Color32(170, 0, 225, 255);
-            Money1(10);
-        }
-        else if (colour == "purple1")
-        { 
-            image_color = new Color32(114, 0, 225, 255);
-            Money1(20);
-        }
-        else if (colour == "purple2")
-        { 
-            image_color = new Color32(80, 0, 156, 255);
-            Money1(30);
-        }
-
-        current_colour_1 = colour;
-        color1Hex = image_color.ToHexString();
-
-        color_image = obj_colar.GetComponent<Image>();
-        color_image.color = image_color;
-        color_image = obj_sleeves.GetComponent<Image>();
-        color_image.color = image_color;
-        color_image = obj_hem.GetComponent<Image>();
-        color_image.color = image_color;
-
-    }
-
-    public void Colour2(string colour)
-    {
-        if (colour == "red")
-        {
-            image_color = new Color32(242, 44, 44, 255);
-            Money2(10);
-        }
-        else if (colour == "red1")
-        {
-            image_color = new Color32(213, 13, 70, 255);
-            Money2(20);
-        }
-        else if (colour == "red2")
-        {
-            image_color = new Color32(209, 77, 16, 255);
-            Money2(30);
-        }
-        else if (colour == "yellow")
-        {
-            image_color = new Color32(232, 200, 39, 255);
-            Money2(10);
-        }
-        else if (colour == "yellow1")
-        {
-            image_color = new Color32(232, 157, 39, 255);
-            Money2(20);
-        }
-        else if (colour == "yellow2")
-        {
-            image_color = new Color32(246, 242, 114, 255);
-            Money2(30);
-        }
-        else if (colour == "green")
-        {
-            image_color = new Color32(27, 168, 41, 255);
-            Money2(10);
-        }
-        else if (colour == "green1")
-        {
-            image_color = new Color32(27, 90, 41, 255);
-            Money2(20);
-        }
-        else if (colour == "green2")
-        {
-            image_color = new Color32(27, 160, 130, 255);
-            Money2(30);
-        }
-        else if (colour == "blue")
-        {
-            image_color = new Color32(0, 131, 225, 255);
-            Money2(10);
-        }
-        else if (colour == "blue1")
-        {
-            image_color = new Color32(0, 50, 225, 255);
-            Money2(20);
-        }
-        else if (colour == "blue2")
-        {
-            image_color = new Color32(80, 110, 140, 255);
-            Money2(30);
-        }
-        else if (colour == "purple")
-        {
-            image_color = new Color32(170, 0, 225, 255);
-            Money2(10);
-        }
-        else if (colour == "purple1")
-        {
-            image_color = new Color32(114, 0, 225, 255);
-            Money2(20);
-        }
-        else if (colour == "purple2")
-        {
-            image_color = new Color32(80, 0, 156, 255);
-            Money2(30);
-        }
-
-        current_colour_2 = colour;
-        color2Hex = image_color.ToHexString();
-
-        foreach (GameObject item in patterns)
-        {
-            color_image = item.GetComponent<Image>();
-            color_image.color = image_color;
-        }
-    }
-    #endregion
-
-    #region "Color cost"
-    void Money1(float _cost)
-    {
-        _cost1 = _cost;
-        Money();
-    }
-
-    void Money2(float _cost)
-    {
-        _cost2 = _cost;
-        Money();
-    }
-
-    void Money()
-    {
-        if (moneyManager == null) return;
-
-        moneyManager.Cost_color(_cost1,_cost2);
-    }
-    #endregion
-
-    #region "Clothing Pieces
+    #region --Clothing Pieces--
     //------Collar------
 
     public void OnButtonCollarLeft()
@@ -429,4 +188,139 @@ public class DesignChanger : MonoBehaviour
         l_obj_hem.GetComponent<Image>().sprite = l_hems[hem_index];
     }
     #endregion
+
+    #region --Set Colors--
+    public void ResultSetPrimaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        print(newHex);
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        print("result color is " + resultColor);
+
+        SetCollarColor(resultColor);
+        SetSleevesColor(resultColor);
+        SetHemColor(resultColor);
+    }
+
+    public void ResultSetSecondaryColor(string newHex)
+    {
+        newHex = "#" + newHex;
+        UnityEngine.ColorUtility.TryParseHtmlString(newHex, out Color resultColor);
+        instance.SetOverlayColor(resultColor);
+    }
+
+    public void SetCollarColor(Color color)
+    {
+        obj_sleeves.GetComponent<Image>().color = color;
+        l_obj_sleeves.GetComponent<Image>().color = color;
+    }
+
+    public void SetSleevesColor(Color color)
+    {
+        obj_sleeves.GetComponent<Image>().color = color;
+        l_obj_sleeves.GetComponent<Image>().color = color;
+    }
+
+    public void SetHemColor(Color color)
+    {
+        obj_hem.GetComponent<Image>().color = color;
+        l_obj_hem.GetComponent<Image>().color = color;
+    }
+
+    public void SetOverlayColor(Color color)
+    {
+        foreach (GameObject item in patterns)
+        {
+            color_image = item.GetComponent<Image>();
+            color_image.color = color;
+        }
+    }
+    #endregion
+
+    #region --Colors--
+    public void Colour1(string colour)
+    {
+        switch (colour)
+        {
+            case "red": image_color = new Color32(242, 44, 44, 255); Money1(cost_dye_azo); break;
+            case "red1": image_color = new Color32(213, 13, 70, 255); Money1(cost_dye_reactive); break;
+            case "red2": image_color = new Color32(209, 77, 16, 255); Money1(cost_dye_co2); break;
+            case "yellow": image_color = new Color32(232, 200, 39, 255); Money1(cost_dye_azo); break;
+            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money1(cost_dye_reactive); break;
+            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money1(cost_dye_co2); break;
+            case "green": image_color = new Color32(27, 168, 41, 255); Money1(cost_dye_azo); break;
+            case "green1": image_color = new Color32(27, 90, 41, 255); Money1(cost_dye_reactive); break;
+            case "green2": image_color = new Color32(27, 160, 130, 255); Money1(cost_dye_co2); break;
+            case "blue": image_color = new Color32(0, 131, 225, 255); Money1(cost_dye_azo); break;
+            case "blue1": image_color = new Color32(0, 50, 225, 255); Money1(cost_dye_reactive); break;
+            case "blue2": image_color = new Color32(80, 110, 140, 255); Money1(cost_dye_co2); break;
+            case "purple": image_color = new Color32(170, 0, 225, 255); Money1(cost_dye_azo); break;
+            case "purple1": image_color = new Color32(114, 0, 225, 255); Money1(cost_dye_reactive); break;
+            case "purple2": image_color = new Color32(80, 0, 156, 255); Money1(cost_dye_co2); break;
+        }
+
+        current_colour_1 = colour;
+        color1Hex = image_color.ToHexString();
+
+        color_image = obj_colar.GetComponent<Image>();
+        color_image.color = image_color;
+        color_image = obj_sleeves.GetComponent<Image>();
+        color_image.color = image_color;
+        color_image = obj_hem.GetComponent<Image>();
+        color_image.color = image_color;
+    }
+
+    public void Colour2(string colour)
+    {
+        switch (colour)
+        {
+            case "red": image_color = new Color32(242, 44, 44, 255); Money2(cost_dye_azo); break;
+            case "red1": image_color = new Color32(213, 13, 70, 255); Money2(cost_dye_reactive); break;
+            case "red2": image_color = new Color32(209, 77, 16, 255); Money2(cost_dye_co2); break;
+            case "yellow": image_color = new Color32(232, 200, 39, 255); Money2(cost_dye_azo); break;
+            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money2(cost_dye_reactive); break;
+            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money2(cost_dye_co2); break;
+            case "green": image_color = new Color32(27, 168, 41, 255); Money2(cost_dye_azo); break;
+            case "green1": image_color = new Color32(27, 90, 41, 255); Money2(cost_dye_reactive); break;
+            case "green2": image_color = new Color32(27, 160, 130, 255); Money2(cost_dye_co2); break;
+            case "blue": image_color = new Color32(0, 131, 225, 255); Money2(cost_dye_azo); break;
+            case "blue1": image_color = new Color32(0, 50, 225, 255); Money2(cost_dye_reactive); break;
+            case "blue2": image_color = new Color32(80, 110, 140, 255); Money2(cost_dye_co2); break;
+            case "purple": image_color = new Color32(170, 0, 225, 255); Money2(cost_dye_azo); break;
+            case "purple1": image_color = new Color32(114, 0, 225, 255); Money2(cost_dye_reactive); break;
+            case "purple2": image_color = new Color32(80, 0, 156, 255); Money2(cost_dye_co2); break;
+        }
+
+        current_colour_2 = colour;
+        color2Hex = image_color.ToHexString();
+
+        foreach (GameObject item in patterns)
+        {
+            color_image = item.GetComponent<Image>();
+            color_image.color = image_color;
+        }
+    }
+    #endregion
+
+    #region --Color cost--
+    void Money1(float _cost)
+    {
+        _cost1 = _cost;
+        Money();
+    }
+
+    void Money2(float _cost)
+    {
+        _cost2 = _cost;
+        Money();
+    }
+
+    void Money()
+    {
+        if (moneyManager == null) return;
+
+        moneyManager.Cost_color(_cost1,_cost2);
+    }
+    #endregion
+
 }
