@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class DesignFabric : MonoBehaviour
 {
-    #region "Fields and properties"
+    #region --Fields and properties--
     [Header("Fabric Object Arrays")]
     [SerializeField] GameObject[] fabric_cotton;
     [SerializeField] GameObject[] fabric_polyester;
@@ -14,6 +14,9 @@ public class DesignFabric : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] MoneyManager moneyManager;
+
+    [Header("Saving data")]
+    public int index;
     #endregion
 
     private void Start()
@@ -44,25 +47,10 @@ public class DesignFabric : MonoBehaviour
 
     void Hide()
     {
-        foreach (GameObject item in fabric_cotton)
-        {
-            item.SetActive(false);
-        }
-        foreach (GameObject item in fabric_polyester)
-        {
-            item.SetActive(false);
-        }
-        foreach (GameObject item in fabric_silk)
-        {
-            item.SetActive(false);
-        }
-        foreach (GameObject item in fabric_linen)
-        {
-            item.SetActive(false);
-        }
-        foreach (GameObject item in fabric_wool)
-        {
-            item.SetActive(false);
-        }
+        foreach (GameObject item in fabric_cotton) { item.SetActive(false); }
+        foreach (GameObject item in fabric_polyester) { item.SetActive(false); }
+        foreach (GameObject item in fabric_silk) {item.SetActive(false); }
+        foreach (GameObject item in fabric_linen) { item.SetActive(false); }
+        foreach (GameObject item in fabric_wool) { item.SetActive(false); }
     }
 }

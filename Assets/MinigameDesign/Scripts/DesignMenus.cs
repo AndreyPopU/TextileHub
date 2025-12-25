@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DesignMenus : MonoBehaviour
 {
-    #region "Fields and properties"
+    #region --Fields and properties--
     [Header("Object Arrays")]
     [SerializeField] GameObject[] design_menus;
     [SerializeField] GameObject[] sub_menus;

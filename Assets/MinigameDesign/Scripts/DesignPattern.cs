@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DesignPattern : MonoBehaviour
 {
-    #region "Fields and properties"
+    #region --Fields and properties--
     [Header("Pattern Object Arrays")]
     [SerializeField] GameObject[] v_pattern_stripes;
     [SerializeField] GameObject[] h_pattern_stripes;
@@ -13,8 +13,7 @@ public class DesignPattern : MonoBehaviour
     [SerializeField] GameObject[] pattern_logo;
 
     [Header("Saving data")]
-    public string current_pattern;
-    public int paternIndex;
+    public int index;
 
     [Header("Object References")]
     [SerializeField] MoneyManager moneyManager;
@@ -43,10 +42,13 @@ public class DesignPattern : MonoBehaviour
 
     void Hide()
     {
-        foreach (GameObject item in patterns)
-        {
-            item.SetActive(false);
-        }
+        foreach (GameObject item in v_pattern_stripes) { item.SetActive(false); }
+        foreach (GameObject item in h_pattern_stripes) { item.SetActive(false); }
+        foreach (GameObject item in d_pattern_stripes) { item.SetActive(false); }
+        foreach (GameObject item in pattern_dots) { item.SetActive(false); }
+        foreach (GameObject item in pattern_squares) { item.SetActive(false); }
+        foreach (GameObject item in pattern_star) { item.SetActive(false); }
+        foreach (GameObject item in pattern_logo) { item.SetActive(false); }
     }
 
     void Money(float _cost)

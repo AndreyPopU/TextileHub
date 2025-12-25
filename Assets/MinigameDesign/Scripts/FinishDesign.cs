@@ -29,8 +29,8 @@ public class FinishDesign : MonoBehaviour
             DesignChanger.instance.selectedProperties[0] = colar;
             DesignChanger.instance.selectedProperties[1] = sleeves;
             DesignChanger.instance.selectedProperties[2] = hem;
-            DesignChanger.instance.selectedProperties[3] = designPattern.paternIndex;
-            DesignChanger.instance.selectedProperties[4] = designFabric.fabricIndex;
+            DesignChanger.instance.selectedProperties[3] = designPattern.index;
+            DesignChanger.instance.selectedProperties[4] = designFabric.index;
 
             // Transfer colors
             DesignChanger.instance.primaryHex = designChanger.color1Hex;
