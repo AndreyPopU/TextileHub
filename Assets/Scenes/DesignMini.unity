@@ -11833,7 +11833,7 @@ GameObject:
   - component: {fileID: 1184746923}
   - component: {fileID: 1184746922}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button_Pattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12101,7 +12101,7 @@ GameObject:
   - component: {fileID: 1230884253}
   - component: {fileID: 1230884252}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_Color2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17483,7 +17483,7 @@ GameObject:
   - component: {fileID: 1788235327}
   - component: {fileID: 1788235326}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Color1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17880,7 +17880,7 @@ GameObject:
   - component: {fileID: 1848115852}
   - component: {fileID: 1848115851}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Farbic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20271,12 +20271,12 @@ GameObject:
   - component: {fileID: 2051365303}
   - component: {fileID: 2051365302}
   m_Layer: 0
-  m_Name: ClothingManager
+  m_Name: ClothingManager (can be deleted?)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2051365302
 MonoBehaviour:
   m_ObjectHideFlags: 0
