@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
+    public static MoneyManager instance;
+
     [SerializeField] TextMeshProUGUI text;
     public int budget = 200;
     float pattern_cost = 0;
@@ -10,6 +12,8 @@ public class MoneyManager : MonoBehaviour
     float color1_cost = 0;
     float color2_cost = 0;
     public float current_budget;
+
+    private void Awake() => instance = this;
 
     public void Cost_Pattern(float _cost)
     {

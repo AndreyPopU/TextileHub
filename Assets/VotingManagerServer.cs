@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -90,8 +91,8 @@ public class VotingManagerServer : MonoBehaviour
         displayShirt.SetHem(shirts[currentIndex].results[2]);
 
         displayShirt.GetComponent<DesignFabric>().SetFabric(shirts[currentIndex].results[3]); 
-        //displayShirt.SetMaterial(shirts[currentIndex].results[4]); The underlying code has been changed by Jeremy so this line no longer works
-
+        displayShirt.GetComponent<DesignPattern>().SetPattern(shirts[currentIndex].results[4]); // The underlying code has been changed by Jeremy so this line no longer works
+        
         displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
 

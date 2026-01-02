@@ -344,6 +344,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100524525}
   m_CullTransparentMesh: 1
+--- !u!1 &123057633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123057635}
+  - component: {fileID: 123057634}
+  m_Layer: 0
+  m_Name: ShirtResults
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &123057634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123057633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21c73ca9f7832745957b288659d1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  results: 0300000002000000030000000400000006000000
+  primaryHex: 1BA829FF
+  secondaryHex: D14D10FF
+--- !u!4 &123057635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123057633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &124294688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1791,7 @@ MonoBehaviour:
   resultsPanel: {fileID: 1002649051}
   votingRoundManagerServer: {fileID: 478353411}
   started: 1
-  timeLeft: 10
+  timeLeft: 1
   timerSlider: {fileID: 1435242777}
 --- !u!114 &478353410
 MonoBehaviour:
@@ -6727,3 +6774,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 330585546}
+  - {fileID: 123057635}

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,15 +26,18 @@ public class DesignFabric : MonoBehaviour
     public void SetFabric(int index)
     {
         Hide();
-        
+        Debug.Log($"Setting FABRIC index to {index}");
         switch (index)
         {
-            case 0: foreach (GameObject item in fabric_cotton) item.SetActive(true); Money(50); break;
-            case 1: foreach (GameObject item in fabric_polyester) item.SetActive(true); Money(50); break;
-            case 2: foreach (GameObject item in fabric_silk) item.SetActive(true); Money(150); break;
-            case 3: foreach (GameObject item in fabric_linen) item.SetActive(true); Money(40); break;
-            case 4: foreach (GameObject item in fabric_wool) item.SetActive(true); Money(75); break;
+            case 0: foreach (GameObject item in fabric_cotton) item.SetActive(true); Money(50); print("Activating cotton"); break;
+            case 1: foreach (GameObject item in fabric_polyester) item.SetActive(true); Money(50); print("Activating polyester"); break;
+            case 2: foreach (GameObject item in fabric_silk) item.SetActive(true); Money(150); print("Activating silk"); break;
+            case 3: foreach (GameObject item in fabric_linen) item.SetActive(true); Money(40); print("Activating linnen");  break;
+            case 4: foreach (GameObject item in fabric_wool) item.SetActive(true); Money(75); print("Activating wool");  break;
         }
+
+        this.index = index;
+        print(this.index);
     }
 
     void Money(float _cost)
@@ -52,5 +54,7 @@ public class DesignFabric : MonoBehaviour
         foreach (GameObject item in fabric_silk) {item.SetActive(false); }
         foreach (GameObject item in fabric_linen) { item.SetActive(false); }
         foreach (GameObject item in fabric_wool) { item.SetActive(false); }
+
+        index = 7;
     }
 }

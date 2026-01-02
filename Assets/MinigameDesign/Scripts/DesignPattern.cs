@@ -21,10 +21,10 @@ public class DesignPattern : MonoBehaviour
 
     private void Start()
     {
-        Set_Pattern(0);
+        SetPattern(0);
     }
 
-    public void Set_Pattern(int index)
+    public void SetPattern(int index)
     {
         Hide();
         switch (index)
@@ -38,6 +38,9 @@ public class DesignPattern : MonoBehaviour
             case 6: foreach (GameObject item in pattern_star) item.SetActive(true); Money(20); break;
             case 7: foreach (GameObject item in pattern_logo) item.SetActive(true); Money(40); break;
         }
+
+        this.index = index;
+        print((this.index));
     }
 
     void Hide()
@@ -49,6 +52,8 @@ public class DesignPattern : MonoBehaviour
         foreach (GameObject item in pattern_squares) { item.SetActive(false); }
         foreach (GameObject item in pattern_star) { item.SetActive(false); }
         foreach (GameObject item in pattern_logo) { item.SetActive(false); }
+
+        index = 7;
     }
 
     void Money(float _cost)

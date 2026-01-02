@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
@@ -66,8 +67,27 @@ public class DesignChanger : MonoBehaviour
 
     public void FinishClothing()
     {
+        if (MoneyManager.instance != null && MoneyManager.instance.budget < 0) return;
+
         if (finishedDesign) return;
 
+        // Collar, Sleeves, Bottom, Overlay, Material
+        selectedProperties[0] = colar_index;
+        selectedProperties[1] = sleeves_index;
+        selectedProperties[2] = hem_index;
+        selectedProperties[3] = GetComponent<DesignFabric>().index;
+        selectedProperties[4] = GetComponent<DesignPattern>().index;
+
+        // Transfer colors
+        primaryHex = color1Hex;
+        secondaryHex = color2Hex;
+
+        for (int i = 0; i < selectedProperties.Length; i++) Debug.Log($"{selectedProperties[i]}");
+
+        print(primaryHex);
+        print(secondaryHex);
+
+        // Send properties after they've been set
         if (WebSocketClient.instance != null)
         {
             var designMessage = new FinalDesignMessage
@@ -86,15 +106,12 @@ public class DesignChanger : MonoBehaviour
         finishedDesign = true;
     }
 
-    public void SetMaterial(int index)
-    {
-        GetComponent<DesignFabric>().SetFabric(index);
-    }
 
     public void SetCollar(int index)
     {
-        obj_sleeves.GetComponent<Image>().sprite = sleeves[index];
-        l_obj_sleeves.GetComponent<Image>().sprite = l_sleeves[index];
+        Debug.Log($"Setting COLLAR to index [{index}] which is {colars[index]} and {l_colars[index]}");
+        obj_colar.GetComponent<Image>().sprite = colars[index];
+        l_obj_colar.GetComponent<Image>().sprite = l_colars[index];
     }
 
     public void SetSleeves(int index)
@@ -211,8 +228,8 @@ public class DesignChanger : MonoBehaviour
 
     public void SetCollarColor(Color color)
     {
-        obj_sleeves.GetComponent<Image>().color = color;
-        l_obj_sleeves.GetComponent<Image>().color = color;
+        obj_colar.GetComponent<Image>().color = color;
+        l_obj_colar.GetComponent<Image>().color = color;
     }
 
     public void SetSleevesColor(Color color)
