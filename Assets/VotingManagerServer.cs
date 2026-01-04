@@ -10,6 +10,7 @@ public class VotingManagerServer : MonoBehaviour
     public int currentIndex;
     public ShirtResults[] shirts;
     public DesignChanger displayShirt;
+    public DesignChanger winningShirt;
 
     public GameObject nextShirtButton;
     public TextMeshProUGUI presentingPlayerText;
@@ -26,6 +27,7 @@ public class VotingManagerServer : MonoBehaviour
     public bool started = true;
     public float timeLeft = 10;
     public Slider timerSlider;
+    public Slider pitchingTimerSlider;
 
     private VotingMessage pendingVotingMsg;
     private bool hasPendingVotingMessage = false;
@@ -34,9 +36,10 @@ public class VotingManagerServer : MonoBehaviour
 
     void Start()
     {
-        // Find all ShirtDesigns from last scene
-        results = new int[3];
+        // Find all ShirtDesigns from last scene - It finds them in reverse order so we reverse it
         shirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
+        results = new int[shirts.Length];
+        print("Length of results is " + results.Length);
         timerSlider.maxValue = timeLeft;
         pitchingPanel.SetActive(false);
         presentingPlayerText.text = LobbyBehavior.GetPlayerName(LobbyBehavior.GetAllPlayerIds()[currentIndex]);
@@ -47,16 +50,17 @@ public class VotingManagerServer : MonoBehaviour
         if (hasPendingVotingMessage)
         {
             for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
-                results[i] += pendingVotingMsg.votingResults[i];
+                results[currentIndex] += pendingVotingMsg.votingResults[i];
 
             playersVoted++;
 
-            if (playersVoted < LobbyBehavior.GetConnectedPlayers().Count) // All players have voted
+            if (playersVoted >= LobbyBehavior.GetConnectedPlayers().Count - 1) // All players (but the one pitching) have voted
             {
                 nextShirtButton.SetActive(true);
                 votingRoundManagerServer.started = false;
                 timerSlider.transform.parent.gameObject.SetActive(false);
-                
+                pitchingTimerSlider.transform.parent.gameObject.SetActive(false);
+                print("All players have voted");
             }    
             print("Added results");
 
@@ -74,6 +78,8 @@ public class VotingManagerServer : MonoBehaviour
             votingRoundManagerServer.started = true;
             DisplayShirt();
 
+            // Allow players to vote
+            HostNetwork.instance.AllowVoting(LobbyBehavior.GetAllPlayerIds()[currentIndex]);
             return;
         }
 
@@ -81,11 +87,55 @@ public class VotingManagerServer : MonoBehaviour
         timerSlider.value = timeLeft;
     }
 
+    public void PitchNextPlayer()
+    {
+        currentIndex++;
+
+        // If all shirts have been cycled through, move on to the next minigame
+        if (currentIndex >= shirts.Length)
+        {
+            pitchingPanel.SetActive(false);
+            resultsPanel.SetActive(true);
+
+            // Calculate results
+            int winningIndex = 0;
+            int highestResult = 0;
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                if (highestResult < results[i])
+                {
+                    highestResult = results[i];
+                    winningIndex = i;
+                }
+            }
+
+            // Enable the winning shirt
+            winningShirt.SetCollar(shirts[winningIndex].results[0]);
+            winningShirt.SetSleeves(shirts[winningIndex].results[1]);
+            winningShirt.SetHem(shirts[winningIndex].results[2]);
+
+            winningShirt.GetComponent<DesignFabric>().SetFabric(shirts[winningIndex].results[3]);
+            winningShirt.GetComponent<DesignPattern>().SetPattern(shirts[winningIndex].results[4]); // The underlying code has been changed by Jeremy so this line no longer works
+
+            winningShirt.ResultSetPrimaryColor(shirts[winningIndex].primaryHex);
+            winningShirt.ResultSetSecondaryColor(shirts[winningIndex].secondaryHex);
+
+            return;
+        }
+
+        nextShirtButton.SetActive(false);
+        pitchingPanel.SetActive(false);
+        getReadyPanel.SetActive(true);
+        timeLeft = 10;
+        timerSlider.value = timeLeft;
+        timerSlider.transform.parent.gameObject.SetActive(true);
+        presentingPlayerText.text = LobbyBehavior.GetPlayerName(LobbyBehavior.GetAllPlayerIds()[currentIndex]);
+        started = true;
+    }
+
     public void DisplayShirt()
     {
-        // If all shirts have been cycled through, move on to the next minigame
-        if (currentIndex >= shirts.Length) return;
-
         displayShirt.SetCollar(shirts[currentIndex].results[0]);
         displayShirt.SetSleeves(shirts[currentIndex].results[1]);
         displayShirt.SetHem(shirts[currentIndex].results[2]);
@@ -95,8 +145,6 @@ public class VotingManagerServer : MonoBehaviour
         
         displayShirt.ResultSetPrimaryColor(shirts[currentIndex].primaryHex);
         displayShirt.ResultSetSecondaryColor(shirts[currentIndex].secondaryHex);
-
-        currentIndex++;
     }
 
     public void AddToResults(VotingMessage votingMsg)

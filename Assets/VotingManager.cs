@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class VotingManager : MonoBehaviour
 {
     public static VotingManager instance;
 
+    public GameObject votingPanel, votingButton, gameStateText;
     public bool finishedVoting;
     public int[] votes;
 
@@ -30,7 +32,16 @@ public class VotingManager : MonoBehaviour
             WebSocketClient.instance.SendMessageToServer(json);
         }
 
+        AllowVotes(false);
+        gameStateText.GetComponent<TextMeshProUGUI>().text = "Waiting for others to vote.";
         finishedVoting = true;
+    }
+
+    public void AllowVotes(bool allowed)
+    {
+        votingPanel.SetActive(allowed);
+        votingButton.SetActive(allowed);
+        gameStateText.SetActive(!allowed);
     }
 
     public void SetVoteTheme(int value) => votes[0] = value;

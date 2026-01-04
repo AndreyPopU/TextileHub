@@ -50,6 +50,17 @@ public class HostNetwork : MonoBehaviour
         return new string(code);
     }
 
+    public void AllowVoting(string presentingPlayerId)
+    {
+        var allowVotingMsg = new GameMessage
+        {
+            type = "allowvoting",
+            text = presentingPlayerId,
+        };
+
+        wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(allowVotingMsg));
+    }
+
     public void StartGame()
     {
         var gameStartMessage = new GameStartMessage

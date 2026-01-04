@@ -37,6 +37,9 @@ public class WebSocketClient : MonoBehaviour
 
     private bool hasPendingTimerOver = false;
 
+    private GameMessage pendingAllowVotingMsg;
+    private bool hasAllowVotingMsg = false;
+
     // For join timeout
     private bool hostFoundFlag = false;
 
@@ -52,6 +55,17 @@ public class WebSocketClient : MonoBehaviour
 
     void Update()
     {
+        if (hasAllowVotingMsg)
+        {
+            if (VotingManager.instance != null)
+            {
+                if (pendingAllowVotingMsg.text != localPlayerId) VotingManager.instance.AllowVotes(true);
+                else VotingManager.instance.gameStateText.GetComponent<TextMeshProUGUI>().text = "Pitch your design to others!";
+            }
+
+            hasAllowVotingMsg = false;
+        }
+
         if (hasPendingTimerOver) // Handle timer over
         {
             if (ClothingManager.instance != null) // If Design
@@ -279,6 +293,10 @@ public class WebSocketClient : MonoBehaviour
                 break;
             case "allanswered":
                 // Host uses this; clients can ignore or use for visuals
+                break;
+            case "allowvoting":
+                hasAllowVotingMsg = true;
+                pendingAllowVotingMsg = JsonConvert.DeserializeObject<GameMessage>(e.Data);
                 break;
         }
     }
