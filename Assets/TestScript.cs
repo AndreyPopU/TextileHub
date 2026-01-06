@@ -12,7 +12,10 @@ public class TestScript : MonoBehaviour
     //    string primaryHex = givenColor.ToHexString();
     //    print(primaryHex);
     //}
-
+    void Start()
+    {
+        consequences[score].gameObject.SetActive(true);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G)) DecideConsequence();

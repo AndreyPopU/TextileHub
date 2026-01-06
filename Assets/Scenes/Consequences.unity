@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bf691e99249014092d6c859dd442a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 1
   consequences:
   - {fileID: 240535658}
   - {fileID: 376343476}
