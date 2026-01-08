@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class TestTubesManager : MonoBehaviour
 {
     public static TestTubesManager instance;
+    public ShirtResults shirtresults;
+    
 
     public Image shirt;
 
@@ -33,6 +35,7 @@ public class TestTubesManager : MonoBehaviour
     [SerializeField] GameObject bleachDamageWool;
 
     private void Awake() => instance = this;
+    
         
     public void HotWater() => waterAnimator.SetTrigger("Play");
 
@@ -62,24 +65,21 @@ public class TestTubesManager : MonoBehaviour
 
         float loops = 255;
         float scaleDiff = 1;
-
-        switch (material) {
-            case "polyester":
-                scaleDiff = 1;
+       
+        switch (shirtresults.results[3]) {
+            case 1:
+                scaleDiff = 0;
                 break;
-            case "cotton":
-                scaleDiff = 1;
+            case 0:
+                scaleDiff = 0;
                 break;
-            case "wool":
+            case 4:
                 scaleDiff = 0.01f;
                 break;
-            case "linnen":
+            case 3:
                 scaleDiff = 0.01f;
                 break;
-            case "silk":
-                scaleDiff = 0.01f;
-                break;
-            case "nylon":
+            case 2:
                 scaleDiff = 0.01f;
                 break;
             default:
@@ -99,23 +99,20 @@ public class TestTubesManager : MonoBehaviour
 
     private IEnumerator IronShirtCO() 
     {
-        switch (material) {
-            case "polyester":
+        switch (shirtresults.results[3]) {
+            case 1:
                 ironDamage2.SetActive(true);
                 break;
-            case "cotton":
+            case 0:
                 ironDamage1.SetActive(true);
                 break;
-            case "wool":
+            case 4:
                 ironDamage1.SetActive(true);
                 break;
-            case "linnen":
+            case 3:
                 ironDamage3.SetActive(true);
                 break;
-            case "silk":
-                ironDamage2.SetActive(true);
-                break;
-            case "nylon":
+            case 2:
                 ironDamage2.SetActive(true);
                 break;
             default:
@@ -129,24 +126,21 @@ public class TestTubesManager : MonoBehaviour
 
     private IEnumerator DyeShirtCO() 
     {
-        switch (material) {
-            case "polyester":
+        switch (shirtresults.results[3]) {
+            case 1:
                 stainDamage2.SetActive(true);
                 break;
-            case "cotton":
+            case 0:
                 stainDamage1.SetActive(true);
                 break;
-            case "wool":
+            case 4:
                 stainDamage1.SetActive(true);
                 break;
-            case "linnen":
+            case 3:
                 stainDamage1.SetActive(true);
                 break;
-            case "silk":
+            case 2:
                 stainDamage1.SetActive(true);
-                break;
-            case "nylon":
-                stainDamage2.SetActive(true);
                 break;
             default:
                 yield return null;
@@ -155,24 +149,21 @@ public class TestTubesManager : MonoBehaviour
     }
     private IEnumerator DetergentShirtCO() 
     {
-        switch (material) {
-            case "polyester":
+        switch (shirtresults.results[3]) {
+            case 1:
                 bleachDamagePolyester.SetActive(true);
                 break;
-            case "cotton":
+            case 0:
                 bleachDamageCotton.SetActive(true);
                 break;
-            case "wool":
+            case 4:
                 bleachDamageWool.SetActive(true);
                 break;
-            case "linnen":
+            case 3:
                 bleachDamageLinen.SetActive(true);
                 break;
-            case "silk":
+            case 2:
                 bleachDamageSilk.SetActive(true);
-                break;
-            case "nylon":
-                bleachDamagePolyester.SetActive(true);
                 break;
             default:
                 yield return null;
