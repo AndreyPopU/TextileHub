@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/VotingGame.unity
     guid: 3a35d5bed1f82f6448f895f72c64796a
   - enabled: 0
-    path: Assets/Scenes/MinigameTesting.unity
+    path: Assets/Scenes/PeopleTesting.unity
     guid: d717bbfed79936d41871e439ada32dc3
   - enabled: 1
     path: Assets/Scenes/MagnifyingGlass.unity
