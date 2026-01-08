@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -15,6 +16,9 @@ public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Vector3 lastPosition;
+    public Image skin;
+    public Sprite [] skinSprites;
+    public ShirtResults shirtResults;
 
     private void Awake()
     {
@@ -23,6 +27,12 @@ public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         canvasGroup = GetComponent<CanvasGroup>();
 
         lastPosition = transform.position;
+    }
+
+    private void Start ()
+    {
+        shirtResults = FindFirstObjectByType <ShirtResults> (); 
+
     }
 
     public void OnBeginDrag(PointerEventData eventData) => canvasGroup.blocksRaycasts = false; // Ignore raycasts while dragging
@@ -39,7 +49,20 @@ public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             {
                 lastPosition = transform.position;
                 progress += .5f;
-                if (progress >= 100) AsyncLoad.instance.LoadNextScene();
+                if (progress >= 100)
+             
+                {
+                int index = 0;
+                   if (shirtResults.primaryHex == "F22C2C")
+                   {
+                        index = 5;
+                   }
+                    else if (shirtResults.primaryHex == "D14D10") 
+                    {
+                        index = 10;
+                    }
+                   skin.sprite = skinSprites [shirtResults.results[4] + index];
+                }
             }
         }
     }
