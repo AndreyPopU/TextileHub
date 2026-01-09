@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -63,6 +64,8 @@ public class DesignChanger : MonoBehaviour
     private void Start()
     {
         selectedProperties = new int[5];
+        Colour1("red1");
+        Colour2("red1");
     }
 
     public void FinishClothing()

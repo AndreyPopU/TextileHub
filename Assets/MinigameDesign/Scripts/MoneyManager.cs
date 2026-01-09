@@ -35,6 +35,6 @@ public class MoneyManager : MonoBehaviour
     void Change_Money()
     {
         current_budget = (budget - pattern_cost - fabric_cost - color1_cost - color2_cost);
-        text.text = (current_budget) + " Euros";
+        text.text = (""+current_budget);
     }
 }

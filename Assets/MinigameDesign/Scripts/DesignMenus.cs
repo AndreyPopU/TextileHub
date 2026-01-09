@@ -5,37 +5,29 @@ public class DesignMenus : MonoBehaviour
     #region --Fields and properties--
     [Header("Object Arrays")]
     [SerializeField] GameObject[] design_menus;
-    [SerializeField] GameObject[] sub_menus;
     #endregion
 
     void Start()
     {
         Hide();
-        Hide_sub();
     }
 
-    public void ShowChild(GameObject child)
+    public void Show(GameObject menu)
     {
-        foreach (GameObject menu in sub_menus)
-        {
-            if (menu.activeSelf)
-                Hide_sub();
-            continue;
-        }
-        child.SetActive(!child.activeSelf);
+        if (menu.activeSelf)
+            {
+            Hide();
+            }
+        else
+            {
+            Hide();
+            menu.SetActive(true);
+            }            
     }
 
-    void Hide()
+    public void Hide()
     {
         foreach(GameObject menu in design_menus)
-        {
-            menu.SetActive(false);
-        }
-    }
-
-    void Hide_sub()
-    {
-        foreach (GameObject menu in sub_menus)
         {
             menu.SetActive(false);
         }
