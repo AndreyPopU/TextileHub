@@ -12,17 +12,7 @@ public class RecyclingManager : MonoBehaviour
     public bool glass;
     public int imperfectionsFound;
 
-    private Camera mainCamera;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    void Start()
-    {
-        mainCamera = Camera.main;
-    }
+    private void Awake() => instance = this;
 
     void Update()
     {

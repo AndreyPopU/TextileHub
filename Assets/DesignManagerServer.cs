@@ -45,7 +45,8 @@ public class DesignManagerServer : MonoBehaviour
     {
         if (hasPendingReadyMsg)
         {
-            playerShirts[pendingDesignMsg.playerId].SetResults(pendingDesignMsg.designResults, pendingDesignMsg.primaryHex, pendingDesignMsg.secondaryHex);
+            playerShirts[pendingDesignMsg.playerId].SetResults(pendingDesignMsg.designResults, pendingDesignMsg.primaryHex, 
+                pendingDesignMsg.secondaryHex, pendingDesignMsg.isAzo, pendingDesignMsg.isCO2, pendingDesignMsg.playerId);
             finishedPlayers++;
 
             if (finishedPlayers == playerCount)

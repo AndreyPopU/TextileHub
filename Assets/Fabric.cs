@@ -29,11 +29,7 @@ public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         lastPosition = transform.position;
     }
 
-    private void Start ()
-    {
-        shirtResults = FindFirstObjectByType <ShirtResults> (); 
-
-    }
+    private void Start () => shirtResults = FindFirstObjectByType<ShirtResults>(); 
 
     public void OnBeginDrag(PointerEventData eventData) => canvasGroup.blocksRaycasts = false; // Ignore raycasts while dragging
 
@@ -53,11 +49,11 @@ public class Fabric : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
              
                 {
                 int index = 0;
-                   if (shirtResults.primaryHex == "F22C2C")
+                   if (shirtResults.isAzo)
                    {
                         index = 5;
                    }
-                    else if (shirtResults.primaryHex == "D14D10") 
+                    else if (shirtResults.isCO2) 
                     {
                         index = 10;
                     }

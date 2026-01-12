@@ -63,6 +63,8 @@ public class FinalDesignMessage
     public int[] designResults;
     public string primaryHex;
     public string secondaryHex;
+    public bool isAzo;
+    public bool isCO2;
 }
 
 [Serializable]

@@ -2,6 +2,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class VotingManagerServer : MonoBehaviour
 {
@@ -36,8 +38,25 @@ public class VotingManagerServer : MonoBehaviour
 
     void Start()
     {
-        // Find all ShirtDesigns from last scene - It finds them in reverse order so we reverse it
-        shirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
+        // Find all ShirtDesigns from last scene then set the order to match the order of the players
+        ShirtResults[] unfilteredShirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
+        List<string> playerIds = LobbyBehavior.GetAllPlayerIds();
+        shirts = new ShirtResults[unfilteredShirts.Length]; // Initialize the array
+
+        for (int i = 0; i < unfilteredShirts.Length; i++)
+        {
+            // For each unfiltered shirt, find the owning player and assign him
+            for (int j = 0; j < playerIds.Count; j++)
+            {
+                // If unfiltered shirt matches the player assign it to shirts
+                if (unfilteredShirts[i].playerId == playerIds[j])
+                {
+                    shirts[j] = unfilteredShirts[i];
+                    break;
+                }
+            }
+        }
+
         results = new int[shirts.Length];
         print("Length of results is " + results.Length);
         timerSlider.maxValue = timeLeft;
@@ -49,6 +68,7 @@ public class VotingManagerServer : MonoBehaviour
     {
         if (hasPendingVotingMessage)
         {
+            // Add voting results to the overall results
             for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
                 results[currentIndex] += pendingVotingMsg.votingResults[i];
 
@@ -153,7 +173,7 @@ public class VotingManagerServer : MonoBehaviour
         pendingVotingMsg = votingMsg;
     }
 
-    public void ServerNextMinigame() => FindFirstObjectByType<AsyncLoad>().LoadScene(3);
+    public void ServerNextMinigame() => FindFirstObjectByType<AsyncLoad>().LoadScene(9);
 
-    public void NextMinigame() => HostNetwork.instance.NextMinigame(4);
+    public void NextMinigame() => HostNetwork.instance.AssignRoles(); // 5 6 7 8 are the scenes the clients should load
 }

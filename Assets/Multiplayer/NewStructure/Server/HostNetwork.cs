@@ -6,7 +6,7 @@ public class HostNetwork : MonoBehaviour
 {
     public static HostNetwork instance;
 
-    private WebSocketServer wss;
+    public WebSocketServer wss;
     private Coroutine runningCoroutine;
 
     private void Awake()
@@ -81,6 +81,24 @@ public class HostNetwork : MonoBehaviour
         };
 
         wss.WebSocketServices["/lobby"].Sessions.Broadcast(JsonUtility.ToJson(gameStartMessage));
+    }
+
+    public void AssignRoles()
+    {
+        // Pick a scene index to send to each player - possibly the most scuffed for loop ever
+        for (int i = 5; i < 9; i++)
+        {
+            if (i - 5 >= LobbyBehavior.GetAllPlayerIds().Count) return; // If less than 4 players have connected return;
+
+            var gameStartMessage = new GameStartMessage
+            {
+                type = "gameStart",
+                sceneIndex = i,
+            };
+
+            //wss.WebSocketServices["/lobby"].Sessions.SendTo(JsonUtility.ToJson(gameStartMessage), LobbyBehavior.GetAllPlayerIds()[i - 5]);
+            LobbyBehavior.SendToPlayer(LobbyBehavior.GetAllPlayerIds()[i - 5], gameStartMessage);
+        }
     }
 
     // -------------------------

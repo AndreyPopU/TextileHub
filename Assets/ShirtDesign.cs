@@ -11,7 +11,7 @@ public class ShirtDesign : MonoBehaviour
 
     private void Start() => playerNameText.text = playerName;
 
-    public void SetResults(int[] results, string primaryHex, string secondaryHex)
+    public void SetResults(int[] results, string primaryHex, string secondaryHex, bool isAzo, bool isCO2, string playerId)
     {
         // Create an empty object that stores the results
         GameObject shirtResults = new GameObject("ShirtResults");
@@ -20,6 +20,9 @@ public class ShirtDesign : MonoBehaviour
         shirtScript.results = results;
         shirtScript.primaryHex = primaryHex;
         shirtScript.secondaryHex = secondaryHex;
+        shirtScript.isAzo = isAzo;
+        shirtScript.isCO2 = isCO2;
+        shirtScript.playerId = playerId;
         image.color = new Color(0.92f, 0.36f, .16f, 1);
         checkMark.SetActive(true);
     }

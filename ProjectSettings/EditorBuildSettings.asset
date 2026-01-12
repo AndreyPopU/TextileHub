@@ -20,12 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VotingGame.unity
     guid: 3a35d5bed1f82f6448f895f72c64796a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PeopleTesting.unity
     guid: d717bbfed79936d41871e439ada32dc3
   - enabled: 1
     path: Assets/Scenes/MagnifyingGlass.unity
     guid: f642ed43227ac1c4daa49d58b31f5f05
+  - enabled: 1
+    path: Assets/Scenes/TestTubes.unity
+    guid: fe4476b8009c00c409d3e7777770f727
+  - enabled: 1
+    path: Assets/Scenes/Microscope MiniGame Button.unity
+    guid: 2b74508ddde179247a650913c338004c
+  - enabled: 1
+    path: Assets/Scenes/UpcycleMinigame.unity
+    guid: 78b9483424ea02d459ee49ef71f21769
+  - enabled: 1
+    path: Assets/Scenes/Consequences.unity
+    guid: 062d977cee4cd634a96b951d636e80f6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

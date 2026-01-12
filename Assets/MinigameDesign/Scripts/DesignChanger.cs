@@ -3,6 +3,7 @@ using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
@@ -55,6 +56,7 @@ public class DesignChanger : MonoBehaviour
     int cost_dye_reactive = 20;
     int cost_dye_co2 = 30;
     #endregion
+    private bool isCO2, isAzo;
 
     private void Awake()
     {
@@ -100,6 +102,8 @@ public class DesignChanger : MonoBehaviour
                 designResults = selectedProperties,
                 primaryHex = primaryHex,
                 secondaryHex = secondaryHex,
+                isAzo = isAzo,
+                isCO2 = isCO2,
             };
 
             string json = JsonUtility.ToJson(designMessage);
@@ -262,21 +266,21 @@ public class DesignChanger : MonoBehaviour
     {
         switch (colour)
         {
-            case "red": image_color = new Color32(242, 44, 44, 255); Money1(cost_dye_azo); break;
-            case "red1": image_color = new Color32(213, 13, 70, 255); Money1(cost_dye_reactive); break;
-            case "red2": image_color = new Color32(209, 77, 16, 255); Money1(cost_dye_co2); break;
-            case "yellow": image_color = new Color32(232, 200, 39, 255); Money1(cost_dye_azo); break;
-            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money1(cost_dye_reactive); break;
-            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money1(cost_dye_co2); break;
-            case "green": image_color = new Color32(27, 168, 41, 255); Money1(cost_dye_azo); break;
-            case "green1": image_color = new Color32(27, 90, 41, 255); Money1(cost_dye_reactive); break;
-            case "green2": image_color = new Color32(27, 160, 130, 255); Money1(cost_dye_co2); break;
-            case "blue": image_color = new Color32(0, 131, 225, 255); Money1(cost_dye_azo); break;
-            case "blue1": image_color = new Color32(0, 50, 225, 255); Money1(cost_dye_reactive); break;
-            case "blue2": image_color = new Color32(80, 110, 140, 255); Money1(cost_dye_co2); break;
-            case "purple": image_color = new Color32(170, 0, 225, 255); Money1(cost_dye_azo); break;
-            case "purple1": image_color = new Color32(114, 0, 225, 255); Money1(cost_dye_reactive); break;
-            case "purple2": image_color = new Color32(80, 0, 156, 255); Money1(cost_dye_co2); break;
+            case "red": image_color = new Color32(242, 44, 44, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "red1": image_color = new Color32(213, 13, 70, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "red2": image_color = new Color32(209, 77, 16, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "yellow": image_color = new Color32(232, 200, 39, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "green": image_color = new Color32(27, 168, 41, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "green1": image_color = new Color32(27, 90, 41, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "green2": image_color = new Color32(27, 160, 130, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "blue": image_color = new Color32(0, 131, 225, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "blue1": image_color = new Color32(0, 50, 225, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "blue2": image_color = new Color32(80, 110, 140, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "purple": image_color = new Color32(170, 0, 225, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "purple1": image_color = new Color32(114, 0, 225, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "purple2": image_color = new Color32(80, 0, 156, 255); Money1(cost_dye_co2); isCO2 = true; break;
         }
 
         current_colour_1 = colour;
@@ -294,21 +298,21 @@ public class DesignChanger : MonoBehaviour
     {
         switch (colour)
         {
-            case "red": image_color = new Color32(242, 44, 44, 255); Money2(cost_dye_azo); break;
-            case "red1": image_color = new Color32(213, 13, 70, 255); Money2(cost_dye_reactive); break;
-            case "red2": image_color = new Color32(209, 77, 16, 255); Money2(cost_dye_co2); break;
-            case "yellow": image_color = new Color32(232, 200, 39, 255); Money2(cost_dye_azo); break;
-            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money2(cost_dye_reactive); break;
-            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money2(cost_dye_co2); break;
-            case "green": image_color = new Color32(27, 168, 41, 255); Money2(cost_dye_azo); break;
-            case "green1": image_color = new Color32(27, 90, 41, 255); Money2(cost_dye_reactive); break;
-            case "green2": image_color = new Color32(27, 160, 130, 255); Money2(cost_dye_co2); break;
-            case "blue": image_color = new Color32(0, 131, 225, 255); Money2(cost_dye_azo); break;
-            case "blue1": image_color = new Color32(0, 50, 225, 255); Money2(cost_dye_reactive); break;
-            case "blue2": image_color = new Color32(80, 110, 140, 255); Money2(cost_dye_co2); break;
-            case "purple": image_color = new Color32(170, 0, 225, 255); Money2(cost_dye_azo); break;
-            case "purple1": image_color = new Color32(114, 0, 225, 255); Money2(cost_dye_reactive); break;
-            case "purple2": image_color = new Color32(80, 0, 156, 255); Money2(cost_dye_co2); break;
+            case "red": image_color = new Color32(242, 44, 44, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "red1": image_color = new Color32(213, 13, 70, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "red2": image_color = new Color32(209, 77, 16, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "yellow": image_color = new Color32(232, 200, 39, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "yellow1": image_color = new Color32(232, 157, 39, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "yellow2": image_color = image_color = new Color32(246, 242, 114, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "green": image_color = new Color32(27, 168, 41, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "green1": image_color = new Color32(27, 90, 41, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "green2": image_color = new Color32(27, 160, 130, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "blue": image_color = new Color32(0, 131, 225, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "blue1": image_color = new Color32(0, 50, 225, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "blue2": image_color = new Color32(80, 110, 140, 255); Money1(cost_dye_co2); isCO2 = true; break;
+            case "purple": image_color = new Color32(170, 0, 225, 255); Money1(cost_dye_azo); isAzo = true; break;
+            case "purple1": image_color = new Color32(114, 0, 225, 255); Money1(cost_dye_reactive); isCO2 = false; isAzo = false; break;
+            case "purple2": image_color = new Color32(80, 0, 156, 255); Money1(cost_dye_co2); isCO2 = true; break;
         }
 
         current_colour_2 = colour;

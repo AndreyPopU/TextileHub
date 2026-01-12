@@ -9,6 +9,7 @@ public class LobbyBehavior : WebSocketBehavior
     private static Dictionary<string, string> connectedPlayers = new Dictionary<string, string>(); // Key - PlayerId; Value - name;
     private static Dictionary<string, int> playerScores = new Dictionary<string, int>();
     private static HashSet<string> playersAnswered = new HashSet<string>();
+    private static Dictionary<string, string> playerIdToSessionId = new Dictionary<string, string>();
 
     protected override void OnMessage(MessageEventArgs e)
     {
@@ -23,6 +24,7 @@ public class LobbyBehavior : WebSocketBehavior
             if (!connectedPlayers.ContainsKey(joinMsg.playerId))
             {
                 connectedPlayers.Add(joinMsg.playerId, joinMsg.name);
+                playerIdToSessionId[joinMsg.playerId] = ID; // map session for sending messages only to that client
                 playerScores[joinMsg.playerId] = 0;
                 if (GameManager.instance != null)
                 {
@@ -147,5 +149,21 @@ public class LobbyBehavior : WebSocketBehavior
     public static string GetPlayerName(string playerId)
     {
         return connectedPlayers[playerId];
+    }
+
+    public static void SendToPlayer(string playerId, object message)
+    {
+        if (!playerIdToSessionId.TryGetValue(playerId, out string sessionId))
+        {
+            Debug.LogWarning("Player not found: " + playerId);
+            return;
+        }
+
+        string json = JsonConvert.SerializeObject(message);
+
+        WebSocketServer server = HostNetwork.instance.wss;
+        server.WebSocketServices["/lobby"]
+              .Sessions
+              .SendTo(json, sessionId);
     }
 }
