@@ -699,8 +699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -693.7, y: 415.52}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -664.2, y: 415.52}
+  m_SizeDelta: {x: 430.9, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &376343476
 GameObject:
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9575566, g: 0.83333325, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: ....................................................................................
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40854524e30ab08438e5c30b62e60a09, type: 2}
   m_sharedMaterial: {fileID: -5633045893946010332, guid: 40854524e30ab08438e5c30b62e60a09, type: 2}
@@ -1697,8 +1697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -693.7, y: 415.52}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -664.2, y: 415.52}
+  m_SizeDelta: {x: 430.9, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &818826068
 GameObject:
@@ -1833,8 +1833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -693.7, y: 415.52}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -664.2, y: 415.52}
+  m_SizeDelta: {x: 430.9, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &831997061
 GameObject:
@@ -1977,15 +1977,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5df1e89bd902c7545a8713583908bf55, type: 3}
   - {fileID: 21300000, guid: b368329ba4050ab43938df831c300344, type: 3}
   consequenceDescriptions:
-  - PeopleBad
-  - PeopleNeutral
-  - PeopleBest
-  - PlanetBad
-  - PlanetNeutral
-  - PlanetBest
-  - ProfitBad
-  - ProfitNeutral
-  - ProfitBest
+  - 'Most of your customers have fallen ill causing the largest drop in popularity
+    since Johan de Witt in 1672. '
+  - 'The people speak up as the new line of clothes fails to live up to expectation. '
+  - 'The designers behind the design of the year. '
+  - 'Free advertisement for your work found in nature photography. '
+  - 'Friesland starts tracking how plastic waste from the province ends up in the
+    Wadden Sea. '
+  - "Celebrations as through the combined efforts of designer\u2019s fast fashion
+    is dead. "
+  - 'The blue envelope waits on your doorstep, you can''t run any longer. '
+  - 'Everything has its cost and yours is more than most people can afford. '
+  - 'Eat the rich of course doesn''t apply to you even if you can now afford to eat
+    well. '
   finalResults:
   - {fileID: 552186543}
   - {fileID: 1252972830}
@@ -2668,14 +2672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.043137256, g: 0.28235295, b: 0.21176472, a: 1}
+  m_Color: {r: 0.7452829, g: 0.8200567, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 48c6e0d919f1dea4793d530d799383c8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
