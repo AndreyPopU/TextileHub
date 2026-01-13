@@ -18,6 +18,7 @@ public class VotingManagerServer : MonoBehaviour
     public TextMeshProUGUI presentingPlayerText;
     public int playersVoted;
     public int[] results;
+    public int[] score;
 
     [Header("Menus")]
     public GameObject getReadyPanel;
@@ -42,6 +43,7 @@ public class VotingManagerServer : MonoBehaviour
         ShirtResults[] unfilteredShirts = FindObjectsByType<ShirtResults>(FindObjectsSortMode.None);
         List<string> playerIds = LobbyBehavior.GetAllPlayerIds();
         shirts = new ShirtResults[unfilteredShirts.Length]; // Initialize the array
+        score = new int[3];
 
         for (int i = 0; i < unfilteredShirts.Length; i++)
         {
@@ -68,9 +70,19 @@ public class VotingManagerServer : MonoBehaviour
     {
         if (hasPendingVotingMessage)
         {
-            // Add voting results to the overall results
-            for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
-                results[currentIndex] += pendingVotingMsg.votingResults[i];
+            //// Add voting results to the overall results
+            //for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
+            //{
+            //    results[currentIndex] += pendingVotingMsg.votingResults[i];
+            //    // Convert score to consequence score
+            //    switch(results[i])
+            //    {
+            //        case 0: score[i] += 2; Debug.Log($"Setting score {i} to {results[i]}"); break;
+            //        case 1: score[i] += 4; Debug.Log($"Setting score {i} to {results[i]}");break;
+            //        case 2: score[i] += 9; Debug.Log($"Setting score {i} to {results[i]}");break;
+            //        case 3: score[i] += 10; Debug.Log($"Setting score {i} to {results[i]}"); break;
+            //    }
+            //}
 
             playersVoted++;
 
@@ -140,6 +152,14 @@ public class VotingManagerServer : MonoBehaviour
 
             winningShirt.ResultSetPrimaryColor(shirts[winningIndex].primaryHex);
             winningShirt.ResultSetSecondaryColor(shirts[winningIndex].secondaryHex);
+
+            // Create Consequence Results
+            GameObject consequenceResults = new GameObject("ConsequenceResults");
+            consequenceResults.AddComponent<ConsequenceResults>();
+
+            // Store consequence results
+            //for (int i = 0; i < score.Length; i++)
+            //    consequenceResults.GetComponent<ConsequenceResults>().results[i] = score[i];
 
             return;
         }
