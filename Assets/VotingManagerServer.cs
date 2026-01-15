@@ -44,6 +44,8 @@ public class VotingManagerServer : MonoBehaviour
         List<string> playerIds = LobbyBehavior.GetAllPlayerIds();
         shirts = new ShirtResults[unfilteredShirts.Length]; // Initialize the array
         score = new int[3];
+        results = new int[unfilteredShirts.Length];
+        print("Length of results is " + results.Length);
 
         for (int i = 0; i < unfilteredShirts.Length; i++)
         {
@@ -59,8 +61,6 @@ public class VotingManagerServer : MonoBehaviour
             }
         }
 
-        results = new int[shirts.Length];
-        print("Length of results is " + results.Length);
         timerSlider.maxValue = timeLeft;
         pitchingPanel.SetActive(false);
         presentingPlayerText.text = LobbyBehavior.GetPlayerName(LobbyBehavior.GetAllPlayerIds()[currentIndex]);
@@ -70,19 +70,19 @@ public class VotingManagerServer : MonoBehaviour
     {
         if (hasPendingVotingMessage)
         {
-            //// Add voting results to the overall results
-            //for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
-            //{
-            //    results[currentIndex] += pendingVotingMsg.votingResults[i];
-            //    // Convert score to consequence score
-            //    switch(results[i])
-            //    {
-            //        case 0: score[i] += 2; Debug.Log($"Setting score {i} to {results[i]}"); break;
-            //        case 1: score[i] += 4; Debug.Log($"Setting score {i} to {results[i]}");break;
-            //        case 2: score[i] += 9; Debug.Log($"Setting score {i} to {results[i]}");break;
-            //        case 3: score[i] += 10; Debug.Log($"Setting score {i} to {results[i]}"); break;
-            //    }
-            //}
+            // Add voting results to the overall results
+            for (int i = 0; i < pendingVotingMsg.votingResults.Length; i++)
+            {
+                results[currentIndex] += pendingVotingMsg.votingResults[i];
+                // Convert score to consequence score
+                switch (pendingVotingMsg.votingResults[i])
+                {
+                    case 0: score[i] += 2; Debug.Log($"Setting score {i} to {pendingVotingMsg.votingResults[i]}"); break;
+                    case 1: score[i] += 4; Debug.Log($"Setting score {i} to {pendingVotingMsg.votingResults[i]}"); break;
+                    case 2: score[i] += 9; Debug.Log($"Setting score {i} to {pendingVotingMsg.votingResults[i]}"); break;
+                    case 3: score[i] += 10; Debug.Log($"Setting score {i} to {pendingVotingMsg.votingResults[i]}"); break;
+                }
+            }
 
             playersVoted++;
 
@@ -158,8 +158,8 @@ public class VotingManagerServer : MonoBehaviour
             consequenceResults.AddComponent<ConsequenceResults>();
 
             // Store consequence results
-            //for (int i = 0; i < score.Length; i++)
-            //    consequenceResults.GetComponent<ConsequenceResults>().results[i] = score[i];
+            for (int i = 0; i < score.Length; i++)
+                consequenceResults.GetComponent<ConsequenceResults>().results[i] = score[i];
 
             return;
         }

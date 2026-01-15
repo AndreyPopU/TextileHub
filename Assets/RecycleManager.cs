@@ -5,7 +5,11 @@ public class RecycleManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
 
-    public void SetScore(string score) => scoreText.text = score;
+    public void UpdateConsequenceScore(int amount)
+    {
+        FindFirstObjectByType<ConsequenceResults>().results[0] += amount;
+        FindFirstObjectByType<ConsequenceResults>().results[2] += amount;
+    }
 
     public void ServerNextMinigame() => FindFirstObjectByType<AsyncLoad>().LoadScene(10);
 
