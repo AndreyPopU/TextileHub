@@ -13,4 +13,12 @@ public class DesignDisabler : MonoBehaviour
             item.SetActive(false);
         }
     }
+
+    public void Button_Enable()
+    {
+        foreach (GameObject item in interactable_buttons)
+        {
+            item.SetActive(true);
+        }
+    }
 }
