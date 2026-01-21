@@ -16,6 +16,7 @@ public class DesignFabric : MonoBehaviour
 
     [Header("Saving data")]
     public int index;
+    public string fabric_text;
     #endregion
 
     private void Start()
@@ -29,11 +30,11 @@ public class DesignFabric : MonoBehaviour
         Debug.Log($"Setting FABRIC index to {index}");
         switch (index)
         {
-            case 0: foreach (GameObject item in fabric_cotton) item.SetActive(true); Money(50); print("Activating cotton"); break;
-            case 1: foreach (GameObject item in fabric_polyester) item.SetActive(true); Money(50); print("Activating polyester"); break;
-            case 2: foreach (GameObject item in fabric_silk) item.SetActive(true); Money(150); print("Activating silk"); break;
-            case 3: foreach (GameObject item in fabric_linen) item.SetActive(true); Money(40); print("Activating linnen");  break;
-            case 4: foreach (GameObject item in fabric_wool) item.SetActive(true); Money(75); print("Activating wool");  break;
+            case 0: foreach (GameObject item in fabric_cotton) item.SetActive(true); Money(50); print("Activating cotton"); fabric_text = "Cotton"; break;
+            case 1: foreach (GameObject item in fabric_polyester) item.SetActive(true); Money(50); print("Activating polyester"); fabric_text = "Polyester"; break;
+            case 2: foreach (GameObject item in fabric_silk) item.SetActive(true); Money(150); print("Activating silk"); fabric_text = "Silk"; break;
+            case 3: foreach (GameObject item in fabric_linen) item.SetActive(true); Money(40); print("Activating linnen"); fabric_text = "Linen"; break;
+            case 4: foreach (GameObject item in fabric_wool) item.SetActive(true); Money(75); print("Activating wool"); fabric_text = "Wool"; break;
         }
 
         this.index = index;

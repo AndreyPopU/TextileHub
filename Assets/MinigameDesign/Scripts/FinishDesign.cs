@@ -1,12 +1,17 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class FinishDesign : MonoBehaviour
 {
+    #region --Fields and properties--
     [SerializeField] MoneyManager moneyManager;
     [SerializeField] DesignFabric designFabric;
     [SerializeField] DesignPattern designPattern;
     [SerializeField] DesignChanger designChanger;
+    [SerializeField] TMP_Text finalText; 
+    #endregion
 
     public void SendDesign()
     {
@@ -40,11 +45,19 @@ public class FinishDesign : MonoBehaviour
             {
                 Debug.Log($"{DesignChanger.instance.selectedProperties[i]}");
             }
-
-            print(DesignChanger.instance.primaryHex);
-            print(DesignChanger.instance.secondaryHex);
                    
             DesignChanger.instance.FinishClothing();
         }
+    }
+
+    public void ShowText()
+    {
+        var pattern = @"\d";
+        var message = designChanger.current_colour_1;
+        var dye_1 = Regex.Match(message, pattern);
+        message = designChanger.current_colour_1;
+        var dye_2 = Regex.Match(message, pattern);
+
+        finalText.text = "Fabric: " + designFabric.fabric_text + "<br>Dye type: " + dye_1 + "<br>Pattern: " + designPattern.pattern_text + "<br>Dye type: " + dye_2 + "<br>Money spend: " + (moneyManager.budget-moneyManager.current_budget);
     }
 }

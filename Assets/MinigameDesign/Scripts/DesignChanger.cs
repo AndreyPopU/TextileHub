@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -89,8 +90,8 @@ public class DesignChanger : MonoBehaviour
 
         for (int i = 0; i < selectedProperties.Length; i++) Debug.Log($"{selectedProperties[i]}");
 
-        print(primaryHex);
-        print(secondaryHex);
+        //print(primaryHex);
+        //print(secondaryHex);
 
         // Send properties after they've been set
         if (WebSocketClient.instance != null)
