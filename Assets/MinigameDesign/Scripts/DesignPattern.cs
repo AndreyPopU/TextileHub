@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class DesignPattern : MonoBehaviour
 {
-    public UnityEngine.UI.Button secondaryColorButton;
-
     #region --Fields and properties--
     [Header("Pattern Object Arrays")]
     [SerializeField] GameObject[] v_pattern_stripes;
@@ -20,6 +18,7 @@ public class DesignPattern : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] MoneyManager moneyManager;
+    [SerializeField] UnityEngine.UI.Button secondColour_button;
     #endregion
 
     private void Start()
@@ -42,10 +41,16 @@ public class DesignPattern : MonoBehaviour
             case 7: foreach (GameObject item in pattern_logo) item.SetActive(true); Money(40); break;
         }
 
-        if (index == 0) secondaryColorButton.interactable = false;
-        else secondaryColorButton.interactable = true;
+        if (index == 0)
+        {
+            secondColour_button.interactable = false;
+        }
+        else
+        {
+            secondColour_button.interactable = true;
+        }
 
-        this.index = index;
+            this.index = index;
         print((this.index));
     }
 
