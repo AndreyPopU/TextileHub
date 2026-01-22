@@ -21,6 +21,9 @@ public class ConsequenceManager : MonoBehaviour
 
     private void Start()
     {
+        // Function only if there are any results sent
+        if (results == null) return;
+
         // Find results
         results = FindFirstObjectByType<ConsequenceResults>();
         shirtResults = FindFirstObjectByType<ShirtResults>();
@@ -61,6 +64,9 @@ public class ConsequenceManager : MonoBehaviour
 
     public void ShowNextConsequence()
     {
+        // Function only if there are any results sent
+        if (results == null) return;
+
         if (currentConsequence >= 3) return;
 
         consequences[currentConsequence].gameObject.SetActive(true);
@@ -71,6 +77,9 @@ public class ConsequenceManager : MonoBehaviour
 
     public void FinalResults()
     {
+        // Function only if there are any results sent
+        if (results == null) return;
+
         for (int i = 0; i < finalResults.Length; i++)
             finalResults[i].GetComponent<Image>().sprite = consequenceSprites[3 * i + consequenceResults[i]];
     }
