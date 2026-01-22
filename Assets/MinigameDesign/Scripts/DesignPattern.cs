@@ -1,10 +1,9 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DesignPattern : MonoBehaviour
 {
-    public UnityEngine.UI.Button secondaryColorButton;
-
     #region --Fields and properties--
     [Header("Pattern Object Arrays")]
     [SerializeField] GameObject[] v_pattern_stripes;
@@ -20,6 +19,9 @@ public class DesignPattern : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] MoneyManager moneyManager;
+    [SerializeField] UnityEngine.UI.Button secondColour_button;
+
+    public string pattern_text;
     #endregion
 
     private void Start()
@@ -32,20 +34,26 @@ public class DesignPattern : MonoBehaviour
         Hide();
         switch (index)
         {
-            case 0: Money(0); break;
-            case 1: foreach (GameObject item in v_pattern_stripes) item.SetActive(true); Money(20); break;
-            case 2: foreach (GameObject item in h_pattern_stripes) item.SetActive(true); Money(20); break;
-            case 3: foreach (GameObject item in d_pattern_stripes) item.SetActive(true); Money(20); break;
-            case 4: foreach (GameObject item in pattern_dots) item.SetActive(true); Money(20); break;
-            case 5: foreach (GameObject item in pattern_squares) item.SetActive(true); Money(20); break;
-            case 6: foreach (GameObject item in pattern_star) item.SetActive(true); Money(20); break;
-            case 7: foreach (GameObject item in pattern_logo) item.SetActive(true); Money(40); break;
+            case 0: Money(0); pattern_text = "None"; break;
+            case 1: foreach (GameObject item in v_pattern_stripes) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 2: foreach (GameObject item in h_pattern_stripes) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 3: foreach (GameObject item in d_pattern_stripes) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 4: foreach (GameObject item in pattern_dots) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 5: foreach (GameObject item in pattern_squares) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 6: foreach (GameObject item in pattern_star) item.SetActive(true); Money(20); pattern_text = "None"; break;
+            case 7: foreach (GameObject item in pattern_logo) item.SetActive(true); Money(40); pattern_text = "None"; break;
         }
 
-        if (index == 0) secondaryColorButton.interactable = false;
-        else secondaryColorButton.interactable = true;
+        if (index == 0)
+        {
+            secondColour_button.interactable = false;
+        }
+        else
+        {
+            secondColour_button.interactable = true;
+        }
 
-        this.index = index;
+            this.index = index;
         print((this.index));
     }
 
